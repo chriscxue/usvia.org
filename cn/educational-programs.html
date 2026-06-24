@@ -13,7 +13,9 @@
 
         body {
             font-family: 'Courier Prime', 'Noto Sans SC', sans-serif;
-            line-height: 1.6;
+            font-size: 16px;
+            font-weight: 200;
+            line-height: 1.9;
             color: #000;
             background: #fff;
             display: flex;
@@ -62,7 +64,6 @@
             display: grid;
         }
 
-        /* 所有面板叠在同一格，高度由最高面板决定，切换只改可见性 */
         .content-panel {
             grid-area: 1 / 1;
             visibility: hidden;
@@ -72,11 +73,38 @@
             visibility: visible;
         }
 
-        /* ── 内容排版 ── */
-        .content-area * {
+        /* ── 内容表格 ── */
+        .content-table {
+            width: 1000px;
+            border-collapse: collapse;
+            border: 0.5px solid #000;
+        }
+
+        .content-table td {
+            border: 0.5px solid #000;
+            padding: 16px 24px;
+            vertical-align: top;
             font-size: 16px;
             font-weight: 200;
             line-height: 1.9;
+        }
+
+        .content-table td.col-label {
+            width: 200px;
+        }
+
+        .content-table td.col-title {
+            font-size: 16px;
+            font-weight: 200;
+        }
+
+        .content-table tr:hover td {
+            background-color: #52B9DA;
+            color: #fff;
+        }
+
+        .content-table ul {
+            margin-left: 20px;
         }
 
         /* ── 响应式 ── */
@@ -84,6 +112,7 @@
             .page-layout { grid-template-columns: 1fr; }
             .sidebar { border-right: none; border-bottom: 0.5px solid #000; }
             .content-area { padding: 32px 24px; }
+            .content-table { width: 100%; }
         }
     </style>
 </head>
@@ -109,185 +138,98 @@
 
             <!-- 7年级 -->
             <div class="content-panel active" id="grade7">
-                <h2>7 年级</h2>
-                <h3>入学要求</h3>
-                <p>完成 6 年级或 7 年级学习的学生。</p>
-                <h3>课程</h3>
-                <div class="tag-row">
-                    <span class="tag">英文语法与写作</span>
-                    <span class="tag">英文词汇</span>
-                    <span class="tag">自然科学入门</span>
-                    <span class="tag">世界地理</span>
-                    <span class="tag">前代数</span>
-                    <span class="tag">学习技能</span>
-                    <span class="tag">艺术</span>
-                    <span class="tag">体育</span>
-                </div>
-                <h3>英文</h3>
-                <p>VIA 以英文课程替代西班牙语、法语等外语要求，融入英文文学课程，帮助学生建立扎实的词汇和语法基础。</p>
-                <h3>数学</h3>
-                <p>聚焦英文数学术语，融合几何和概率等内容，为正式代数学习做准备。</p>
-                <h3>人文与自然科学</h3>
-                <p>整合美国 4–7 年级历史与科学课程的重要内容，通过世界地理和自然科学入门提供全面基础。</p>
-                <h3>学习技能</h3>
-                <p>练习英文笔迹、记笔记，使用闪卡和图书馆作为学习工具。</p>
-                <h3>艺术</h3>
-                <p>教授绘画、油画、雕塑、版画和拼贴等基础艺术知识。</p>
-                <h3>体育</h3>
-                <p>学习美国流行运动的规则与动作，参与游戏和体育活动。</p>
+                <table class="content-table">
+                    <tr><td colspan="2" class="col-title">7 年级</td></tr>
+                    <tr><td class="col-label">入学要求</td><td>完成 6 年级或 7 年级学习的学生。</td></tr>
+                    <tr><td class="col-label">课程</td><td>英文语法与写作　英文词汇　自然科学入门　世界地理　前代数　学习技能　艺术　体育</td></tr>
+                    <tr><td class="col-label">英文</td><td>VIA 以英文课程替代西班牙语、法语等外语要求，融入英文文学课程，帮助学生建立扎实的词汇和语法基础。</td></tr>
+                    <tr><td class="col-label">数学</td><td>聚焦英文数学术语，融合几何和概率等内容，为正式代数学习做准备。</td></tr>
+                    <tr><td class="col-label">人文与自然科学</td><td>整合美国 4–7 年级历史与科学课程的重要内容，通过世界地理和自然科学入门提供全面基础。</td></tr>
+                    <tr><td class="col-label">学习技能</td><td>练习英文笔迹、记笔记，使用闪卡和图书馆作为学习工具。</td></tr>
+                    <tr><td class="col-label">艺术</td><td>教授绘画、油画、雕塑、版画和拼贴等基础艺术知识。</td></tr>
+                    <tr><td class="col-label">体育</td><td>学习美国流行运动的规则与动作，参与游戏和体育活动。</td></tr>
+                </table>
             </div>
 
             <!-- 8年级 -->
             <div class="content-panel" id="grade8">
-                <h2>8 年级</h2>
-                <h3>入学要求</h3>
-                <p>完成 7 年级或 8 年级学习的学生。</p>
-                <h3>课程</h3>
-                <div class="tag-row">
-                    <span class="tag">英文语法与写作</span>
-                    <span class="tag">英文文学</span>
-                    <span class="tag">戏剧与诗歌</span>
-                    <span class="tag">代数 I</span>
-                    <span class="tag">地球科学</span>
-                    <span class="tag">美国历史入门</span>
-                    <span class="tag">艺术</span>
-                    <span class="tag">体育</span>
-                </div>
-                <h3>英文</h3>
-                <p>三部分课程：语法写作在 7 年级基础上深化；文学课训练阅读理解；戏剧与诗歌帮助国际学生理解这些特殊文学形式。</p>
-                <h3>数学 — 代数 I</h3>
-                <p>8 年级学生完成通常属于美国高中课程的代数 I。</p>
-                <h3>自然科学 — 地球科学</h3>
-                <p>涵盖地球相关的水文和地质现象，通过课堂教学、模型制作和实地考察学习科学术语。</p>
-                <h3>历史</h3>
-                <p>以美国历史为中心，辅以专题历史研究，包括课堂讨论、辩论、公开演讲和历史遗址考察。</p>
-                <h3>视觉艺术</h3>
-                <p>教授视觉艺术基础知识和技能，利用 AI 等在线工具辅助学习。</p>
+                <table class="content-table">
+                    <tr><td colspan="2" class="col-title">8 年级</td></tr>
+                    <tr><td class="col-label">入学要求</td><td>完成 7 年级或 8 年级学习的学生。</td></tr>
+                    <tr><td class="col-label">课程</td><td>英文语法与写作　英文文学　戏剧与诗歌　代数 I　地球科学　美国历史入门　艺术　体育</td></tr>
+                    <tr><td class="col-label">英文</td><td>三部分课程：语法写作在 7 年级基础上深化；文学课训练阅读理解；戏剧与诗歌帮助国际学生理解这些特殊文学形式。</td></tr>
+                    <tr><td class="col-label">数学 — 代数 I</td><td>8 年级学生完成通常属于美国高中课程的代数 I。</td></tr>
+                    <tr><td class="col-label">自然科学 — 地球科学</td><td>涵盖地球相关的水文和地质现象，通过课堂教学、模型制作和实地考察学习科学术语。</td></tr>
+                    <tr><td class="col-label">历史</td><td>以美国历史为中心，辅以专题历史研究，包括课堂讨论、辩论、公开演讲和历史遗址考察。</td></tr>
+                    <tr><td class="col-label">视觉艺术</td><td>教授视觉艺术基础知识和技能，利用 AI 等在线工具辅助学习。</td></tr>
+                </table>
             </div>
 
             <!-- 9-12年级 -->
             <div class="content-panel" id="grade9to12">
-                <h2>9–12 年级</h2>
-                <h3>入学要求</h3>
-                <p>在 VIA 完成 8 年级且成绩合格，或在其他国家完成 9 年级并通过 VIA 笔试和面试的学生。</p>
-                <hr class="section-divider">
-                <h3>英文</h3>
-                <p>每个年级须完成对应的英文文学课程（英文 9、10、11、12），并附加强化课程：</p>
-                <ul>
-                    <li><strong>10 年级</strong>：强化阅读写作（1）+ 强化听说，准备 TOEFL</li>
-                    <li><strong>11 年级</strong>：强化英文阅读写作（2），准备 SAT 阅读和语法</li>
-                    <li><strong>12 年级</strong>：创意写作与批判性思维，撰写大学申请个人陈述</li>
-                </ul>
-                <h3>数学</h3>
-                <p>开设代数 II、几何、微积分前课程；数学天赋强的学生可选修大学级别微积分、统计学；11 年级须修高级定量技能课程备考 SAT。</p>
-                <h3>自然科学</h3>
-                <p>物理、化学、生物各跨一个学年；有兴趣的学生可深入特定学科。</p>
-                <h3>人文学科</h3>
-                <p>美国历史、世界历史、美国文化与地理、弗吉尼亚州和美国政府；选修包括艺术史、数学史、独立研究项目等。三年级或四年级须修经济学和个人财务。</p>
-                <h3>生活与学习技能</h3>
-                <p>研究、论文写作、日常生活技能；大学导航课程介绍美国高等教育体系、选校方法和申请流程。</p>
-                <h3>视觉艺术</h3>
-                <p>涵盖绘画、雕塑、数字插画和平面设计，整合传统技术与现代数字工具。</p>
-                <h3>体育</h3>
-                <p>两年必修课及选修课，培养运动习惯与基本营养知识。</p>
+                <table class="content-table">
+                    <tr><td colspan="2" class="col-title">9–12 年级</td></tr>
+                    <tr><td class="col-label">入学要求</td><td>在 VIA 完成 8 年级且成绩合格，或在其他国家完成 9 年级并通过 VIA 笔试和面试的学生。</td></tr>
+                    <tr><td class="col-label">英文</td><td>每个年级须完成对应的英文文学课程（英文 9、10、11、12），并附加强化课程：<ul><li><strong>10 年级</strong>：强化阅读写作（1）+ 强化听说，准备 TOEFL</li><li><strong>11 年级</strong>：强化英文阅读写作（2），准备 SAT 阅读和语法</li><li><strong>12 年级</strong>：创意写作与批判性思维，撰写大学申请个人陈述</li></ul></td></tr>
+                    <tr><td class="col-label">数学</td><td>开设代数 II、几何、微积分前课程；数学天赋强的学生可选修大学级别微积分、统计学；11 年级须修高级定量技能课程备考 SAT。</td></tr>
+                    <tr><td class="col-label">自然科学</td><td>物理、化学、生物各跨一个学年；有兴趣的学生可深入特定学科。</td></tr>
+                    <tr><td class="col-label">人文学科</td><td>美国历史、世界历史、美国文化与地理、弗吉尼亚州和美国政府；选修包括艺术史、数学史、独立研究项目等。三年级或四年级须修经济学和个人财务。</td></tr>
+                    <tr><td class="col-label">生活与学习技能</td><td>研究、论文写作、日常生活技能；大学导航课程介绍美国高等教育体系、选校方法和申请流程。</td></tr>
+                    <tr><td class="col-label">视觉艺术</td><td>涵盖绘画、雕塑、数字插画和平面设计，整合传统技术与现代数字工具。</td></tr>
+                    <tr><td class="col-label">体育</td><td>两年必修课及选修课，培养运动习惯与基本营养知识。</td></tr>
+                </table>
             </div>
 
             <!-- 高中视觉艺术项目 -->
             <div class="content-panel" id="visual-arts">
-                <h2>高中视觉艺术项目</h2>
-                <h3>入学要求</h3>
-                <p>仅招收在 VIA 完成 8 年级且成绩合格，或在其他国家完成 9 年级并通过 VIA 入学考试的学生。<strong>不接受高中转入学生。</strong>无需艺术基础，但申请者应展现对视觉艺术的热爱。</p>
-                <h3>传统艺术</h3>
-                <div class="tag-row">
-                    <span class="tag">绘画</span>
-                    <span class="tag">着色</span>
-                    <span class="tag">雕塑</span>
-                    <span class="tag">版画</span>
-                    <span class="tag">摄影</span>
-                </div>
-                <h3>数字技术</h3>
-                <div class="tag-row">
-                    <span class="tag">数字插画</span>
-                    <span class="tag">3D 建模</span>
-                    <span class="tag">动画</span>
-                    <span class="tag">网页设计</span>
-                    <span class="tag">游戏开发</span>
-                    <span class="tag">数字摄影</span>
-                    <span class="tag">视频制作</span>
-                    <span class="tag">音频制作</span>
-                    <span class="tag">动态图形设计</span>
-                </div>
-                <h3>高三升学</h3>
-                <p>高三学生将在指导下完成艺术作品集，完成大学申请流程，并了解职业发展前景。</p>
+                <table class="content-table">
+                    <tr><td colspan="2" class="col-title">高中视觉艺术项目</td></tr>
+                    <tr><td class="col-label">入学要求</td><td>仅招收在 VIA 完成 8 年级且成绩合格，或在其他国家完成 9 年级并通过 VIA 入学考试的学生。<strong>不接受高中转入学生。</strong>无需艺术基础，但申请者应展现对视觉艺术的热爱。</td></tr>
+                    <tr><td class="col-label">传统艺术</td><td>绘画　着色　雕塑　版画　摄影</td></tr>
+                    <tr><td class="col-label">数字技术</td><td>数字插画　3D 建模　动画　网页设计　游戏开发　数字摄影　视频制作　音频制作　动态图形设计</td></tr>
+                    <tr><td class="col-label">高三升学</td><td>高三学生将在指导下完成艺术作品集，完成大学申请流程，并了解职业发展前景。</td></tr>
+                </table>
             </div>
 
             <!-- 高中毕业要求 -->
             <div class="content-panel" id="graduation">
-                <h2>高中毕业要求</h2>
-                <p>一门一学年课程 = 1 学分。学生须在 VIA 至少修满 2 年，取得不少于 <strong>24 学分</strong>（含转换学分）方可毕业。</p>
-                <table class="credit-table">
-                    <thead>
-                        <tr>
-                            <th>学分</th>
-                            <th>科目要求</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>4</td><td>四年英文（英文 9、10、11、12）</td></tr>
-                        <tr><td>3</td><td>三年数学（最低微积分前水平）</td></tr>
-                        <tr><td>3</td><td>三年科学（各至少一年生物、物理、化学）</td></tr>
-                        <tr><td>4</td><td>四年社会科学（美国历史、世界历史、经济学或个人财务，及一门选修）</td></tr>
-                        <tr><td>2</td><td>两年艺术（通常 9、10 年级完成）</td></tr>
-                        <tr><td>2</td><td>两年体育（通常 9、10 年级完成；转入生须完成两年 VIA 体育）</td></tr>
-                        <tr><td>6</td><td>六门选修课（微积分、统计学、强化阅读写作、强化听说、强化定量技能、创意写作与批判性思维、大学导航、艺术选修、艺术作品集等）</td></tr>
-                    </tbody>
+                <table class="content-table">
+                    <tr><td colspan="2" class="col-title">高中毕业要求</td></tr>
+                    <tr><td colspan="2">一门一学年课程 = 1 学分。学生须在 VIA 至少修满 2 年，取得不少于 <strong>24 学分</strong>（含转换学分）方可毕业。</td></tr>
+                    <tr><td class="col-label">学分</td><td>科目要求</td></tr>
+                    <tr><td class="col-label">4</td><td>四年英文（英文 9、10、11、12）</td></tr>
+                    <tr><td class="col-label">3</td><td>三年数学（最低微积分前水平）</td></tr>
+                    <tr><td class="col-label">3</td><td>三年科学（各至少一年生物、物理、化学）</td></tr>
+                    <tr><td class="col-label">4</td><td>四年社会科学（美国历史、世界历史、经济学或个人财务，及一门选修）</td></tr>
+                    <tr><td class="col-label">2</td><td>两年艺术（通常 9、10 年级完成）</td></tr>
+                    <tr><td class="col-label">2</td><td>两年体育（通常 9、10 年级完成；转入生须完成两年 VIA 体育）</td></tr>
+                    <tr><td class="col-label">6</td><td>六门选修课（微积分、统计学、强化阅读写作、强化听说、强化定量技能、创意写作与批判性思维、大学导航、艺术选修、艺术作品集等）</td></tr>
                 </table>
             </div>
 
             <!-- 营地项目 -->
             <div class="content-panel" id="camps">
-                <h2>营地项目</h2>
-                <h3>女子排球暑期营</h3>
-                <p>面向 10–15 岁女生的两周暑期营，知名教练培训基本技术并组织比赛。本地学生走读，外地及国际学生可寄宿，国际学生夜间提供英文辅导。</p>
-                <h3>男子篮球暑期营</h3>
-                <p>面向 9–18 岁男生的两周暑期营。一周在 VIA 训练，另一周参加 Wootten 教练男子篮球营——由传奇教练 Morgan Wootten 于 1961 年创立，被誉为"世界第一教学篮球营"，每年吸引超 2000 名参与者。</p>
-                <h3>英文与冒险暑期营</h3>
-                <p>面向 5–8 年级学生的两周营地，聚焦英文学习和户外活动，包括登山、洞穴探险、漂流、游泳、骑马和保龄球。</p>
-                <h3>体验美国学校冬令营</h3>
-                <p>面向计划赴美留学的 5–8 年级国际学生，通常 1 月末至 2 月中举办。参加真实课堂、体验美国学生日常、滑雪、游览华盛顿特区、观看 NBA 等赛事。</p>
-                <h3>学术营</h3>
-                <div class="tag-row">
-                    <span class="tag">SAT 备考营</span>
-                    <span class="tag">TOEFL 备考营</span>
-                    <span class="tag">数学竞赛营</span>
-                    <span class="tag">趣味数学营</span>
-                </div>
-                <h3>趣味营</h3>
-                <div class="tag-row">
-                    <span class="tag">中国手工艺营</span>
-                    <span class="tag">风筝营</span>
-                    <span class="tag">钓鱼营</span>
-                </div>
-                <h3>承办合作营</h3>
-                <p>VIA 可与旅行社、家长协会、校友会、其他学校或公司合作承办主题冬夏令营。合作方负责招生、签证和专门课程；VIA 提供机场接送、住宿、餐饮、日常管理、课外活动和英文教学。</p>
+                <table class="content-table">
+                    <tr><td colspan="2" class="col-title">营地项目</td></tr>
+                    <tr><td class="col-label">女子排球暑期营</td><td>面向 10–15 岁女生的两周暑期营，知名教练培训基本技术并组织比赛。本地学生走读，外地及国际学生可寄宿，国际学生夜间提供英文辅导。</td></tr>
+                    <tr><td class="col-label">男子篮球暑期营</td><td>面向 9–18 岁男生的两周暑期营。一周在 VIA 训练，另一周参加 Wootten 教练男子篮球营——由传奇教练 Morgan Wootten 于 1961 年创立，被誉为"世界第一教学篮球营"，每年吸引超 2000 名参与者。</td></tr>
+                    <tr><td class="col-label">英文与冒险暑期营</td><td>面向 5–8 年级学生的两周营地，聚焦英文学习和户外活动，包括登山、洞穴探险、漂流、游泳、骑马和保龄球。</td></tr>
+                    <tr><td class="col-label">体验美国学校冬令营</td><td>面向计划赴美留学的 5–8 年级国际学生，通常 1 月末至 2 月中举办。参加真实课堂、体验美国学生日常、滑雪、游览华盛顿特区、观看 NBA 等赛事。</td></tr>
+                    <tr><td class="col-label">学术营</td><td>SAT 备考营　TOEFL 备考营　数学竞赛营　趣味数学营</td></tr>
+                    <tr><td class="col-label">趣味营</td><td>中国手工艺营　风筝营　钓鱼营</td></tr>
+                    <tr><td class="col-label">承办合作营</td><td>VIA 可与旅行社、家长协会、校友会、其他学校或公司合作承办主题冬夏令营。合作方负责招生、签证和专门课程；VIA 提供机场接送、住宿、餐饮、日常管理、课外活动和英文教学。</td></tr>
+                </table>
             </div>
 
             <!-- 校际合作 -->
             <div class="content-panel" id="partnerships">
-                <h2>校际合作</h2>
-                <h3>与中国学校合作</h3>
-                <p>VIA 欢迎与中国各类教育机构开展课程设计、课程引进、师资交流与培训合作。</p>
-                <ul>
-                    <li><strong>初中 1+1 项目</strong>：7 年级在中国就读，8 年级在 VIA 就读</li>
-                    <li><strong>高中 2+2 项目</strong>：9–10 年级在中国就读，11–12 年级在 VIA 就读</li>
-                </ul>
-                <p>完成全部必修课程后，学生获得高中文凭。</p>
-                <h3>与美国私立高中合作</h3>
-                <p>为已被美国私立高中录取的新生提供春季学期适应项目，帮助学生在正式入读前适应美国学校生活和学习方式。美国高中可将此作为国际学生的条件录取要求，学生也可自愿申请。</p>
-                <h3>短期交换项目</h3>
-                <p>承办 5–9 年级学生短期（三个月以内）交换项目。对需要旅游签证的学生，VIA 可提供邀请函。项目期间提供英文课堂教学、必修科目教学、住宿、日常生活管理课程、健康保险及课外活动。</p>
-                <h3>联系咨询</h3>
-                <p>如需讨论合作形式，请联系 Helen Wu：<a href="mailto:helen.wu@usvia.org">helen.wu@usvia.org</a></p>
+                <table class="content-table">
+                    <tr><td colspan="2" class="col-title">校际合作</td></tr>
+                    <tr><td class="col-label">与中国学校合作</td><td>VIA 欢迎与中国各类教育机构开展课程设计、课程引进、师资交流与培训合作。<ul><li><strong>初中 1+1 项目</strong>：7 年级在中国就读，8 年级在 VIA 就读</li><li><strong>高中 2+2 项目</strong>：9–10 年级在中国就读，11–12 年级在 VIA 就读</li></ul>完成全部必修课程后，学生获得高中文凭。</td></tr>
+                    <tr><td class="col-label">与美国私立高中合作</td><td>为已被美国私立高中录取的新生提供春季学期适应项目，帮助学生在正式入读前适应美国学校生活和学习方式。美国高中可将此作为国际学生的条件录取要求，学生也可自愿申请。</td></tr>
+                    <tr><td class="col-label">短期交换项目</td><td>承办 5–9 年级学生短期（三个月以内）交换项目。对需要旅游签证的学生，VIA 可提供邀请函。项目期间提供英文课堂教学、必修科目教学、住宿、日常生活管理课程、健康保险及课外活动。</td></tr>
+                    <tr><td class="col-label">联系咨询</td><td>如需讨论合作形式，请联系 Helen Wu：<a href="mailto:helen.wu@usvia.org">helen.wu@usvia.org</a></td></tr>
+                </table>
             </div>
 
         </div>
@@ -296,7 +238,6 @@
     <div id="footer-placeholder"></div>
 
     <script>
-        // 侧边栏切换
         const items = document.querySelectorAll('.sidebar-item');
         const panels = document.querySelectorAll('.content-panel');
 
@@ -309,7 +250,6 @@
             });
         });
 
-        // 加载 header / footer
         async function loadComponent(placeholderId, path) {
             try {
                 const res = await fetch(path);
