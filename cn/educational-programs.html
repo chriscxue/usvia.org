@@ -6,7 +6,7 @@
     <title>教育项目 — VIA</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400&family=Noto+Sans+SC:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400&family=Noto+Sans+SC:wght@200&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scrollbar-gutter: stable; }
@@ -40,8 +40,8 @@
             padding: 16px 40px;
             border-bottom: 0.5px solid #000;
             cursor: pointer;
-            font-size: 15px;
-            font-weight: 300;
+            font-size: 16px;
+            font-weight: 200;
             color: #000;
             transition: background-color 0.25s ease, color 0.25s ease;
             user-select: none;
@@ -50,13 +50,9 @@
             justify-content: space-between;
         }
 
-        .sidebar-item:last-child {
-            border-bottom: 0.5px solid #000;
-        }
-
-        .sidebar-item:hover,
+.sidebar-item:hover,
         .sidebar-item.active {
-            background-color: #52B9DA;
+            background-color: #fc5b39;
             color: #fff;
         }
 
@@ -77,86 +73,10 @@
         }
 
         /* ── 内容排版 ── */
-        .content-panel h2 {
-            font-size: 22px;
-            font-weight: 400;
-            margin-bottom: 32px;
-            padding-bottom: 12px;
-            border-bottom: 0.5px solid #000;
-        }
-
-        .content-panel h3 {
-            font-size: 14px;
-            font-weight: 400;
-            margin: 28px 0 8px;
-            color: #52B9DA;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .content-panel p {
-            font-size: 15px;
-            font-weight: 300;
+        .content-area * {
+            font-size: 16px;
+            font-weight: 200;
             line-height: 1.9;
-            margin-bottom: 12px;
-        }
-
-        .content-panel ul {
-            margin: 8px 0 16px 20px;
-        }
-
-        .content-panel li {
-            font-size: 15px;
-            font-weight: 300;
-            line-height: 1.9;
-        }
-
-        .tag-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin: 8px 0 20px;
-        }
-
-        .tag {
-            border: 0.5px solid #000;
-            padding: 4px 14px;
-            font-size: 13px;
-            font-weight: 300;
-        }
-
-        .section-divider {
-            border: none;
-            border-top: 1px solid #eee;
-            margin: 28px 0;
-        }
-
-        .credit-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 16px;
-        }
-
-        .credit-table th,
-        .credit-table td {
-            border: 0.5px solid #000;
-            padding: 12px 16px;
-            font-size: 14px;
-            font-weight: 300;
-            text-align: left;
-            line-height: 1.7;
-            vertical-align: top;
-        }
-
-        .credit-table th {
-            font-weight: 400;
-            background: #f7f7f7;
-        }
-
-        .credit-table td:first-child {
-            width: 52px;
-            text-align: center;
-            font-weight: 400;
         }
 
         /* ── 响应式 ── */
