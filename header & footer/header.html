@@ -92,13 +92,26 @@
 
 
         .nav-arrow svg {
-            width: 12px;
-            height: 12px;
+            width: 16px;
+            height: 16px;
             transition: transform 0.3s ease;
         }
 
         .nav-item:hover .nav-arrow svg {
             transform: translateX(4px);
+        }
+
+        .nav-item.active {
+            background-color: #52B9DA;
+            color: #fff;
+        }
+
+        .nav-item.active .nav-arrow svg {
+            transform: rotate(90deg);
+        }
+
+        .nav-item.active:hover .nav-arrow svg {
+            transform: rotate(90deg);
         }
 
         /* Responsive */
@@ -157,35 +170,36 @@
                 <span class="nav-toggle-hint">+</span>
             </div>
             <nav class="header-right">
-                <a href="#" class="nav-item">
+                <a href="/index.html" class="nav-item">
                     <span class="nav-label">首页</span>
-                    <span class="nav-arrow"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4V20M18 6L6 18M20 12H4M18 18L6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                    <span class="nav-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 16 16 12 12 8"/><line x1="8" y1="12" x2="16" y2="12"/></svg></span>
                 </a>
-                <a href="#" class="nav-item">
+                <a href="/cn/educational-programs.html" class="nav-item">
                     <span class="nav-label">教育项目</span>
-                    <span class="nav-arrow"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4V20M18 6L6 18M20 12H4M18 18L6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                    <span class="nav-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 16 16 12 12 8"/><line x1="8" y1="12" x2="16" y2="12"/></svg></span>
                 </a>
-                <a href="#" class="nav-item">
+                <a href="/cn/admission.html" class="nav-item">
                     <span class="nav-label">入学申请</span>
-                    <span class="nav-arrow"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4V20M18 6L6 18M20 12H4M18 18L6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                    <span class="nav-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 16 16 12 12 8"/><line x1="8" y1="12" x2="16" y2="12"/></svg></span>
                 </a>
-                <a href="#" class="nav-item">
+                <a href="/cn/student-life.html" class="nav-item">
                     <span class="nav-label">校园生活</span>
-                    <span class="nav-arrow"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4V20M18 6L6 18M20 12H4M18 18L6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                    <span class="nav-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 16 16 12 12 8"/><line x1="8" y1="12" x2="16" y2="12"/></svg></span>
                 </a>
-                <a href="#" class="nav-item">
+                <a href="/cn/news.html" class="nav-item">
                     <span class="nav-label">校园动态</span>
-                    <span class="nav-arrow"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4V20M18 6L6 18M20 12H4M18 18L6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                    <span class="nav-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 16 16 12 12 8"/><line x1="8" y1="12" x2="16" y2="12"/></svg></span>
                 </a>
-                <a href="#" class="nav-item">
+                <a href="/cn/about-us.html" class="nav-item">
                     <span class="nav-label">关于我们</span>
-                    <span class="nav-arrow"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4V20M18 6L6 18M20 12H4M18 18L6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                    <span class="nav-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 16 16 12 12 8"/><line x1="8" y1="12" x2="16" y2="12"/></svg></span>
                 </a>
             </nav>
         </div>
     </header>
     <script>
         (function() {
+            // 移动端导航 toggle
             var toggle = document.getElementById('nav-toggle');
             var nav = document.querySelector('.header-right');
             var hint = document.querySelector('.nav-toggle-hint');
@@ -196,6 +210,18 @@
                     if (hint) hint.textContent = nav.classList.contains('open') ? '×' : '+';
                 });
             }
+
+            // 标记当前页面为 active
+            var path = window.location.pathname;
+            // 首页兼容 /index.html 和 /
+            if (path === '/' || path === '/index.html') path = '/index.html';
+            var items = document.querySelectorAll('.nav-item');
+            items.forEach(function(item) {
+                var href = item.getAttribute('href');
+                if (href && href === path) {
+                    item.classList.add('active');
+                }
+            });
         })();
     </script>
 </body>
