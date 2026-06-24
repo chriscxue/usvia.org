@@ -75,7 +75,8 @@
 
         /* ── 内容表格 ── */
         .content-table {
-            width: 1000px;
+            width: 100%;
+            max-width: 1000px;
             border-collapse: collapse;
             border: 0.5px solid #000;
         }
@@ -105,6 +106,31 @@
 
         .content-table ul {
             margin-left: 20px;
+        }
+
+        .stats-table { margin-top: 0; }
+        .stats-col-en  { width: 56%; }
+        .stats-col-zh  { width: 28%; }
+        .stats-col-count { width: 16%; }
+        .stats-count, .stats-count-header { text-align: center; }
+
+        .visual-arts-intro {
+            padding: 20px !important;
+        }
+
+        .visual-arts-intro p {
+            margin-bottom: 1.2em;
+        }
+
+        .visual-arts-intro p:last-child {
+            margin-bottom: 0;
+        }
+
+        .letter-cell { line-height: 2; }
+
+        .letter-signature {
+            margin-top: 2em;
+            color: #999;
         }
 
         /* ── 响应式 ── */
@@ -202,10 +228,66 @@
             <div class="content-panel" id="visual-arts">
                 <table class="content-table">
                     <tr><td colspan="2" class="col-title">高中视觉艺术项目</td></tr>
+                    <tr><td colspan="2" class="visual-arts-intro">
+                        <p>VIA 视觉艺术学部将艺术教育视为一个发展性过程——从材料能力到概念独立性的有序推进。课程体系的核心信念是：艺术语言无法被直接传授，它在学生与媒介、情境和批评的持续接触中逐渐显现。</p>
+                        <p>在 144 周的学习周期内，学生经历三个相互融合的阶段。工作室艺术阶段奠定基础实践：观察性素描、三维结构与材料探索。数字艺术阶段将这一基础延伸至新兴领域——AI 作为生成性工具、网页交互作为艺术媒介、电子元件作为表达材料。作品集与毕业创作阶段则将重心从"制作"转向"表达"：学生学习筛选、排列并阐释自己的作品，使之构成一份连贯的艺术陈述。</p>
+                        <p>VIA 与其他艺术预科项目的根本区别，在于它致力于为学生准备一个艺术与科技已不再截然分立的创作图景。当今正在重塑视觉文化的艺术家与设计师——无论是在互动媒体、生成性设计，还是体验式实践领域——都需要在这两个领域同时具备创作能力。VIA 的课程正是为培养这种双重流畅度而设计的：不是将技术作为艺术创作的辅助工具，而是将技术视为媒介、材料与观念领域本身。</p>
+                        <p>这一结构反映了 VIA 的核心教学信念：在艺术与设计院校申请中脱颖而出的学生，往往不是作品最多的人，而是最能清晰把握作品与意图之间关系的人——并且能够以清晰而有说服力的方式将这种关系表达出来。</p>
+                    </td></tr>
                     <tr><td class="col-label">入学要求</td><td>仅招收在 VIA 完成 8 年级且成绩合格，或在其他国家完成 9 年级并通过 VIA 入学考试的学生。<strong>不接受高中转入学生。</strong>无需艺术基础，但申请者应展现对视觉艺术的热爱。</td></tr>
                     <tr><td class="col-label">传统艺术</td><td>绘画　着色　雕塑　版画　摄影</td></tr>
                     <tr><td class="col-label">数字技术</td><td>数字插画　3D 建模　动画　网页设计　游戏开发　数字摄影　视频制作　音频制作　动态图形设计</td></tr>
                     <tr><td class="col-label">高三升学</td><td>高三学生将在指导下完成艺术作品集，完成大学申请流程，并了解职业发展前景。</td></tr>
+                    <tr><td colspan="2" class="visual-arts-intro letter-cell">
+                        <p>每一个创意、每一次实验、每一次不完美的尝试，都是通往伟大作品的必经之路。当你在桌前或工作室里，面对一个看似无解的设计问题，或努力让创意概念更清晰时，你可能会开始质疑自己："这些努力有什么意义？我真的能脱颖而出吗？"但请记住，这些挣扎与探索正是视觉艺术的核心——因为你不只是在完成任务，而是在塑造一个真正独特的自我。</p>
+                        <p>艺术和设计的伟大之处在于它们让你重新定义世界的规则。通过一幅画作、一件装置、一款产品，或一个空间，你能让人们看到新的可能性。你不是在创作单纯的"作品"，而是在表达你的身份，以及你想对这个世界诉说的话语。招生官期待看到的，不是"完美"的作品，而是能展现你的思维、好奇心和对未知的探索精神的作品。</p>
+                        <p>有时，你会困惑于一个想法是否"足够好"。但艺术和设计从不是关于"对"与"错"。每次失败都是成长的契机，每次冒险都可能带来惊人的发现。不要畏惧超越边界，不要害怕挑战规则。招生官想看到你如何通过作品提出问题、解决问题，甚至重新定义问题本身。他们渴望看到你独特的视角、思想和勇气。</p>
+                        <p>无论是通过艺术创作发声，还是用设计改变世界，你当下的每件作品都是未来成就的基石。每个失败的模型、每张反复修改的图纸、每件让你熬夜的实验，都不会白费。这些努力将塑造你，使你成为更强大、更独特的艺术家或设计师。</p>
+                        <p>所以，继续前进吧。去画画、去建造、去设计、去实验，把你所有的热爱都融入作品中。无论结果如何，这些作品都将展现你是谁、为何热爱视觉艺术。相信你的旅程，创造那些独一无二的作品。未来的你必将感激今天敢于冒险的自己。</p>
+                        <p class="letter-signature">Chris Chenglin Xue<br>2025</p>
+                    </td></tr>
+                </table>
+                <table class="content-table stats-table">
+                    <colgroup>
+                        <col class="stats-col-en">
+                        <col class="stats-col-zh">
+                        <col class="stats-col-count">
+                    </colgroup>
+                    <tr><td colspan="3" class="col-title">学生录取成绩（2013–2025）</td></tr>
+                    <tr><td class="col-label">院校名称</td><td>中文名称</td><td class="stats-count-header">录取人数</td></tr>
+                    <tr><td class="col-label">Harvard University</td><td>哈佛大学</td><td class="stats-count">1</td></tr>
+                    <tr><td class="col-label">Massachusetts Institute of Technology</td><td>麻省理工学院</td><td class="stats-count">1</td></tr>
+                    <tr><td class="col-label">Cornell University</td><td>康奈尔大学</td><td class="stats-count">13</td></tr>
+                    <tr><td class="col-label">Columbia University</td><td>哥伦比亚大学</td><td class="stats-count">7</td></tr>
+                    <tr><td class="col-label">Carnegie Mellon University</td><td>卡内基梅隆大学</td><td class="stats-count">3</td></tr>
+                    <tr><td class="col-label">Duke University</td><td>杜克大学</td><td class="stats-count">2</td></tr>
+                    <tr><td class="col-label">University of Southern California</td><td>南加州大学</td><td class="stats-count">4</td></tr>
+                    <tr><td class="col-label">University of California, Berkeley</td><td>加州大学伯克利</td><td class="stats-count">27</td></tr>
+                    <tr><td class="col-label">New York University</td><td>纽约大学</td><td class="stats-count">17</td></tr>
+                    <tr><td class="col-label">University of Michigan</td><td>密歇根大学</td><td class="stats-count">23</td></tr>
+                    <tr><td class="col-label">Washington University in St. Louis</td><td>华盛顿大学圣路易斯</td><td class="stats-count">13</td></tr>
+                    <tr><td class="col-label">University of Texas at Austin</td><td>德州大学奥斯汀</td><td class="stats-count">11</td></tr>
+                    <tr><td class="col-label">University of Illinois Urbana-Champaign</td><td>伊利诺伊大学</td><td class="stats-count">7</td></tr>
+                    <tr><td class="col-label">University of Wisconsin-Madison</td><td>威斯康星大学麦迪逊</td><td class="stats-count">12</td></tr>
+                    <tr><td class="col-label">Syracuse University</td><td>雪城大学</td><td class="stats-count">23</td></tr>
+                    <tr><td class="col-label">Arizona State University</td><td>亚利桑那州立大学</td><td class="stats-count">15</td></tr>
+                    <tr><td class="col-label">Virginia Commonwealth University</td><td>维吉尼亚联邦大学</td><td class="stats-count">18</td></tr>
+                    <tr><td class="col-label">Hunter College</td><td>亨特学院</td><td class="stats-count">8</td></tr>
+                    <tr><td class="col-label">Bard College</td><td>巴德学院</td><td class="stats-count">7</td></tr>
+                    <tr><td class="col-label">Rhode Island School of Design</td><td>罗德岛设计学院</td><td class="stats-count">17</td></tr>
+                    <tr><td class="col-label">Parsons School of Design</td><td>帕森斯设计学院</td><td class="stats-count">39</td></tr>
+                    <tr><td class="col-label">School of the Art Institute of Chicago</td><td>芝加哥艺术学院</td><td class="stats-count">52</td></tr>
+                    <tr><td class="col-label">School of Visual Arts</td><td>纽约视觉艺术学院</td><td class="stats-count">43</td></tr>
+                    <tr><td class="col-label">California Institute of the Arts</td><td>加州艺术学院</td><td class="stats-count">48</td></tr>
+                    <tr><td class="col-label">Pratt Institute</td><td>普瑞特艺术学院</td><td class="stats-count">44</td></tr>
+                    <tr><td class="col-label">ArtCenter College of Design</td><td>艺术中心设计学院</td><td class="stats-count">32</td></tr>
+                    <tr><td class="col-label">Maryland Institute College of Art</td><td>马里兰艺术学院</td><td class="stats-count">35</td></tr>
+                    <tr><td class="col-label">Cranbrook Academy of Art</td><td>克兰布鲁克艺术学院</td><td class="stats-count">17</td></tr>
+                    <tr><td class="col-label">Alfred University</td><td>艾尔弗雷德大学</td><td class="stats-count">28</td></tr>
+                    <tr><td class="col-label">California College of the Arts</td><td>加州艺术学院（旧金山）</td><td class="stats-count">26</td></tr>
+                    <tr><td class="col-label">Massachusetts College of Art and Design</td><td>麻省艺术与设计学院</td><td class="stats-count">37</td></tr>
+                    <tr><td class="col-label">Rochester Institute of Technology</td><td>罗切斯特理工大学</td><td class="stats-count">28</td></tr>
+                    <tr><td class="col-label">New York School of Interior Design</td><td>纽约室内设计学院</td><td class="stats-count">13</td></tr>
                 </table>
             </div>
 

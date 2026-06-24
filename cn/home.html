@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>首页 — VIA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400&family=Noto+Sans+SC:wght@200&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scrollbar-gutter: stable; }
+
+        body {
+            font-family: 'Courier Prime', 'Noto Sans SC', sans-serif;
+            font-size: 16px;
+            font-weight: 200;
+            line-height: 1.9;
+            color: #000;
+            background: #fff;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        #header-placeholder { border-bottom: 0.5px solid #000; }
+        #footer-placeholder { margin-top: auto; }
+
+        .main-content {
+            flex: 1;
+            padding: 60px 64px;
+            border-bottom: 0.5px solid #000;
+        }
+    </style>
+</head>
+<body>
+
+<div id="header-placeholder"></div>
+
+<main class="main-content">
+    <!-- 内容待添加 -->
+</main>
+
+<div id="footer-placeholder"></div>
+
+<script>
+    function loadComponent(id, url) {
+        fetch(url, { cache: 'no-store' })
+            .then(function(r) { return r.text(); })
+            .then(function(html) {
+                var parser = new DOMParser();
+                var doc = parser.parseFromString(html, 'text/html');
+                var placeholder = document.getElementById(id);
+                var body = doc.body;
+                while (body.firstChild) {
+                    placeholder.appendChild(body.firstChild);
+                }
+                doc.querySelectorAll('style').forEach(function(s) {
+                    document.head.appendChild(s.cloneNode(true));
+                });
+                doc.querySelectorAll('script').forEach(function(s) {
+                    var script = document.createElement('script');
+                    script.textContent = s.textContent;
+                    document.body.appendChild(script);
+                });
+            });
+    }
+    loadComponent('header-placeholder', '/header & footer/header.html');
+    loadComponent('footer-placeholder', '/header & footer/footer.html');
+</script>
+
+</body>
+</html>
