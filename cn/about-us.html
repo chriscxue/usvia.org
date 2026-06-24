@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>关于我们 — VIA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400&family=Noto+Sans+SC:wght@200&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scrollbar-gutter: stable; }
+
+        body {
+            font-family: 'Courier Prime', 'Noto Sans SC', sans-serif;
+            font-size: 16px;
+            font-weight: 200;
+            line-height: 1.9;
+            color: #000;
+            background: #fff;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .page-layout {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 360px 1fr;
+            border-bottom: 0.5px solid #000;
+        }
+
+        .sidebar {
+            border-right: 0.5px solid #000;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar-item {
+            padding: 16px 40px;
+            border-bottom: 0.5px solid #000;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 200;
+            color: #000;
+            transition: background-color 0.25s ease, color 0.25s ease;
+            user-select: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .sidebar-item:hover,
+        .sidebar-item.active {
+            background-color: #fc5b39;
+            color: #fff;
+        }
+
+        .content-area {
+            padding: 60px 64px;
+            display: grid;
+        }
+
+        .content-panel {
+            grid-area: 1 / 1;
+            visibility: hidden;
+        }
+
+        .content-panel.active {
+            visibility: visible;
+        }
+
+        .content-table {
+            width: 1000px;
+            border-collapse: collapse;
+            border: 0.5px solid #000;
+        }
+
+        .content-table td {
+            border: 0.5px solid #000;
+            padding: 16px 24px;
+            vertical-align: top;
+            font-size: 16px;
+            font-weight: 200;
+            line-height: 1.9;
+        }
+
+        .content-table td.col-label {
+            width: 200px;
+        }
+
+        .content-table td.col-title {
+            font-size: 16px;
+            font-weight: 200;
+        }
+
+        .content-table tr:hover td {
+            background-color: #52B9DA;
+            color: #fff;
+        }
+
+        .content-table ul {
+            margin-left: 20px;
+        }
+
+        /* 教师团队网格 */
+        .faculty-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            max-width: 900px;
+            border: 0.5px solid #000;
+        }
+
+        .faculty-card {
+            position: relative;
+            aspect-ratio: 4 / 5;
+            overflow: hidden;
+            background-color: #d0d0d0;
+            background-size: cover;
+            background-position: center;
+            border-right: 0.5px solid #000;
+            border-bottom: 0.5px solid #000;
+        }
+
+        .faculty-card:nth-child(3n) {
+            border-right: none;
+        }
+
+        .faculty-card:nth-child(n+7) {
+            border-bottom: none;
+        }
+
+        .faculty-card--empty {
+            background-color: #d0d0d0;
+        }
+
+        .faculty-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 20px 24px;
+            transition: background 0.3s ease;
+        }
+
+        .faculty-card:not(.faculty-card--empty):hover .faculty-overlay {
+            background: rgba(0, 0, 0, 0.65);
+        }
+
+        .faculty-info {
+            opacity: 0;
+            transform: translateY(6px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            color: #fff;
+        }
+
+        .faculty-card:hover .faculty-info {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .faculty-name,
+        .faculty-title-label,
+        .faculty-desc {
+            font-size: 16px;
+            font-weight: 200;
+            line-height: 1.9;
+        }
+
+        @media (max-width: 768px) {
+            .faculty-grid {
+                grid-template-columns: repeat(2, 1fr);
+                max-width: 100%;
+            }
+        }
+
+        .letter {
+            max-width: 720px;
+            font-size: 16px;
+            font-weight: 200;
+            line-height: 1.9;
+        }
+
+        .letter-salutation {
+            margin-bottom: 2em;
+        }
+
+        .letter p + p {
+            margin-top: 1.2em;
+        }
+
+        .letter-closing {
+            margin-top: 2.4em;
+        }
+
+        .letter-signature {
+            margin-top: 1em;
+            font-weight: 400;
+        }
+
+        .letter-role {
+            color: #999;
+            font-size: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .page-layout { grid-template-columns: 1fr; }
+            .sidebar { border-right: none; border-bottom: 0.5px solid #000; }
+            .content-area { padding: 24px 16px; }
+
+            .content-table { width: 100%; border: 0.5px solid #000; }
+            .content-table tr { display: block; }
+            .content-table tr:not(:last-child) { border-bottom: 0.5px solid #000; }
+            .content-table td { display: block; width: 100%; border: none; }
+
+            .content-table td.col-title { padding: 16px; }
+
+            .content-table td.col-label {
+                width: 100%;
+                color: #999;
+                padding: 16px 16px 4px;
+            }
+
+            .content-table td:not(.col-label):not(.col-title) {
+                padding: 4px 16px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="header-placeholder"></div>
+
+    <div class="page-layout">
+
+        <nav class="sidebar">
+            <div class="sidebar-item active" data-target="intro">学校简介</div>
+            <div class="sidebar-item" data-target="principal">校长寄语</div>
+            <div class="sidebar-item" data-target="mission">办学宗旨</div>
+            <div class="sidebar-item" data-target="faculty">教师团队</div>
+            <div class="sidebar-item" data-target="achievements">学生成就</div>
+            <div class="sidebar-item" data-target="contact">联系我们</div>
+        </nav>
+
+        <div class="content-area">
+
+            <!-- 学校简介 -->
+            <div class="content-panel active" id="intro">
+                <table class="content-table">
+                    <tr><td colspan="2" class="col-title">学校简介</td></tr>
+                    <tr><td class="col-label">学校名称</td><td>美国维吉尼亚国际学校（Virginia International Academy，简称 VIA）</td></tr>
+                    <tr><td class="col-label">位置</td><td>美国维吉尼亚州，坐落于优质东海岸学区，距华盛顿DC约一小时车程，毗邻仙那度国家公园</td></tr>
+                    <tr><td class="col-label">年级设置</td><td>初中部（7–8 年级）和高中部（9–12 年级）</td></tr>
+                    <tr><td class="col-label">办学特色</td><td>全美最早专为低龄国际留学生设计的过渡学校，提供美国初高中文化课程、语言与文化过渡课程，以及大学升学培训与指导</td></tr>
+                    <tr><td class="col-label">招生对象</td><td>除本地英语母语走读生外，招收 7–11 年级国际学生，帮助强化语言和学术水平，提高独立生活能力，完成美国大学申请全过程</td></tr>
+                    <tr><td class="col-label">新校区</td><td>2025 年收购位于维吉尼亚州茂乐镇的新校区，教室、宿舍区和食堂翻建一新，秋季迎接新生入住。相邻仙那度县公园提供飞盘高尔夫、网球场、篮球场、排球场、棒球场及步行道；规划中的室内体育馆落成后将提供篮球、排球等室内训练及比赛场地</td></tr>
+                </table>
+            </div>
+
+            <!-- 校长寄语 -->
+            <div class="content-panel" id="principal">
+                <div class="letter">
+                    <p>每年，当家长们把孩子交给我，交给 VIA 时，我深深地感到，我承担的不仅是教育这些孩子，也是塑造明日的领袖和不辜负每个家庭满怀的期待。</p>
+                    <p>每一年看到新来的学生们，我想起了我 1990 年自费来美留学的情况。尽管我那时的年龄比他们现在大十岁左右，但我仍清楚地记得，在全新的信息海洋中感受到的困惑和迷茫，以及在适应美国学校生活和接受异域文化时遇到的挑战和困难。经历过这一切，我现在希望这些经历不要再次发生在我所照顾的孩子们身上。</p>
+                    <p>在 VIA，我们以对不同文化的深刻理解而自豪，也感同身受地明白孩子们遇到的特殊挑战。我们有幸得到家长们的信任，见证、参与和指导这些孩子们走过他们人生中最重要的一段历程。</p>
+                    <p>VIA 将竭尽全力在学术、社交、身体和自我管理方面帮助他们度过在美国留学的最初几年，为他们进入美国高中和大学做好全面的准备，为他们的未来学习和生活打下坚实的基础。这不仅仅是一项使命，更是一个共同的承诺。</p>
+                    <div class="letter-closing">
+                        <p>此致，</p>
+                        <p class="letter-signature">吴晓蕙（Helen Wu）</p>
+                        <p class="letter-role">校长，维吉尼亚国际学校</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 办学宗旨 -->
+            <div class="content-panel" id="mission">
+                <table class="content-table">
+                    <tr><td colspan="2" class="col-title">办学宗旨</td></tr>
+                    <tr><td class="col-label">宗旨</td><td>VIA 立志成为美国初中和高中教育中的完美典范，强调学生在行为、智力、社交、情感和身体上的全面发展，鼓励学生感恩、自尊、热情、参与、独立、成熟和负责任</td></tr>
+                    <tr><td class="col-label">座右铭</td><td>学习与成长。学习是贯穿人一生的持续性过程；成长体现在学生在学术、智力、社交、情感和身体上的系统性提升，摆脱稚嫩，走向成熟</td></tr>
+                    <tr><td class="col-label">荣誉誓言</td><td>我不撒谎，不作弊，不偷盗。我将为维护学校的荣誉誓言负责</td></tr>
+                    <tr><td class="col-label">价值观</td><td><ul>
+                        <li><strong>感恩</strong> — 感谢为学生创造条件的家长、辛勤工作的老师和给予帮助的人</li>
+                        <li><strong>自尊</strong> — 通过自己的努力获得认可，愿意多花时间和精力把事情做到完美</li>
+                        <li><strong>热情</strong> — 以开放心态接受所有新文化知识，主动帮助有困难的朋友</li>
+                        <li><strong>参与</strong> — 积极成为社区一份子，参加义务活动，主动帮忙收拾</li>
+                        <li><strong>独立</strong> — 管理好自己的时间和物品，遇事独立思考，多与老师交流</li>
+                        <li><strong>成熟</strong> — 全面客观看待问题，摆脱幼稚任性，让家长逐渐放心</li>
+                        <li><strong>负责任</strong> — 按时兑现承诺，认真完成分配的每一项工作</li>
+                    </ul></td></tr>
+                </table>
+            </div>
+
+            <!-- 教师团队 -->
+            <div class="content-panel" id="faculty">
+                <div class="faculty-grid">
+                    <div class="faculty-card" style="background-image: url('')">
+                        <div class="faculty-overlay">
+                            <div class="faculty-info">
+                                <p class="faculty-name">Mrs. Helen Wu</p>
+                                <p class="faculty-title-label">校长</p>
+                                <p class="faculty-desc">超过 15 年教育经验，自 VIA 创办起担任校长至今，教授数学课程。此前在金融领域有 16 年以上经验</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faculty-card" style="background-image: url('')">
+                        <div class="faculty-overlay">
+                            <div class="faculty-info">
+                                <p class="faculty-name">Mr. Gang Li</p>
+                                <p class="faculty-title-label">副校长</p>
+                                <p class="faculty-desc">在 VIA 有超过 11 年教育经验，曾担任学生主任，现负责学校设施建设与后勤管理</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faculty-card" style="background-image: url('')">
+                        <div class="faculty-overlay">
+                            <div class="faculty-info">
+                                <p class="faculty-name">Mrs. Catherine Waters</p>
+                                <p class="faculty-title-label">学术主任</p>
+                                <p class="faculty-desc">超过 17 年教学经验，曾任维吉尼亚州启尔西学校英语系主任，在 VIA 有 7 年教授国际学生经验</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faculty-card" style="background-image: url('')">
+                        <div class="faculty-overlay">
+                            <div class="faculty-info">
+                                <p class="faculty-name">Mr. Ken Cho</p>
+                                <p class="faculty-title-label">教导主任</p>
+                                <p class="faculty-desc">超过 10 年教育经验，曾担任运营经理和生活老师，现任学生主任并教授科学课程</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faculty-card" style="background-image: url('')">
+                        <div class="faculty-overlay">
+                            <div class="faculty-info">
+                                <p class="faculty-name">Mr. Steve Osu</p>
+                                <p class="faculty-title-label">体育主任</p>
+                                <p class="faculty-desc">超过 5 年教练经验，负责 VIA 体育课程设计及校际比赛协调</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faculty-card" style="background-image: url('')">
+                        <div class="faculty-overlay">
+                            <div class="faculty-info">
+                                <p class="faculty-name">Mr. Chris Xue</p>
+                                <p class="faculty-title-label">艺术主任</p>
+                                <p class="faculty-desc">超过 15 年教学经验，自 2013 年起担任 HANAHANA STUDIO 教学总监，指导学生准备艺术申请作品集</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faculty-card" style="background-image: url('')">
+                        <div class="faculty-overlay">
+                            <div class="faculty-info">
+                                <p class="faculty-name">Mr. Michael Li</p>
+                                <p class="faculty-title-label">录取主任</p>
+                                <p class="faculty-desc">超过 8 年教学经验，现攻读乔治梅森大学法学院，教授历史课并担任录取主任</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faculty-card faculty-card--empty"></div>
+                    <div class="faculty-card faculty-card--empty"></div>
+                </div>
+            </div>
+
+            <!-- 学生成就 -->
+            <div class="content-panel" id="achievements">
+                <table class="content-table">
+                    <tr><td colspan="2" class="col-title">学生成就</td></tr>
+                    <tr><td class="col-label">大学录取</td><td>VIA 往届学生获录大学包括（不完全）：麻省理工学院、哈佛大学、宾夕法尼亚大学、哥伦比亚大学、卡内基梅隆大学、纽约大学、加州大学各分校、乔治亚理工大学、弗吉尼亚大学、南加州大学、埃默里大学、罗德岛设计学院、芝加哥艺术学院、帕森斯大学、纽约视觉艺术学校、巴德学院少年班等</td></tr>
+                    <tr><td class="col-label">数学竞赛</td><td>VIA 数学俱乐部获得 2018 和 2019 年地区 MATHCOUNTS 数学比赛团体冠军。2018 年 Frank Zhu 获个人亚军；2019 年 Vincent Hu、Michael Liu 和 Claudia Li 包揽个人前三名，获地方报纸专门报道</td></tr>
+                    <tr><td class="col-label">National Honor Society</td><td>VIA 学生进入美国高中后，超过 50% 在高中阶段成为 National Honor Society 会员，远高于美国高中生获此荣誉的平均比例</td></tr>
+                    <tr><td class="col-label">荣誉榜</td><td>超过 50% 的学生因成绩优异及参加社会服务活动，在高中阶段获得学校理事奖、校长奖、学术主任奖或其他荣誉称号</td></tr>
+                    <tr><td class="col-label">体育奖项</td><td>多名学生在高中体育校队效力并获奖，包括学校首个亚裔橄榄球运动员新人奖、篮球最大进步奖等。VIA 学生 Louis Tang 获全额奖学金进入 NCAA 大学篮球队</td></tr>
+                </table>
+            </div>
+
+            <!-- 联系我们 -->
+            <div class="content-panel" id="contact">
+                <table class="content-table">
+                    <tr><td colspan="2" class="col-title">联系我们</td></tr>
+                    <tr><td class="col-label">学校地址</td><td>257 Toll House Rd, Maurertown VA 22644, USA</td></tr>
+                    <tr><td class="col-label">学校电话</td><td>+1 (703) 818-9178</td></tr>
+                    <tr><td class="col-label">校长邮箱</td><td><a href="mailto:helen.wu@usvia.org">helen.wu@usvia.org</a></td></tr>
+                    <tr><td class="col-label">校长微信</td><td>helenwuva</td></tr>
+                    <tr><td class="col-label">入学申请</td><td><a href="mailto:apply@usvia.org">apply@usvia.org</a></td></tr>
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+
+    <script>
+        const items = document.querySelectorAll('.sidebar-item');
+        const panels = document.querySelectorAll('.content-panel');
+
+        items.forEach(item => {
+            item.addEventListener('click', () => {
+                items.forEach(i => i.classList.remove('active'));
+                panels.forEach(p => p.classList.remove('active'));
+                item.classList.add('active');
+                document.getElementById(item.dataset.target).classList.add('active');
+            });
+        });
+
+        async function loadComponent(placeholderId, path) {
+            try {
+                const res = await fetch(path, { cache: 'no-store' });
+                const html = await res.text();
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+                doc.querySelectorAll('style').forEach(el => {
+                    document.head.appendChild(el.cloneNode(true));
+                });
+                const placeholder = document.getElementById(placeholderId);
+                placeholder.innerHTML = doc.body.innerHTML;
+                placeholder.querySelectorAll('script').forEach(old => {
+                    const s = document.createElement('script');
+                    s.textContent = old.textContent;
+                    old.replaceWith(s);
+                });
+            } catch (e) {
+                console.warn('无法加载组件:', path, e);
+            }
+        }
+
+        loadComponent('header-placeholder', '../header%20%26%20footer/header.html');
+        loadComponent('footer-placeholder', '../header%20%26%20footer/footer.html');
+    </script>
+
+</body>
+</html>

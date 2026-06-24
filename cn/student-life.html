@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>校园生活 — VIA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400&family=Noto+Sans+SC:wght@200&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scrollbar-gutter: stable; }
+
+        body {
+            font-family: 'Courier Prime', 'Noto Sans SC', sans-serif;
+            font-size: 16px;
+            font-weight: 200;
+            line-height: 1.9;
+            color: #000;
+            background: #fff;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .page-layout {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 360px 1fr;
+            border-bottom: 0.5px solid #000;
+        }
+
+        .sidebar {
+            border-right: 0.5px solid #000;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar-item {
+            padding: 16px 40px;
+            border-bottom: 0.5px solid #000;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 200;
+            color: #000;
+            transition: background-color 0.25s ease, color 0.25s ease;
+            user-select: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .sidebar-item:hover,
+        .sidebar-item.active {
+            background-color: #fc5b39;
+            color: #fff;
+        }
+
+        .content-area {
+            padding: 60px 64px;
+            display: grid;
+        }
+
+        .content-panel {
+            grid-area: 1 / 1;
+            visibility: hidden;
+        }
+
+        .content-panel.active {
+            visibility: visible;
+        }
+
+        .content-table {
+            width: 1000px;
+            border-collapse: collapse;
+            border: 0.5px solid #000;
+        }
+
+        .content-table td {
+            border: 0.5px solid #000;
+            padding: 16px 24px;
+            vertical-align: top;
+            font-size: 16px;
+            font-weight: 200;
+            line-height: 1.9;
+        }
+
+        .content-table td.col-label {
+            width: 200px;
+        }
+
+        .content-table td.col-title {
+            font-size: 16px;
+            font-weight: 200;
+        }
+
+        .content-table tr:hover td {
+            background-color: #52B9DA;
+            color: #fff;
+        }
+
+        .content-table ul {
+            margin-left: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .page-layout { grid-template-columns: 1fr; }
+            .sidebar { border-right: none; border-bottom: 0.5px solid #000; }
+            .content-area { padding: 24px 16px; }
+
+            .content-table { width: 100%; border: 0.5px solid #000; }
+            .content-table tr { display: block; }
+            .content-table tr:not(:last-child) { border-bottom: 0.5px solid #000; }
+            .content-table td { display: block; width: 100%; border: none; }
+
+            .content-table td.col-title { padding: 16px; }
+
+            .content-table td.col-label {
+                width: 100%;
+                color: #999;
+                padding: 16px 16px 4px;
+            }
+
+            .content-table td:not(.col-label):not(.col-title) {
+                padding: 4px 16px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="header-placeholder"></div>
+
+    <div class="page-layout">
+
+        <nav class="sidebar">
+            <div class="sidebar-item active" data-target="schedule">日常作息</div>
+            <div class="sidebar-item" data-target="boarding">寄宿生活</div>
+            <div class="sidebar-item" data-target="weekend">周末活动</div>
+            <div class="sidebar-item" data-target="devices">电子产品政策</div>
+            <div class="sidebar-item" data-target="language">语言政策</div>
+        </nav>
+
+        <div class="content-area">
+
+            <!-- 日常作息 -->
+            <div class="content-panel active" id="schedule">
+                <table class="content-table">
+                    <tr><td colspan="2" class="col-title">日常作息 — 周一至周五</td></tr>
+                    <tr><td class="col-label">6:00</td><td>允许宿舍开灯</td></tr>
+                    <tr><td class="col-label">7:15–8:00</td><td>食堂提供早餐</td></tr>
+                    <tr><td class="col-label">7:45</td><td>食堂早点名</td></tr>
+                    <tr><td class="col-label">8:15–8:25</td><td>晨会</td></tr>
+                    <tr><td class="col-label">8:30–9:15</td><td>第一节课</td></tr>
+                    <tr><td class="col-label">9:20–10:05</td><td>第二节课</td></tr>
+                    <tr><td class="col-label">10:10–10:55</td><td>第三节课</td></tr>
+                    <tr><td class="col-label">11:00–11:45</td><td>第四节课</td></tr>
+                    <tr><td class="col-label">11:50–12:35</td><td>第五节课</td></tr>
+                    <tr><td class="col-label">12:35–1:05</td><td>午餐</td></tr>
+                    <tr><td class="col-label">1:05–1:50</td><td>第六节课</td></tr>
+                    <tr><td class="col-label">1:55–2:40</td><td>第七节课</td></tr>
+                    <tr><td class="col-label">2:45–3:30</td><td>第八节课</td></tr>
+                    <tr><td class="col-label">3:30–5:30</td><td>课外活动或自由活动</td></tr>
+                    <tr><td class="col-label">5:30–6:00</td><td>晚餐</td></tr>
+                    <tr><td class="col-label">6:30–9:20</td><td>晚自习（周五无晚自习）</td></tr>
+                    <tr><td class="col-label">10:20</td><td>完成洗漱，宿舍熄灯</td></tr>
+                    <tr><td class="col-label">10:30</td><td>静音</td></tr>
+                    <tr><td colspan="2" class="col-title">日常作息 — 周六</td></tr>
+                    <tr><td class="col-label">7:30–8:00</td><td>早餐</td></tr>
+                    <tr><td class="col-label">8:00–12:00</td><td>手机时间</td></tr>
+                    <tr><td class="col-label">12:00–12:30</td><td>午餐</td></tr>
+                    <tr><td class="col-label">12:30–17:30</td><td>沃尔玛购物、图书馆</td></tr>
+                    <tr><td class="col-label">17:30–18:00</td><td>晚餐</td></tr>
+                    <tr><td class="col-label">18:30–21:20</td><td>自由活动</td></tr>
+                    <tr><td class="col-label">22:20</td><td>完成洗漱，宿舍熄灯</td></tr>
+                    <tr><td class="col-label">22:30</td><td>静音</td></tr>
+                    <tr><td colspan="2" class="col-title">日常作息 — 周日</td></tr>
+                    <tr><td class="col-label">7:30–8:00</td><td>早餐</td></tr>
+                    <tr><td class="col-label">8:00–12:00</td><td>自由活动</td></tr>
+                    <tr><td class="col-label">12:00–12:30</td><td>午餐</td></tr>
+                    <tr><td class="col-label">12:30–17:30</td><td>校外活动</td></tr>
+                    <tr><td class="col-label">17:30–18:00</td><td>晚餐</td></tr>
+                    <tr><td class="col-label">18:30–21:20</td><td>三节晚自习</td></tr>
+                    <tr><td class="col-label">22:20</td><td>完成洗漱，宿舍熄灯</td></tr>
+                    <tr><td class="col-label">22:30</td><td>静音</td></tr>
+                </table>
+            </div>
+
+            <!-- 寄宿生活 -->
+            <div class="content-panel" id="boarding">
+                <table class="content-table">
+                    <tr><td colspan="2" class="col-title">寄宿生活</td></tr>
+                    <tr><td class="col-label">导师计划</td><td>VIA 为每位学生指定一位导师，每一到两周进行深入谈话，了解学生思想，帮助解决学习、生活、室友关系、健康及心理等各类问题。鼓励学生主动找老师沟通，必要时导师会协同学校、家长及专业人士共同支持学生</td></tr>
+                    <tr><td class="col-label">宿舍</td><td>2025 年春季装修一新，分男女宿舍区，每间宽敞明亮、温暖舒适，部分带独立卫生间。每间住 2–4 名学生，学生自行打扫宿舍卫生；共用卫生间完全保护隐私，保洁老师每天打扫公共区域，生活老师每天进行卫生检查</td></tr>
+                    <tr><td class="col-label">食堂</td><td>提供中西结合自助餐，师生同一食堂就餐。午餐和晚餐各有 3–5 道主菜，另有米饭、面包、汤、蔬菜沙拉、冷热饮及牛奶，兼顾美味与营养。往届学生一致认为 VIA 食堂是美国学校食堂里的"天花板"</td></tr>
+                    <tr><td class="col-label">洗衣房</td><td>男女生宿舍区分别配备大容量洗衣机和烘干机，供学生免费使用，学生自行购买洗衣球和烘干纸。学校将正确使用洗衣设备视为教育内容的一部分</td></tr>
+                    <tr><td class="col-label">公共活动区</td><td>校内多处公共活动区配备桌游、乒乓球台、阅读区等休闲设施。相邻的仙那度县公园提供棒球场、网球场、沙滩排球场、篮球场、飞盘高尔夫及步行道，学生可在老师陪同下免费使用</td></tr>
+                </table>
+            </div>
+
+            <!-- 周末活动 -->
+            <div class="content-panel" id="weekend">
+                <table class="content-table">
+                    <tr><td colspan="2" class="col-title">周末活动</td></tr>
+                    <tr><td class="col-label">周五晚</td><td>周末从周五晚饭后开始，无晚自习。通常老师与学生一起看球赛或电视节目，或一起玩游戏</td></tr>
+                    <tr><td class="col-label">周六上午</td><td>每周六上午 8 点至 12 点为手机自由时间，学生可使用学校 Wi-Fi 与国内亲友视频通话、聊天，减轻一周学习压力</td></tr>
+                    <tr><td class="col-label">周六下午</td><td>老师驾驶校车带学生去附近沃尔玛购物（学生可用每周 $20 零花钱购买生活用品或零食），以及前往公立图书馆借阅书籍</td></tr>
+                    <tr><td class="col-label">周日</td><td>学校安排丰富多彩的活动，包括观看比赛、参加各类竞赛、参观展览、游览华盛顿博物馆和著名景点、登山、钓鱼、漂流、滑索、购物、观看电影、美食探索等，帮助学生放松身心、开阔视野</td></tr>
+                    <tr><td class="col-label">周日晚</td><td>晚饭后学生需上晚自习，回到学习状态，为下一周做好准备</td></tr>
+                </table>
+            </div>
+
+            <!-- 电子产品政策 -->
+            <div class="content-panel" id="devices">
+                <table class="content-table">
+                    <tr><td colspan="2" class="col-title">电子产品政策</td></tr>
+                    <tr><td class="col-label">手机（7–9 年级）</td><td>每人可携带一部手机，交由老师统一管理。仅允许在每周六上午 8 点至中午 12 点使用，学校提供 Wi-Fi。周末外出时由活动负责老师决定是否可携带。表现不佳时可能被剥夺使用权；学校有权检查手机内容</td></tr>
+                    <tr><td class="col-label">电脑（7–9 年级）</td><td>不得携带电脑到学校</td></tr>
+                    <tr><td class="col-label">电脑（10–12 年级）</td><td>除手机外可携带一台笔记本电脑用于学习，由老师统一管理，任何时候须在指定地点和老师监管下使用</td></tr>
+                    <tr><td class="col-label">禁止携带设备</td><td>所有学生均不可携带可上网的平板电脑（如 iPad）、媒体播放器、智能手表和电子书阅读器（如 Kindle）。数字音响设备不得在上课、吃饭、自习时间使用</td></tr>
+                    <tr><td class="col-label">违规处理</td><td>在违规时间或地点被发现使用手机或可上网设备，视为严重违规。设备将被没收且不予归还，并根据情况给予进一步处罚，包括开除</td></tr>
+                </table>
+            </div>
+
+            <!-- 语言政策 -->
+            <div class="content-panel" id="language">
+                <table class="content-table">
+                    <tr><td colspan="2" class="col-title">语言政策</td></tr>
+                    <tr><td class="col-label">政策背景</td><td>VIA 理解国际学生习惯使用母语，但使用非英语母语可能阻碍与美国教师的沟通并影响英语提升。学校希望学生积极参与课堂讨论，多与老师和美国同学交流，成为学校社区的积极参与者</td></tr>
+                    <tr><td class="col-label">宿舍例外</td><td>宿舍是学生的休息空间，不实施语言政策。当学生生病或受伤、无法用英语准确表达时，可与老师用母语交谈</td></tr>
+                    <tr><td class="col-label">执行范围</td><td>餐厅、教室、校车、体育馆、楼道等所有公共场所严格执行英语政策</td></tr>
+                    <tr><td class="col-label">违规处罚</td><td>每周从周日起，针对未按规定使用英语的情况，处罚可能包括口头警告、俯卧撑、限制活动，以及取消或减少周末手机时间等</td></tr>
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+
+    <script>
+        const items = document.querySelectorAll('.sidebar-item');
+        const panels = document.querySelectorAll('.content-panel');
+
+        items.forEach(item => {
+            item.addEventListener('click', () => {
+                items.forEach(i => i.classList.remove('active'));
+                panels.forEach(p => p.classList.remove('active'));
+                item.classList.add('active');
+                document.getElementById(item.dataset.target).classList.add('active');
+            });
+        });
+
+        async function loadComponent(placeholderId, path) {
+            try {
+                const res = await fetch(path, { cache: 'no-store' });
+                const html = await res.text();
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+                doc.querySelectorAll('style').forEach(el => {
+                    document.head.appendChild(el.cloneNode(true));
+                });
+                const placeholder = document.getElementById(placeholderId);
+                placeholder.innerHTML = doc.body.innerHTML;
+                placeholder.querySelectorAll('script').forEach(old => {
+                    const s = document.createElement('script');
+                    s.textContent = old.textContent;
+                    old.replaceWith(s);
+                });
+            } catch (e) {
+                console.warn('无法加载组件:', path, e);
+            }
+        }
+
+        loadComponent('header-placeholder', '../header%20%26%20footer/header.html');
+        loadComponent('footer-placeholder', '../header%20%26%20footer/footer.html');
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>校园动态 — VIA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400&family=Noto+Sans+SC:wght@200&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scrollbar-gutter: stable; }
+
+        body {
+            font-family: 'Courier Prime', 'Noto Sans SC', sans-serif;
+            font-size: 16px;
+            font-weight: 200;
+            line-height: 1.9;
+            color: #000;
+            background: #fff;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .news-content {
+            flex: 1;
+            padding: 60px 64px;
+            border-bottom: 0.5px solid #000;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            border: 0.5px solid #000;
+            max-width: 1000px;
+        }
+
+        .news-card {
+            border-right: 0.5px solid #000;
+            border-bottom: 0.5px solid #000;
+            cursor: default;
+        }
+
+        .news-card:nth-child(3n) {
+            border-right: none;
+        }
+
+        .news-card:nth-last-child(-n+3):nth-child(3n+1),
+        .news-card:nth-last-child(-n+3):nth-child(3n+1) ~ .news-card {
+            border-bottom: none;
+        }
+
+        .news-image {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background-color: #d0d0d0;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .news-body {
+            padding: 16px 20px;
+            border-top: 0.5px solid #000;
+        }
+
+        .news-date {
+            font-size: 16px;
+            font-weight: 200;
+            line-height: 1.9;
+            color: #999;
+        }
+
+        .news-title {
+            font-size: 16px;
+            font-weight: 200;
+            line-height: 1.9;
+        }
+
+        .news-excerpt {
+            font-size: 16px;
+            font-weight: 200;
+            line-height: 1.9;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .news-content { padding: 24px 16px; }
+
+            .news-grid {
+                grid-template-columns: repeat(2, 1fr);
+                max-width: 100%;
+            }
+
+            .news-card:nth-child(3n) {
+                border-right: 0.5px solid #000;
+            }
+
+            .news-card:nth-child(2n) {
+                border-right: none;
+            }
+
+            .news-card:nth-last-child(-n+3):nth-child(3n+1),
+            .news-card:nth-last-child(-n+3):nth-child(3n+1) ~ .news-card {
+                border-bottom: 0.5px solid #000;
+            }
+
+            .news-card:nth-last-child(-n+2):nth-child(2n+1),
+            .news-card:nth-last-child(-n+2):nth-child(2n+1) ~ .news-card {
+                border-bottom: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="header-placeholder"></div>
+
+    <div class="news-content">
+        <div class="news-grid">
+
+            <div class="news-card">
+                <div class="news-image" style="background-image: url('')"></div>
+                <div class="news-body">
+                    <p class="news-date">2026年5月</p>
+                    <p class="news-title">2026届毕业典礼</p>
+                    <p class="news-excerpt">全体师生共同见证毕业生完成在 VIA 的学习历程，踏上新的求学之路。</p>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="news-image" style="background-image: url('')"></div>
+                <div class="news-body">
+                    <p class="news-date">2026年3月</p>
+                    <p class="news-title">MATHCOUNTS 数学竞赛</p>
+                    <p class="news-excerpt">VIA 数学俱乐部参加地区 MATHCOUNTS 竞赛，学生发挥出色。</p>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="news-image" style="background-image: url('')"></div>
+                <div class="news-body">
+                    <p class="news-date">2025年11月</p>
+                    <p class="news-title">感恩节庆典</p>
+                    <p class="news-excerpt">学生与老师共同准备感恩节晚餐，体验美国传统节日文化。</p>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="news-image" style="background-image: url('')"></div>
+                <div class="news-body">
+                    <p class="news-date">2025年10月</p>
+                    <p class="news-title">华盛顿 DC 博物馆参观</p>
+                    <p class="news-excerpt">周末外出活动，学生参观史密森尼国家自然历史博物馆及国家艺术馆。</p>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="news-image" style="background-image: url('')"></div>
+                <div class="news-body">
+                    <p class="news-date">2025年10月</p>
+                    <p class="news-title">校园篮球联赛</p>
+                    <p class="news-excerpt">秋季校内篮球赛正式开赛，各年级队伍展开激烈角逐。</p>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="news-image" style="background-image: url('')"></div>
+                <div class="news-body">
+                    <p class="news-date">2025年9月</p>
+                    <p class="news-title">2025 新生入学典礼</p>
+                    <p class="news-excerpt">欢迎新一届学生正式加入 VIA 大家庭，开启留学生活的第一天。</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+
+    <script>
+        async function loadComponent(placeholderId, path) {
+            try {
+                const res = await fetch(path, { cache: 'no-store' });
+                const html = await res.text();
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+                doc.querySelectorAll('style').forEach(el => {
+                    document.head.appendChild(el.cloneNode(true));
+                });
+                const placeholder = document.getElementById(placeholderId);
+                placeholder.innerHTML = doc.body.innerHTML;
+                placeholder.querySelectorAll('script').forEach(old => {
+                    const s = document.createElement('script');
+                    s.textContent = old.textContent;
+                    old.replaceWith(s);
+                });
+            } catch (e) {
+                console.warn('无法加载组件:', path, e);
+            }
+        }
+
+        loadComponent('header-placeholder', '../header%20%26%20footer/header.html');
+        loadComponent('footer-placeholder', '../header%20%26%20footer/footer.html');
+    </script>
+
+</body>
+</html>

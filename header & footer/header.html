@@ -86,6 +86,11 @@
             font-weight: 200;
         }
 
+        .nav-toggle-hint {
+            display: none;
+        }
+
+
         .nav-arrow svg {
             width: 12px;
             height: 12px;
@@ -106,6 +111,34 @@
                 border-right: none;
                 border-bottom: 0.5px solid #000;
                 padding: 24px 20px;
+                justify-content: center;
+                flex-direction: column;
+                gap: 10px;
+                cursor: pointer;
+            }
+
+            .logo {
+                width: 100px;
+                height: 100px;
+            }
+
+            .nav-toggle-hint {
+                display: block;
+                font-family: 'Courier Prime', monospace;
+                font-size: 18px;
+                font-weight: 400;
+                color: #000;
+                line-height: 1;
+                margin-top: 4px;
+            }
+
+            .header-right {
+                display: none;
+                border-bottom: 0.5px solid #000;
+            }
+
+            .header-right.open {
+                display: flex;
             }
 
             .nav-item {
@@ -117,10 +150,11 @@
 <body>
     <header class="header">
         <div class="header-grid">
-            <div class="header-left">
+            <div class="header-left" id="nav-toggle">
                 <a href="#" class="logo">
                     <img src="/assets/logo-color.svg" alt="Virginia International Academy">
                 </a>
+                <span class="nav-toggle-hint">+</span>
             </div>
             <nav class="header-right">
                 <a href="#" class="nav-item">
@@ -140,11 +174,29 @@
                     <span class="nav-arrow"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4V20M18 6L6 18M20 12H4M18 18L6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
                 </a>
                 <a href="#" class="nav-item">
+                    <span class="nav-label">校园动态</span>
+                    <span class="nav-arrow"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4V20M18 6L6 18M20 12H4M18 18L6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                </a>
+                <a href="#" class="nav-item">
                     <span class="nav-label">关于我们</span>
                     <span class="nav-arrow"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4V20M18 6L6 18M20 12H4M18 18L6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
                 </a>
             </nav>
         </div>
     </header>
+    <script>
+        (function() {
+            var toggle = document.getElementById('nav-toggle');
+            var nav = document.querySelector('.header-right');
+            var hint = document.querySelector('.nav-toggle-hint');
+            if (toggle && nav) {
+                toggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    nav.classList.toggle('open');
+                    if (hint) hint.textContent = nav.classList.contains('open') ? '×' : '+';
+                });
+            }
+        })();
+    </script>
 </body>
 </html>

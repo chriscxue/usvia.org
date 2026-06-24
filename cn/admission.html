@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>入学申请 — VIA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400&family=Noto+Sans+SC:wght@200&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scrollbar-gutter: stable; }
+
+        body {
+            font-family: 'Courier Prime', 'Noto Sans SC', sans-serif;
+            font-size: 16px;
+            font-weight: 200;
+            line-height: 1.9;
+            color: #000;
+            background: #fff;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .page-layout {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 360px 1fr;
+            border-bottom: 0.5px solid #000;
+        }
+
+        .sidebar {
+            border-right: 0.5px solid #000;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar-item {
+            padding: 16px 40px;
+            border-bottom: 0.5px solid #000;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 200;
+            color: #000;
+            transition: background-color 0.25s ease, color 0.25s ease;
+            user-select: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .sidebar-item:hover,
+        .sidebar-item.active {
+            background-color: #fc5b39;
+            color: #fff;
+        }
+
+        .content-area {
+            padding: 60px 64px;
+            display: grid;
+        }
+
+        .content-panel {
+            grid-area: 1 / 1;
+            visibility: hidden;
+        }
+
+        .content-panel.active {
+            visibility: visible;
+        }
+
+        .content-table {
+            width: 1000px;
+            border-collapse: collapse;
+            border: 0.5px solid #000;
+        }
+
+        .content-table td {
+            border: 0.5px solid #000;
+            padding: 16px 24px;
+            vertical-align: top;
+            font-size: 16px;
+            font-weight: 200;
+            line-height: 1.9;
+        }
+
+        .content-table td.col-label {
+            width: 200px;
+        }
+
+        .content-table td.col-title {
+            font-size: 16px;
+            font-weight: 200;
+        }
+
+        .content-table tr:hover td {
+            background-color: #52B9DA;
+            color: #fff;
+        }
+
+        .content-table ul {
+            margin-left: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .page-layout { grid-template-columns: 1fr; }
+            .sidebar { border-right: none; border-bottom: 0.5px solid #000; }
+            .content-area { padding: 24px 16px; }
+
+            .content-table { width: 100%; border: 0.5px solid #000; }
+            .content-table tr { display: block; }
+            .content-table tr:not(:last-child) { border-bottom: 0.5px solid #000; }
+            .content-table td { display: block; width: 100%; border: none; }
+
+            .content-table td.col-title { padding: 16px; }
+
+            .content-table td.col-label {
+                width: 100%;
+                color: #999;
+                padding: 16px 16px 4px;
+            }
+
+            .content-table td:not(.col-label):not(.col-title) {
+                padding: 4px 16px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="header-placeholder"></div>
+
+    <div class="page-layout">
+
+        <nav class="sidebar">
+            <div class="sidebar-item active" data-target="welcome">欢迎申请</div>
+            <div class="sidebar-item" data-target="process">申请流程</div>
+            <div class="sidebar-item" data-target="tuition">学费</div>
+            <div class="sidebar-item" data-target="faq">常见问题</div>
+        </nav>
+
+        <div class="content-area">
+
+            <!-- 欢迎申请 -->
+            <div class="content-panel active" id="welcome">
+                <table class="content-table">
+                    <tr><td colspan="2" class="col-title">欢迎申请 VIA</td></tr>
+                    <tr><td class="col-label">欢迎词</td><td>恭喜你找到了 VIA！我们相信这是一所在低龄留学道路上完全适合您的学校。我们非常高兴有机会向您分享学校的种种特色——包括这里的人员、环境和项目，这些特色让我们成为最适合国际留学生的美国学校。</td></tr>
+                    <tr><td class="col-label">校园参观</td><td>在您通过网络了解学校基本情况后，如有机会来美国，欢迎您亲自带孩子参观我们美丽的校园。您可以亲身感受学校环境、旁听课程，与老师和在校学生见面，更深入了解我们的学校。</td></tr>
+                    <tr><td class="col-label">联系申请</td><td>发送邮件至 <a href="mailto:apply@usvia.org">apply@usvia.org</a> 开始申请</td></tr>
+                </table>
+            </div>
+
+            <!-- 申请流程 -->
+            <div class="content-panel" id="process">
+                <table class="content-table">
+                    <tr><td colspan="2" class="col-title">申请流程</td></tr>
+                    <tr><td class="col-label">第一步</td><td>家长发邮件至 <a href="mailto:apply@usvia.org">apply@usvia.org</a>，说明学生姓名、年龄、性别、现就读年级，提出申请要求。VIA 发出《入学申请表》</td></tr>
+                    <tr><td class="col-label">第二步</td><td>家长和学生共同填写入学申请表，扫描为 PDF 发至 apply@usvia.org（请勿拍照）</td></tr>
+                    <tr><td class="col-label">第三步</td><td>缴纳申请费</td></tr>
+                    <tr><td class="col-label">第四步</td><td>学校收到申请表和申请费后，联系家长为学生预约微信视频面试和笔试时间</td></tr>
+                    <tr><td class="col-label">第五步</td><td>面试和笔试结果送交录取委员会讨论。决定录取后，学校发《入学合同》给家长签署，签字后扫描发回学校，校长签字后合同生效</td></tr>
+                    <tr><td class="col-label">第六步</td><td>家长向 VIA 缴纳不予退还的学费定金 $5,000</td></tr>
+                    <tr><td class="col-label">第七步</td><td>学校收到合同与定金后，开具 I-20 表格和录取通知书，并缴纳 SEVIS-901 费用。三份文件电子版发给家长，用于办理留学签证</td></tr>
+                    <tr><td class="col-label">第八步</td><td>如需 VIA 协助安排美国使领馆面签，家长缴纳签证费给合作旅行社安排 F-1 留学签证面签。家长也可自行申请</td></tr>
+                    <tr><td class="col-label">第九步</td><td>签证通过后 10 个工作日内，家长缴纳学费定金外的余额和个人活动账户款项</td></tr>
+                    <tr><td class="col-label">第十步</td><td>家长根据指定日期和航班要求购买机票，通知学校接机</td></tr>
+                </table>
+            </div>
+
+            <!-- 学费 -->
+            <div class="content-panel" id="tuition">
+                <table class="content-table">
+                    <tr><td colspan="2" class="col-title">学费（2025–26 学年）</td></tr>
+                    <tr><td class="col-label">寄宿生 7–9 年级</td><td>$82,000 / 学年</td></tr>
+                    <tr><td class="col-label">寄宿生 10–12 年级</td><td>$75,000 / 学年</td></tr>
+                    <tr><td class="col-label">本地走读 7–9 年级</td><td>$25,000 / 学年</td></tr>
+                    <tr><td class="col-label">本地走读 10–12 年级</td><td>$22,000 / 学年</td></tr>
+                    <tr><td class="col-label">寄宿学费包含</td><td><ul>
+                        <li>学年学费及国际学生注册费</li>
+                        <li>校内住宿及每日三餐</li>
+                        <li>周末活动组织管理</li>
+                        <li>本地外出活动交通</li>
+                        <li>学习与生活监护管理</li>
+                        <li>成绩报告和表现的中文翻译</li>
+                        <li>生病受伤时就医及日常照顾费用</li>
+                        <li>医疗账单处理</li>
+                        <li>大学申请培训与规划</li>
+                        <li>学年开始与结束时杜勒斯国际机场接送</li>
+                    </ul></td></tr>
+                    <tr><td class="col-label">个人活动账户</td><td>开学前须存入不低于 $6,000，由 VIA 统一管理并提供账单查询。用于支付医疗保险（约 $1,800/学年）、校服（约 $500）、课本（约 $300–400）、每周零花钱（$20/周）、TOEFL/SAT 考试费、感恩节留宿管理费（$500）及其他个人费用</td></tr>
+                    <tr><td class="col-label">家长另行准备</td><td>往返机票；如需 VIA 协助办理签证，另需向合作旅行社支付签证申请和服务费</td></tr>
+                </table>
+            </div>
+
+            <!-- 常见问题 -->
+            <div class="content-panel" id="faq">
+                <table class="content-table">
+                    <tr><td colspan="2" class="col-title">常见问题</td></tr>
+                    <tr><td class="col-label">VIA 是正规学校吗？</td><td>VIA 是经美国教育部指定地区认证机构认证的正规学校，提供初高中学历教育，并非语言学校、培训机构或中介机构</td></tr>
+                    <tr><td class="col-label">孩子几岁出国比较好？</td><td>根据多年经验，若家庭经济条件允许、学生有意愿且具备一定自律性，小学六年级毕业后即可出国留学。年纪越小，学习和适应美国生活越容易，在形成三观的重要阶段接触不同文明对未来大有裨益</td></tr>
+                    <tr><td class="col-label">可以用旅游签证入学吗？</td><td>不可以。除美国公民或绿卡持有者外，来 VIA 留学的学生必须办理 F-1 留学签证，不能使用旅游签证</td></tr>
+                    <tr><td class="col-label">学校有哪些假期？</td><td>通常从每学年八月底或九月初开学，到次年五月底或六月初放假，有三个主要假期：感恩节假期（三天）、圣诞新年假期（约两周，学生必须离校）和春假（约一周，学生必须离校）</td></tr>
+                    <tr><td class="col-label">入学前需要做哪些准备？</td><td>确保护照有效期足够；携带国内疫苗记录本；如有蛀牙或近视需提前治疗（美国医保不含牙齿和眼睛）。有余力可提前练习英文打字、扩大阅读量和词汇量，培养生活自理能力</td></tr>
+                    <tr><td class="col-label">学生在校生病怎么办？</td><td>学校统一为学生购买医疗保险，自抵达美国第一天起生效。每周有护士到校，生活老师均接受过心肺复苏和肾上腺素注射培训。如需看医生，学校会安排就诊并协助取药</td></tr>
+                    <tr><td class="col-label">班级规模如何？</td><td>VIA 根据学生水平分班，每班最多不超过 17 名学生，有时仅 1 名学生单独上课</td></tr>
+                    <tr><td class="col-label">大学申请如何培训？</td><td>VIA 将大学申请作为课程，引导学生自主完成申请流程，内容包括申请流程介绍、自我分析、如何从官网获取信息、寻找适合自己的学校等，培养学生为自己负责的意识</td></tr>
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+
+    <script>
+        const items = document.querySelectorAll('.sidebar-item');
+        const panels = document.querySelectorAll('.content-panel');
+
+        items.forEach(item => {
+            item.addEventListener('click', () => {
+                items.forEach(i => i.classList.remove('active'));
+                panels.forEach(p => p.classList.remove('active'));
+                item.classList.add('active');
+                document.getElementById(item.dataset.target).classList.add('active');
+            });
+        });
+
+        async function loadComponent(placeholderId, path) {
+            try {
+                const res = await fetch(path, { cache: 'no-store' });
+                const html = await res.text();
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+                doc.querySelectorAll('style').forEach(el => {
+                    document.head.appendChild(el.cloneNode(true));
+                });
+                const placeholder = document.getElementById(placeholderId);
+                placeholder.innerHTML = doc.body.innerHTML;
+                placeholder.querySelectorAll('script').forEach(old => {
+                    const s = document.createElement('script');
+                    s.textContent = old.textContent;
+                    old.replaceWith(s);
+                });
+            } catch (e) {
+                console.warn('无法加载组件:', path, e);
+            }
+        }
+
+        loadComponent('header-placeholder', '../header%20%26%20footer/header.html');
+        loadComponent('footer-placeholder', '../header%20%26%20footer/footer.html');
+    </script>
+
+</body>
+</html>
