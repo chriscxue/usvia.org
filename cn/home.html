@@ -23,13 +23,254 @@
             min-height: 100vh;
         }
 
-        #header-placeholder { border-bottom: 0.5px solid #000; }
+        #header-placeholder { }
         #footer-placeholder { margin-top: auto; }
+
+        .hero-banner {
+            position: relative;
+            width: 100%;
+            height: 540px;
+            border-bottom: 0.5px solid #000;
+            overflow: hidden;
+        }
+
+        .hero-image {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            filter: grayscale(100%);
+            transition: filter 0.6s ease;
+            z-index: 0;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: #b5a5c0;
+            mix-blend-mode: multiply;
+            opacity: 1;
+            transition: opacity 0.6s ease;
+            z-index: 1;
+        }
+
+        .hero-banner:hover .hero-image {
+            filter: grayscale(0%);
+        }
+
+        .hero-banner:hover .hero-overlay {
+            opacity: 0;
+        }
 
         .main-content {
             flex: 1;
-            padding: 60px 64px;
             border-bottom: 0.5px solid #000;
+        }
+
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .two-col-left {
+            padding: 0;
+            border-right: 0.5px solid #000;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .map-wrapper {
+            position: relative;
+            flex: 1;
+            min-height: 480px;
+        }
+
+        .map-wrapper iframe {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+
+        .map-overlay {
+            position: absolute;
+            inset: 0;
+            z-index: 10;
+            cursor: pointer;
+            background: transparent;
+        }
+
+
+        .two-col-right {
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .right-inner {
+            flex: 1;
+            display: grid;
+        }
+
+        .right-text, .right-image {
+            grid-area: 1 / 1;
+            transition: opacity 0.8s ease;
+        }
+
+        .right-text {
+            padding: 60px 64px;
+        }
+
+        .right-image {
+            opacity: 0;
+            pointer-events: none;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .right-inner.show-cert .right-text {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .right-inner.show-cert .right-image {
+            opacity: 1;
+            cursor: pointer;
+        }
+
+        .cert-link {
+            display: inline;
+            color: #52B9DA;
+            cursor: pointer;
+            text-decoration: underline;
+            font-size: 20px;
+        }
+
+        .right-text p {
+            font-size: 20px;
+            margin-bottom: 1.2em;
+        }
+
+        .right-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ── 校园动态预览区 ── */
+        .news-preview {
+            border-bottom: 0.5px solid #000;
+            padding: 160px 48px;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .news-grid-card {
+            border: 0.5px solid #000;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .news-grid-card:hover { background-color: #f5f5f5; }
+
+        .news-grid-card .news-slider {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 16 / 9;
+            background: #d8d8d8;
+        }
+
+        .news-grid-card .slider-track {
+            display: flex;
+            height: 100%;
+            transition: transform 0.35s ease;
+        }
+
+        .news-grid-card .slide {
+            min-width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .news-grid-card .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-family: 'Courier Prime', monospace;
+            font-size: 28px;
+            line-height: 1;
+            padding: 4px 8px;
+            color: #fff;
+            transition: opacity 0.2s ease;
+            z-index: 2;
+        }
+
+        .news-grid-card .slider-btn:hover { opacity: 0.7; }
+        .news-grid-card .slider-btn.prev { left: 0; }
+        .news-grid-card .slider-btn.next { right: 0; }
+
+        .news-grid-card .slider-dots {
+            position: absolute;
+            bottom: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 6px;
+            z-index: 2;
+        }
+
+        .news-grid-card .dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.55);
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .news-grid-card .dot.active { background: #fff; }
+
+        .news-grid-body {
+            padding: 10px 14px;
+            border-top: 0.5px solid #000;
+        }
+
+        .news-grid-date {
+            font-size: 14px;
+            color: #999;
+            line-height: 1.6;
+        }
+
+        .news-grid-title {
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        @media (max-width: 768px) {
+            .hero-banner { height: 240px; }
+            .two-col { grid-template-columns: 1fr; }
+            .two-col-left {
+                padding: 24px 16px;
+                border-right: none;
+                border-bottom: 0.5px solid #000;
+            }
+            .right-text { padding: 24px 16px; }
+            .news-preview { padding: 40px 16px; }
+            .news-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 480px) {
+            .news-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -37,8 +278,163 @@
 
 <div id="header-placeholder"></div>
 
+<div class="hero-banner">
+    <div class="hero-image" style="background-image: url('/assets/maurertown-landscape.png');"></div>
+    <div class="hero-overlay"></div>
+</div>
+
 <main class="main-content">
-    <!-- 内容待添加 -->
+    <div class="two-col">
+        <div class="two-col-left">
+            <div class="map-wrapper">
+                <iframe
+                    src="https://www.openstreetmap.org/export/embed.html?bbox=-78.60%2C38.82%2C-78.53%2C38.88&layer=mapnik&marker=38.8514%2C-78.5661"
+                    loading="lazy"
+                    title="Virginia International Academy 地图">
+                </iframe>
+                <div class="map-overlay" id="map-overlay"></div>
+            </div>
+        </div>
+        <div class="two-col-right">
+            <div class="right-inner">
+                <div class="right-text">
+                    <p>维吉尼亚国际学校创办于2012年，是一所独立的，无宗教背景的国际学校，旨在为国际学生进入美国高中和大学学习做好充分准备而提供教育和帮助。</p>
+                    <p>2013年我们在维吉尼亚州芙蓉镇的校园开始招收来自中国的留学生，首批学生15名，学校提供七至九年级的教育。2013至2022年之间，有超过250名学生就读过VIA，他们绝大多数都已经入读哈佛大学、宾夕法尼亚大学、哥伦比亚大学、纽约大学、维吉尼亚大学、南加利福尼亚大学、加州大学洛杉矶分校、加州大学伯克利分校、乔治亚理工大学、埃默里大学等等美国名校。</p>
+                    <p>2022年我们出售了芙蓉镇校园，同时把学校的教学范围扩展到高中。2025年，我们购入维吉尼亚州茂乐镇的新校园，可以容纳100名学生，我们在这里为初中和高中学生提供教育。</p>
+                    <p>VIA通过美国教育部指定的地区认证机构认证，是一所正规提供初中和高中学历教育的学校。</p>
+                    <p><span class="cert-link" id="cert-trigger">查看 VIA 教育认证证书</span></p>
+                </div>
+                <img class="right-image" src="/assets/certificate.gif" alt="Certificate of Accreditation">
+            </div>
+        </div>
+    </div>
+    <div class="news-preview">
+        <div class="news-grid">
+
+            <div class="news-grid-card" onclick="window.location='/cn/news.html'">
+                <div class="news-slider">
+                    <div class="slider-track">
+                        <div class="slide" style="background-color: #c8d8e0;"></div>
+                        <div class="slide" style="background-color: #d0c8e0;"></div>
+                        <div class="slide" style="background-color: #e0d8c8;"></div>
+                    </div>
+                    <button class="slider-btn prev">&#8249;</button>
+                    <button class="slider-btn next">&#8250;</button>
+                    <div class="slider-dots">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                </div>
+                <div class="news-grid-body">
+                    <p class="news-grid-date">2026年5月</p>
+                    <p class="news-grid-title">2026届毕业典礼</p>
+                </div>
+            </div>
+
+            <div class="news-grid-card" onclick="window.location='/cn/news.html'">
+                <div class="news-slider">
+                    <div class="slider-track">
+                        <div class="slide" style="background-color: #d8e0c8;"></div>
+                        <div class="slide" style="background-color: #e0c8c8;"></div>
+                    </div>
+                    <button class="slider-btn prev">&#8249;</button>
+                    <button class="slider-btn next">&#8250;</button>
+                    <div class="slider-dots">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                    </div>
+                </div>
+                <div class="news-grid-body">
+                    <p class="news-grid-date">2026年3月</p>
+                    <p class="news-grid-title">MATHCOUNTS 数学竞赛</p>
+                </div>
+            </div>
+
+            <div class="news-grid-card" onclick="window.location='/cn/news.html'">
+                <div class="news-slider">
+                    <div class="slider-track">
+                        <div class="slide" style="background-color: #e8d8c0;"></div>
+                        <div class="slide" style="background-color: #c0d8e8;"></div>
+                        <div class="slide" style="background-color: #d8e8c0;"></div>
+                        <div class="slide" style="background-color: #e8c0d8;"></div>
+                    </div>
+                    <button class="slider-btn prev">&#8249;</button>
+                    <button class="slider-btn next">&#8250;</button>
+                    <div class="slider-dots">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                </div>
+                <div class="news-grid-body">
+                    <p class="news-grid-date">2025年11月</p>
+                    <p class="news-grid-title">感恩节庆典</p>
+                </div>
+            </div>
+
+            <div class="news-grid-card" onclick="window.location='/cn/news.html'">
+                <div class="news-slider">
+                    <div class="slider-track">
+                        <div class="slide" style="background-color: #c8c8d8;"></div>
+                        <div class="slide" style="background-color: #d8c8c8;"></div>
+                    </div>
+                    <button class="slider-btn prev">&#8249;</button>
+                    <button class="slider-btn next">&#8250;</button>
+                    <div class="slider-dots">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                    </div>
+                </div>
+                <div class="news-grid-body">
+                    <p class="news-grid-date">2025年10月</p>
+                    <p class="news-grid-title">华盛顿 DC 博物馆参观</p>
+                </div>
+            </div>
+
+            <div class="news-grid-card" onclick="window.location='/cn/news.html'">
+                <div class="news-slider">
+                    <div class="slider-track">
+                        <div class="slide" style="background-color: #d0e0d0;"></div>
+                        <div class="slide" style="background-color: #e0d0d0;"></div>
+                        <div class="slide" style="background-color: #d0d0e0;"></div>
+                    </div>
+                    <button class="slider-btn prev">&#8249;</button>
+                    <button class="slider-btn next">&#8250;</button>
+                    <div class="slider-dots">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                </div>
+                <div class="news-grid-body">
+                    <p class="news-grid-date">2025年10月</p>
+                    <p class="news-grid-title">校园篮球联赛</p>
+                </div>
+            </div>
+
+            <div class="news-grid-card" onclick="window.location='/cn/news.html'">
+                <div class="news-slider">
+                    <div class="slider-track">
+                        <div class="slide" style="background-color: #dce8e0;"></div>
+                        <div class="slide" style="background-color: #e8dce0;"></div>
+                    </div>
+                    <button class="slider-btn prev">&#8249;</button>
+                    <button class="slider-btn next">&#8250;</button>
+                    <div class="slider-dots">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                    </div>
+                </div>
+                <div class="news-grid-body">
+                    <p class="news-grid-date">2025年9月</p>
+                    <p class="news-grid-title">2025 新生入学典礼</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
 </main>
 
 <div id="footer-placeholder"></div>
@@ -67,6 +463,67 @@
     }
     loadComponent('header-placeholder', '/header & footer/header.html');
     loadComponent('footer-placeholder', '/header & footer/footer.html');
+
+    // 地图交互锁
+    var mapOverlay = document.getElementById('map-overlay');
+    mapOverlay.addEventListener('click', function(e) {
+        e.stopPropagation();
+        mapOverlay.style.display = 'none';
+    });
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.map-wrapper')) {
+            mapOverlay.style.display = '';
+        }
+    });
+
+    // 首页校园动态轮播
+    document.querySelectorAll('.news-grid-card').forEach(function(card) {
+        var slider = card.querySelector('.news-slider');
+        if (!slider) return;
+        var track = slider.querySelector('.slider-track');
+        var dots = slider.querySelectorAll('.dot');
+        var prevBtn = slider.querySelector('.prev');
+        var nextBtn = slider.querySelector('.next');
+        var total = slider.querySelectorAll('.slide').length;
+        var current = 0;
+
+        if (total <= 1) {
+            if (prevBtn) prevBtn.style.display = 'none';
+            if (nextBtn) nextBtn.style.display = 'none';
+            var dotsEl = slider.querySelector('.slider-dots');
+            if (dotsEl) dotsEl.style.display = 'none';
+            return;
+        }
+
+        function goTo(index) {
+            current = (index + total) % total;
+            track.style.transform = 'translateX(-' + (current * 100) + '%)';
+            dots.forEach(function(d, i) { d.classList.toggle('active', i === current); });
+        }
+
+        prevBtn.addEventListener('click', function(e) { e.stopPropagation(); goTo(current - 1); });
+        nextBtn.addEventListener('click', function(e) { e.stopPropagation(); goTo(current + 1); });
+        dots.forEach(function(dot, i) {
+            dot.addEventListener('click', function(e) { e.stopPropagation(); goTo(i); });
+        });
+
+        var touchStartX = 0;
+        slider.addEventListener('touchstart', function(e) { touchStartX = e.touches[0].clientX; }, { passive: true });
+        slider.addEventListener('touchend', function(e) {
+            var diff = touchStartX - e.changedTouches[0].clientX;
+            if (Math.abs(diff) > 40) goTo(diff > 0 ? current + 1 : current - 1);
+        });
+    });
+
+    var inner = document.querySelector('.right-inner');
+    document.getElementById('cert-trigger').addEventListener('click', function(e) {
+        e.stopPropagation();
+        inner.classList.add('show-cert');
+    });
+    document.addEventListener('click', function() {
+        inner.classList.remove('show-cert');
+    });
+
 </script>
 
 </body>
