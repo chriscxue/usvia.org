@@ -164,7 +164,7 @@
     <header class="header">
         <div class="header-grid">
             <div class="header-left" id="nav-toggle">
-                <a href="#" class="logo">
+                <a href="/index.html" class="logo">
                     <img src="/assets/logo-color.svg" alt="Virginia International Academy">
                 </a>
                 <span class="nav-toggle-hint">+</span>
@@ -205,6 +205,8 @@
             var hint = document.querySelector('.nav-toggle-hint');
             if (toggle && nav) {
                 toggle.addEventListener('click', function(e) {
+                    // 仅移动端把 Logo 区域当作导航开关；桌面端让 Logo 链接正常跳转首页
+                    if (!window.matchMedia('(max-width: 768px)').matches) return;
                     e.preventDefault();
                     nav.classList.toggle('open');
                     if (hint) hint.textContent = nav.classList.contains('open') ? '×' : '+';
