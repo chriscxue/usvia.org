@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Campus News — Virginia International Academy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scrollbar-gutter: stable; }
+
+        body {
+            font-family: 'Courier Prime', monospace;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1.9;
+            color: #000;
+            background: #fff;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* ── Masonry container ── */
+        .news-content {
+            flex: 1;
+            padding: 40px 48px;
+            border-bottom: 0.5px solid #000;
+        }
+
+        .news-masonry {
+            columns: 3;
+            column-gap: 16px;
+        }
+
+        /* ── Card ── */
+        .news-card {
+            break-inside: avoid;
+            display: inline-block;
+            width: 100%;
+            border: 0.5px solid #000;
+            margin-bottom: 16px;
+        }
+
+        /* ── Slider ── */
+        .news-slider {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 16 / 9;
+            background: #d8d8d8;
+        }
+
+        .slider-track {
+            display: flex;
+            height: 100%;
+            transition: transform 0.35s ease;
+        }
+
+        .slide {
+            min-width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* ── Arrows ── */
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-family: 'Courier Prime', monospace;
+            font-size: 28px;
+            line-height: 1;
+            padding: 4px 8px;
+            color: #fff;
+            transition: opacity 0.2s ease;
+            z-index: 2;
+        }
+
+        .slider-btn:hover { opacity: 0.7; }
+        .slider-btn.prev { left: 0; }
+        .slider-btn.next { right: 0; }
+
+        /* ── Dots ── */
+        .slider-dots {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 6px;
+            z-index: 2;
+        }
+
+        .dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.55);
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .dot.active { background: #fff; }
+
+        /* ── Text area ── */
+        .news-body {
+            padding: 14px 18px;
+            border-top: 0.5px solid #000;
+        }
+
+        .news-date {
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1.9;
+            color: #999;
+        }
+
+        .news-title {
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 1.9;
+        }
+
+        .news-excerpt {
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1.9;
+            color: #666;
+        }
+
+        /* ── Mobile ── */
+        @media (max-width: 768px) {
+            .news-content { padding: 24px 16px; }
+            .news-masonry { columns: 2; column-gap: 10px; }
+            .news-card { margin-bottom: 10px; }
+        }
+
+        @media (max-width: 480px) {
+            .news-masonry { columns: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="header-placeholder"></div>
+
+    <div class="news-content">
+        <div class="news-masonry">
+
+            <div class="news-card">
+                <div class="news-slider">
+                    <div class="slider-track">
+                        <div class="slide" style="background-color: #c8d8e0;"></div>
+                        <div class="slide" style="background-color: #d0c8e0;"></div>
+                        <div class="slide" style="background-color: #e0d8c8;"></div>
+                    </div>
+                    <button class="slider-btn prev">&#8249;</button>
+                    <button class="slider-btn next">&#8250;</button>
+                    <div class="slider-dots">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                </div>
+                <div class="news-body">
+                    <p class="news-date">May 2026</p>
+                    <p class="news-title">Class of 2026 Commencement</p>
+                    <p class="news-excerpt">Students, teachers, and families gathered to celebrate the graduating class completing their journey at VIA and moving on to the next stage of their education. Parents traveled from near and far for a warm and dignified ceremony.</p>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="news-slider">
+                    <div class="slider-track">
+                        <div class="slide" style="background-color: #d8e0c8;"></div>
+                        <div class="slide" style="background-color: #e0c8c8;"></div>
+                    </div>
+                    <button class="slider-btn prev">&#8249;</button>
+                    <button class="slider-btn next">&#8250;</button>
+                    <div class="slider-dots">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                    </div>
+                </div>
+                <div class="news-body">
+                    <p class="news-date">March 2026</p>
+                    <p class="news-title">MATHCOUNTS Competition</p>
+                    <p class="news-excerpt">The VIA Math Club competed in the regional MATHCOUNTS competition, where our students performed strongly.</p>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="news-slider">
+                    <div class="slider-track">
+                        <div class="slide" style="background-color: #e8d8c0;"></div>
+                        <div class="slide" style="background-color: #c0d8e8;"></div>
+                        <div class="slide" style="background-color: #d8e8c0;"></div>
+                        <div class="slide" style="background-color: #e8c0d8;"></div>
+                    </div>
+                    <button class="slider-btn prev">&#8249;</button>
+                    <button class="slider-btn next">&#8250;</button>
+                    <div class="slider-dots">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                </div>
+                <div class="news-body">
+                    <p class="news-date">November 2025</p>
+                    <p class="news-title">Thanksgiving Celebration</p>
+                    <p class="news-excerpt">Students and teachers prepared a Thanksgiving dinner together, experiencing the traditional American holiday. From shopping for ingredients to setting the table, students handled every step. It is one of the most anticipated campus events of the year.</p>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="news-slider">
+                    <div class="slider-track">
+                        <div class="slide" style="background-color: #c8c8d8;"></div>
+                        <div class="slide" style="background-color: #d8c8c8;"></div>
+                    </div>
+                    <button class="slider-btn prev">&#8249;</button>
+                    <button class="slider-btn next">&#8250;</button>
+                    <div class="slider-dots">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                    </div>
+                </div>
+                <div class="news-body">
+                    <p class="news-date">October 2025</p>
+                    <p class="news-title">Washington, D.C. Museum Trip</p>
+                    <p class="news-excerpt">On a weekend outing, students visited the Smithsonian National Museum of Natural History and the National Gallery of Art.</p>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="news-slider">
+                    <div class="slider-track">
+                        <div class="slide" style="background-color: #d0e0d0;"></div>
+                        <div class="slide" style="background-color: #e0d0d0;"></div>
+                        <div class="slide" style="background-color: #d0d0e0;"></div>
+                    </div>
+                    <button class="slider-btn prev">&#8249;</button>
+                    <button class="slider-btn next">&#8250;</button>
+                    <div class="slider-dots">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                </div>
+                <div class="news-body">
+                    <p class="news-date">October 2025</p>
+                    <p class="news-title">Campus Basketball League</p>
+                    <p class="news-excerpt">The fall intramural basketball league tipped off, with teams from every grade in close competition. The games were lively, and students showed real teamwork and a competitive spirit.</p>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="news-slider">
+                    <div class="slider-track">
+                        <div class="slide" style="background-color: #dce8e0;"></div>
+                        <div class="slide" style="background-color: #e8dce0;"></div>
+                    </div>
+                    <button class="slider-btn prev">&#8249;</button>
+                    <button class="slider-btn next">&#8250;</button>
+                    <div class="slider-dots">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                    </div>
+                </div>
+                <div class="news-body">
+                    <p class="news-date">September 2025</p>
+                    <p class="news-title">2025 New Student Orientation</p>
+                    <p class="news-excerpt">We welcomed a new class of students into the VIA family as they began their first day of studying abroad.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+
+    <script>
+        // Initialize all sliders
+        document.querySelectorAll('.news-slider').forEach(function(slider) {
+            var track = slider.querySelector('.slider-track');
+            var dots = slider.querySelectorAll('.dot');
+            var prevBtn = slider.querySelector('.prev');
+            var nextBtn = slider.querySelector('.next');
+            var total = slider.querySelectorAll('.slide').length;
+            var current = 0;
+
+            if (total <= 1) {
+                if (prevBtn) prevBtn.style.display = 'none';
+                if (nextBtn) nextBtn.style.display = 'none';
+                slider.querySelector('.slider-dots').style.display = 'none';
+                return;
+            }
+
+            function goTo(index) {
+                current = (index + total) % total;
+                track.style.transform = 'translateX(-' + (current * 100) + '%)';
+                dots.forEach(function(d, i) {
+                    d.classList.toggle('active', i === current);
+                });
+            }
+
+            prevBtn.addEventListener('click', function() { goTo(current - 1); });
+            nextBtn.addEventListener('click', function() { goTo(current + 1); });
+            dots.forEach(function(dot, i) {
+                dot.addEventListener('click', function() { goTo(i); });
+            });
+
+            // Touch swipe
+            var touchStartX = 0;
+            slider.addEventListener('touchstart', function(e) {
+                touchStartX = e.touches[0].clientX;
+            }, { passive: true });
+            slider.addEventListener('touchend', function(e) {
+                var diff = touchStartX - e.changedTouches[0].clientX;
+                if (Math.abs(diff) > 40) goTo(diff > 0 ? current + 1 : current - 1);
+            });
+        });
+
+        // Load header / footer
+        async function loadComponent(placeholderId, path) {
+            try {
+                const res = await fetch(path, { cache: 'no-store' });
+                const html = await res.text();
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+                doc.querySelectorAll('style').forEach(el => {
+                    document.head.appendChild(el.cloneNode(true));
+                });
+                const placeholder = document.getElementById(placeholderId);
+                placeholder.innerHTML = doc.body.innerHTML;
+                placeholder.querySelectorAll('script').forEach(old => {
+                    const s = document.createElement('script');
+                    s.textContent = old.textContent;
+                    old.replaceWith(s);
+                });
+            } catch (e) {
+                console.warn('Failed to load component:', path, e);
+            }
+        }
+
+        loadComponent('header-placeholder', '../header%20%26%20footer/header-en.html');
+        loadComponent('footer-placeholder', '../header%20%26%20footer/footer.html');
+    </script>
+
+</body>
+</html>

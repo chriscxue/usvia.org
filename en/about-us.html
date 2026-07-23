@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>About Us — Virginia International Academy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scrollbar-gutter: stable; }
+
+        body {
+            font-family: 'Courier Prime', monospace;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1.9;
+            color: #000;
+            background: #fff;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .page-layout {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 360px 1fr;
+            border-bottom: 0.5px solid #000;
+        }
+
+        .sidebar {
+            border-right: 0.5px solid #000;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar-item {
+            padding: 16px 40px;
+            border-bottom: 0.5px solid #000;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 400;
+            color: #000;
+            transition: background-color 0.25s ease, color 0.25s ease;
+            user-select: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .sidebar-item:hover,
+        .sidebar-item.active {
+            background-color: #fc5b39;
+            color: #fff;
+        }
+
+        .content-area {
+            padding: 60px 64px;
+            display: grid;
+        }
+
+        .content-panel {
+            grid-area: 1 / 1;
+            visibility: hidden;
+        }
+
+        .content-panel.active {
+            visibility: visible;
+        }
+
+        .content-table {
+            width: 100%;
+            max-width: 1000px;
+            border-collapse: collapse;
+            border: 0.5px solid #000;
+        }
+
+        .content-table td {
+            border: 0.5px solid #000;
+            padding: 16px 24px;
+            vertical-align: top;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1.9;
+        }
+
+        .content-table td.col-label {
+            width: 220px;
+        }
+
+        .content-table td.col-title {
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .content-table tr:hover td {
+            background-color: #52B9DA;
+            color: #fff;
+        }
+
+        .content-table a { color: inherit; }
+
+        .content-table ul {
+            margin-left: 20px;
+        }
+
+        /* Faculty grid */
+        .faculty-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            max-width: 900px;
+            border: 0.5px solid #000;
+        }
+
+        .faculty-card {
+            position: relative;
+            aspect-ratio: 4 / 5;
+            overflow: hidden;
+            background-color: #d0d0d0;
+            background-size: cover;
+            background-position: center;
+            border-right: 0.5px solid #000;
+            border-bottom: 0.5px solid #000;
+        }
+
+        .faculty-card:nth-child(3n) {
+            border-right: none;
+        }
+
+        .faculty-card:nth-child(n+7) {
+            border-bottom: none;
+        }
+
+        .faculty-card--empty {
+            background-color: #d0d0d0;
+        }
+
+        .faculty-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 20px 24px;
+            transition: background 0.3s ease;
+        }
+
+        .faculty-card:not(.faculty-card--empty):hover .faculty-overlay {
+            background: rgba(0, 0, 0, 0.65);
+        }
+
+        .faculty-info {
+            opacity: 0;
+            transform: translateY(6px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            color: #fff;
+        }
+
+        .faculty-card:hover .faculty-info {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .faculty-name {
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 1.7;
+        }
+
+        .faculty-title-label,
+        .faculty-desc {
+            font-size: 15px;
+            font-weight: 400;
+            line-height: 1.7;
+        }
+
+        @media (max-width: 768px) {
+            .faculty-grid {
+                grid-template-columns: repeat(2, 1fr);
+                max-width: 100%;
+            }
+        }
+
+        .letter {
+            max-width: 720px;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1.9;
+            border: 0.5px solid #000;
+            padding: 80px 56px 48px;
+        }
+
+        .letter p + p {
+            margin-top: 1.2em;
+        }
+
+        .letter-closing {
+            margin-top: 2.4em;
+        }
+
+        .letter-signature {
+            margin-top: 1em;
+            font-weight: 700;
+        }
+
+        .letter-role {
+            color: #999;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .page-layout { grid-template-columns: 1fr; }
+            .sidebar { border-right: none; border-bottom: 0.5px solid #000; }
+            .content-area { padding: 24px 16px; }
+
+            .content-table { width: 100%; border: 0.5px solid #000; }
+            .content-table tr { display: block; }
+            .content-table tr:not(:last-child) { border-bottom: 0.5px solid #000; }
+            .content-table td { display: block; width: 100%; border: none; }
+
+            .content-table td.col-title { padding: 16px; }
+
+            .content-table td.col-label {
+                width: 100%;
+                color: #999;
+                padding: 16px 16px 4px;
+            }
+
+            .content-table td:not(.col-label):not(.col-title) {
+                padding: 4px 16px 16px;
+            }
+
+            .letter { padding: 40px 24px 32px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="header-placeholder"></div>
+
+    <div class="page-layout">
+
+        <nav class="sidebar">
+            <div class="sidebar-item active" data-target="intro">About VIA</div>
+            <div class="sidebar-item" data-target="principal">Message from the Principal</div>
+            <div class="sidebar-item" data-target="mission">Mission</div>
+            <div class="sidebar-item" data-target="faculty">Faculty & Staff</div>
+            <div class="sidebar-item" data-target="achievements">Student Achievements</div>
+            <div class="sidebar-item" data-target="contact">Contact</div>
+        </nav>
+
+        <div class="content-area">
+
+            <!-- About VIA -->
+            <div class="content-panel active" id="intro">
+                <table class="content-table">
+                    <tr><td colspan="2" class="col-title">About VIA</td></tr>
+                    <tr><td class="col-label">School</td><td>Virginia International Academy (VIA)</td></tr>
+                    <tr><td class="col-label">Location</td><td>Virginia, USA, in a high-quality East Coast school district, about one hour from Washington, D.C., near Shenandoah National Park</td></tr>
+                    <tr><td class="col-label">Grades</td><td>Middle School (Grades 7–8) and High School (Grades 9–12)</td></tr>
+                    <tr><td class="col-label">What Sets Us Apart</td><td>The first U.S. school built to help young international students transition, offering American middle and high school academics, language and cultural transition programs, and U.S. college navigation and advising</td></tr>
+                    <tr><td class="col-label">Who We Serve</td><td>Alongside local native-English day students, VIA enrolls international students in Grades 7–11, strengthening their language and academics, building independence, and guiding them through the full U.S. college application process</td></tr>
+                    <tr><td class="col-label">New Campus</td><td>In 2025 VIA acquired a new campus in Maurertown, Virginia, with renovated classrooms, dormitories, and dining hall. Shenandoah County Park next door offers disc golf, tennis, basketball, volleyball, and baseball, with an indoor gymnasium planned for indoor training and competition</td></tr>
+                </table>
+            </div>
+
+            <!-- Message from the Principal -->
+            <div class="content-panel" id="principal">
+                <div class="letter">
+                    <p>Every year, when parents entrust their children to me and to VIA, I feel deeply that my responsibility is not only to educate these children, but to help shape the leaders of tomorrow and to honor the hopes each family carries.</p>
+                    <p>Each year, seeing our new students, I remember coming to the United States to study in 1990. Although I was about ten years older then than they are now, I still clearly recall the confusion of that ocean of unfamiliar information, and the challenges of adapting to American school life and a foreign culture. Having lived through all of it, I now hope that these experiences will not have to be repeated by the children in my care.</p>
+                    <p>At VIA, we take pride in our deep understanding of different cultures, and we empathize with the particular challenges these children face. We are fortunate to earn parents' trust to witness, take part in, and guide these students through one of the most important journeys of their lives.</p>
+                    <p>VIA will do everything it can to support them academically, socially, physically, and in self-management through their first years in America, preparing them fully for U.S. high school and university and laying a solid foundation for their future study and life. This is not only a mission — it is a shared promise.</p>
+                    <div class="letter-closing">
+                        <p>Sincerely,</p>
+                        <p class="letter-signature">Helen Wu</p>
+                        <p class="letter-role">Principal, Virginia International Academy</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mission -->
+            <div class="content-panel" id="mission">
+                <table class="content-table">
+                    <tr><td colspan="2" class="col-title">Mission</td></tr>
+                    <tr><td class="col-label">Mission</td><td>VIA is committed to becoming a benchmark of excellence in American middle and high school education, emphasizing each student's holistic development — moral, intellectual, social, emotional, and physical — and fostering gratitude, dignity, enthusiasm, engagement, independence, maturity, and responsibility.</td></tr>
+                    <tr><td class="col-label">Motto</td><td>Learning and Growth. Learning is a lifelong, continuous process; growth is reflected in a student's systematic improvement across academic, intellectual, social, emotional, and physical dimensions — moving beyond childishness toward maturity.</td></tr>
+                    <tr><td class="col-label">Honor Code</td><td>I will not lie, cheat, or steal. I will be responsible for upholding the school's honor code.</td></tr>
+                    <tr><td class="col-label">Core Values</td><td><ul>
+                        <li><strong>Gratitude</strong> — appreciation for parents who make the opportunity possible, hardworking teachers, and those who lend a hand</li>
+                        <li><strong>Dignity</strong> — earning recognition through one's own effort and taking the time to do work well</li>
+                        <li><strong>Enthusiasm</strong> — an open mind toward all new cultural knowledge and a readiness to help friends in need</li>
+                        <li><strong>Engagement</strong> — becoming an active member of the community and volunteering willingly</li>
+                        <li><strong>Independence</strong> — managing one's own time and belongings and thinking for oneself</li>
+                        <li><strong>Maturity</strong> — seeing problems fully and objectively and moving past childish impulses</li>
+                        <li><strong>Responsibility</strong> — keeping promises on time and completing every assigned task with care</li>
+                    </ul></td></tr>
+                </table>
+            </div>
+
+            <!-- Faculty & Staff -->
+            <div class="content-panel" id="faculty">
+                <div class="faculty-grid">
+                    <div class="faculty-card" style="background-image: url('')">
+                        <div class="faculty-overlay">
+                            <div class="faculty-info">
+                                <p class="faculty-name">Mrs. Helen Wu</p>
+                                <p class="faculty-title-label">Principal</p>
+                                <p class="faculty-desc">Over 15 years in education; principal since VIA's founding, teaching mathematics. Previously spent 16+ years in finance.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faculty-card" style="background-image: url('')">
+                        <div class="faculty-overlay">
+                            <div class="faculty-info">
+                                <p class="faculty-name">Mr. Gang Li</p>
+                                <p class="faculty-title-label">Vice Principal</p>
+                                <p class="faculty-desc">Over 11 years at VIA; former Director of Student Affairs, now overseeing facilities and logistics.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faculty-card" style="background-image: url('')">
+                        <div class="faculty-overlay">
+                            <div class="faculty-info">
+                                <p class="faculty-name">Mrs. Catherine Waters</p>
+                                <p class="faculty-title-label">Academic Dean</p>
+                                <p class="faculty-desc">Over 17 years of teaching; former Head of the English Department at Chelsea Academy, with 7 years teaching international students at VIA.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faculty-card" style="background-image: url('')">
+                        <div class="faculty-overlay">
+                            <div class="faculty-info">
+                                <p class="faculty-name">Mr. Ken Cho</p>
+                                <p class="faculty-title-label">Dean of Students</p>
+                                <p class="faculty-desc">Over 10 years in education; former Operations Manager and residential advisor, now Dean of Students and teaching science.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faculty-card" style="background-image: url('')">
+                        <div class="faculty-overlay">
+                            <div class="faculty-info">
+                                <p class="faculty-name">Mr. Steve Osu</p>
+                                <p class="faculty-title-label">Athletic Director</p>
+                                <p class="faculty-desc">Over 5 years of coaching; leads VIA's physical education program and coordinates inter-school competition.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faculty-card" style="background-image: url('')">
+                        <div class="faculty-overlay">
+                            <div class="faculty-info">
+                                <p class="faculty-name">Mr. Chris Xue</p>
+                                <p class="faculty-title-label">Director of Visual Arts</p>
+                                <p class="faculty-desc">Over 15 years of teaching; Education Director at HANAHANA STUDIO since 2013, guiding students through art-school portfolio preparation.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faculty-card" style="background-image: url('')">
+                        <div class="faculty-overlay">
+                            <div class="faculty-info">
+                                <p class="faculty-name">Mr. Michael Li</p>
+                                <p class="faculty-title-label">Director of Admissions</p>
+                                <p class="faculty-desc">Over 8 years of teaching; currently a law student at George Mason University, teaching history and directing admissions.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faculty-card faculty-card--empty"></div>
+                    <div class="faculty-card faculty-card--empty"></div>
+                </div>
+            </div>
+
+            <!-- Student Achievements -->
+            <div class="content-panel" id="achievements">
+                <table class="content-table">
+                    <tr><td colspan="2" class="col-title">Student Achievements</td></tr>
+                    <tr><td class="col-label">College Admissions</td><td>VIA alumni have been admitted to (partial list): MIT, Harvard, University of Pennsylvania, Columbia, Carnegie Mellon, NYU, the University of California campuses, Georgia Tech, University of Virginia, USC, Emory, Rhode Island School of Design, the School of the Art Institute of Chicago, Parsons, the School of Visual Arts, and Bard College's early-entrance program.</td></tr>
+                    <tr><td class="col-label">Math Competition</td><td>The VIA Math Club won the regional MATHCOUNTS team championship in 2018 and 2019. In 2018, Frank Zhu placed 2nd individually; in 2019, Vincent Hu, Michael Liu, and Claudia Li swept the top three individual places and were featured in the local press.</td></tr>
+                    <tr><td class="col-label">National Honor Society</td><td>More than 50% of VIA students become National Honor Society members during high school — well above the U.S. average.</td></tr>
+                    <tr><td class="col-label">Honor Roll</td><td>More than 50% of students earn the Board of Directors Award, Principal's Award, Academic Dean's Award, or other honors for academic achievement and community service.</td></tr>
+                    <tr><td class="col-label">Athletics</td><td>Many students have played on and earned awards with high school varsity teams, including the school's first Asian football player's Rookie of the Year and a Most Improved Player in basketball. VIA student Louis Tang earned a full scholarship to an NCAA college basketball team.</td></tr>
+                </table>
+            </div>
+
+            <!-- Contact -->
+            <div class="content-panel" id="contact">
+                <table class="content-table">
+                    <tr><td colspan="2" class="col-title">Contact</td></tr>
+                    <tr><td class="col-label">Address</td><td>257 Toll House Rd, Maurertown VA 22644, USA</td></tr>
+                    <tr><td class="col-label">Phone</td><td>+1 (703) 818-9178</td></tr>
+                    <tr><td class="col-label">Principal Email</td><td><a href="mailto:helen.wu@usvia.org">helen.wu@usvia.org</a></td></tr>
+                    <tr><td class="col-label">Principal WeChat</td><td>helenwuva</td></tr>
+                    <tr><td class="col-label">Admissions</td><td><a href="mailto:apply@usvia.org">apply@usvia.org</a></td></tr>
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+
+    <script>
+        const items = document.querySelectorAll('.sidebar-item');
+        const panels = document.querySelectorAll('.content-panel');
+
+        items.forEach(item => {
+            item.addEventListener('click', () => {
+                items.forEach(i => i.classList.remove('active'));
+                panels.forEach(p => p.classList.remove('active'));
+                item.classList.add('active');
+                document.getElementById(item.dataset.target).classList.add('active');
+            });
+        });
+
+        async function loadComponent(placeholderId, path) {
+            try {
+                const res = await fetch(path, { cache: 'no-store' });
+                const html = await res.text();
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+                doc.querySelectorAll('style').forEach(el => {
+                    document.head.appendChild(el.cloneNode(true));
+                });
+                const placeholder = document.getElementById(placeholderId);
+                placeholder.innerHTML = doc.body.innerHTML;
+                placeholder.querySelectorAll('script').forEach(old => {
+                    const s = document.createElement('script');
+                    s.textContent = old.textContent;
+                    old.replaceWith(s);
+                });
+            } catch (e) {
+                console.warn('Failed to load component:', path, e);
+            }
+        }
+
+        loadComponent('header-placeholder', '../header%20%26%20footer/header-en.html');
+        loadComponent('footer-placeholder', '../header%20%26%20footer/footer.html');
+    </script>
+
+</body>
+</html>

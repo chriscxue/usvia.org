@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Educational Programs — Virginia International Academy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scrollbar-gutter: stable; }
+
+        body {
+            font-family: 'Courier Prime', monospace;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1.9;
+            color: #000;
+            background: #fff;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .page-layout {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 360px 1fr;
+            border-bottom: 0.5px solid #000;
+        }
+
+        .sidebar {
+            border-right: 0.5px solid #000;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar-item {
+            padding: 16px 40px;
+            border-bottom: 0.5px solid #000;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 400;
+            color: #000;
+            transition: background-color 0.25s ease, color 0.25s ease;
+            user-select: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .sidebar-item:hover,
+        .sidebar-item.active {
+            background-color: #fc5b39;
+            color: #fff;
+        }
+
+        .content-area {
+            padding: 60px 64px;
+            display: grid;
+        }
+
+        .content-panel {
+            grid-area: 1 / 1;
+            visibility: hidden;
+        }
+
+        .content-panel.active {
+            visibility: visible;
+        }
+
+        .content-table {
+            width: 100%;
+            max-width: 1000px;
+            border-collapse: collapse;
+            border: 0.5px solid #000;
+        }
+
+        .content-table td {
+            border: 0.5px solid #000;
+            padding: 16px 24px;
+            vertical-align: top;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1.9;
+        }
+
+        .content-table td.col-label {
+            width: 240px;
+        }
+
+        .content-table td.col-title {
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .content-table tr:hover td {
+            background-color: #52B9DA;
+            color: #fff;
+        }
+
+        .content-table a { color: inherit; }
+
+        .content-table ul {
+            margin-left: 20px;
+        }
+
+        .stats-table { margin-top: 0; }
+        .stats-col-name { width: 82%; }
+        .stats-col-count { width: 18%; }
+        .stats-count, .stats-count-header { text-align: center; }
+
+        .visual-arts-intro {
+            padding: 20px !important;
+        }
+
+        .visual-arts-intro p {
+            margin-bottom: 1.2em;
+        }
+
+        .visual-arts-intro p:last-child {
+            margin-bottom: 0;
+        }
+
+        .letter-cell { line-height: 2; }
+
+        .letter-signature {
+            margin-top: 2em;
+            color: #999;
+        }
+
+        @media (max-width: 768px) {
+            .page-layout { grid-template-columns: 1fr; }
+            .sidebar { border-right: none; border-bottom: 0.5px solid #000; }
+            .content-area { padding: 24px 16px; }
+
+            .content-table { width: 100%; border: 0.5px solid #000; }
+            .content-table tr { display: block; }
+            .content-table tr:not(:last-child) { border-bottom: 0.5px solid #000; }
+            .content-table td { display: block; width: 100%; border: none; }
+
+            .content-table td.col-title { padding: 16px; }
+
+            .content-table td.col-label {
+                width: 100%;
+                color: #999;
+                padding: 16px 16px 4px;
+            }
+
+            .content-table td:not(.col-label):not(.col-title) {
+                padding: 4px 16px 16px;
+            }
+
+            .stats-table td.col-label { color: #000; padding: 16px 24px; }
+            .stats-table tr { display: table-row; }
+            .stats-table td { display: table-cell; width: auto; border: 0.5px solid #000; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="header-placeholder"></div>
+
+    <div class="page-layout">
+
+        <nav class="sidebar">
+            <div class="sidebar-item active" data-target="grade7">Grade 7</div>
+            <div class="sidebar-item" data-target="grade8">Grade 8</div>
+            <div class="sidebar-item" data-target="grade9to12">Grades 9–12</div>
+            <div class="sidebar-item" data-target="visual-arts">High School Visual Arts</div>
+            <div class="sidebar-item" data-target="graduation">Graduation Requirements</div>
+            <div class="sidebar-item" data-target="camps">Camp Programs</div>
+            <div class="sidebar-item" data-target="partnerships">School Partnerships</div>
+        </nav>
+
+        <div class="content-area">
+
+            <!-- Grade 7 -->
+            <div class="content-panel active" id="grade7">
+                <table class="content-table">
+                    <tr><td colspan="2" class="col-title">Grade 7</td></tr>
+                    <tr><td class="col-label">Admission</td><td>Students who have completed Grade 6 or Grade 7.</td></tr>
+                    <tr><td class="col-label">Courses</td><td>English Grammar &amp; Writing　English Vocabulary　Introduction to Natural Science　World Geography　Pre-Algebra　Study Skills　Art　Physical Education</td></tr>
+                    <tr><td class="col-label">English</td><td>VIA replaces foreign-language requirements (Spanish, French, etc.) with expanded English courses, incorporating English literature to build a solid vocabulary and grammar foundation.</td></tr>
+                    <tr><td class="col-label">Mathematics</td><td>Focuses on English math terminology, integrating geometry and probability to prepare for formal algebra.</td></tr>
+                    <tr><td class="col-label">Humanities &amp; Science</td><td>Integrates key content from U.S. Grades 4–7 history and science through World Geography and Introduction to Natural Science.</td></tr>
+                    <tr><td class="col-label">Study Skills</td><td>Practice English handwriting and note-taking, using flashcards and the library as learning tools.</td></tr>
+                    <tr><td class="col-label">Art</td><td>Foundational art skills: drawing, painting, sculpture, printmaking, and collage.</td></tr>
+                    <tr><td class="col-label">Physical Education</td><td>Learn the rules and movements of popular American sports through games and activities.</td></tr>
+                </table>
+            </div>
+
+            <!-- Grade 8 -->
+            <div class="content-panel" id="grade8">
+                <table class="content-table">
+                    <tr><td colspan="2" class="col-title">Grade 8</td></tr>
+                    <tr><td class="col-label">Admission</td><td>Students who have completed Grade 7 or Grade 8.</td></tr>
+                    <tr><td class="col-label">Courses</td><td>English Grammar &amp; Writing　English Literature　Drama &amp; Poetry　Algebra I　Earth Science　Introduction to American History　Art　Physical Education</td></tr>
+                    <tr><td class="col-label">English</td><td>A three-part curriculum: Grammar &amp; Writing deepens Grade 7 foundations; Literature builds reading comprehension; Drama &amp; Poetry helps international students understand these specialized forms.</td></tr>
+                    <tr><td class="col-label">Mathematics — Algebra I</td><td>Grade 8 students complete Algebra I, a course usually part of the U.S. high school curriculum.</td></tr>
+                    <tr><td class="col-label">Science — Earth Science</td><td>Covers Earth's hydrological and geological phenomena through instruction, model-building, and field trips.</td></tr>
+                    <tr><td class="col-label">History</td><td>Centers on American history with topical research: class discussion, debate, public speaking, and visits to historical sites.</td></tr>
+                    <tr><td class="col-label">Visual Arts</td><td>Teaches foundational visual-arts skills, using online tools including AI-based platforms.</td></tr>
+                </table>
+            </div>
+
+            <!-- Grades 9–12 -->
+            <div class="content-panel" id="grade9to12">
+                <table class="content-table">
+                    <tr><td colspan="2" class="col-title">Grades 9–12</td></tr>
+                    <tr><td class="col-label">Admission</td><td>Students who complete Grade 8 at VIA with satisfactory grades, or who complete Grade 9 abroad and pass VIA's written and oral entrance exams.</td></tr>
+                    <tr><td class="col-label">English</td><td>Each grade completes the corresponding English Literature course (English 9, 10, 11, 12), with supplemental courses:<ul><li><strong>Grade 10</strong>: Intensive Reading &amp; Writing (1) + Intensive Listening &amp; Speaking, preparing for the TOEFL</li><li><strong>Grade 11</strong>: Intensive Reading &amp; Writing (2), preparing for SAT Reading and Grammar</li><li><strong>Grade 12</strong>: Creative Writing &amp; Critical Thinking, developing college application essays</li></ul></td></tr>
+                    <tr><td class="col-label">Mathematics</td><td>Algebra II, Geometry, and Pre-Calculus; strong students may take college-level Calculus and Statistics; Grade 11 requires Advanced Quantitative Skills for the SAT.</td></tr>
+                    <tr><td class="col-label">Science</td><td>Physics, Chemistry, and Biology, each over a full year; interested students may pursue specific disciplines in greater depth.</td></tr>
+                    <tr><td class="col-label">Humanities</td><td>American History, World History, American Culture &amp; Geography, and Virginia &amp; U.S. Government; electives include Art History, History of Mathematics, and independent study. Juniors or seniors must take Economics or Personal Finance.</td></tr>
+                    <tr><td class="col-label">Life &amp; Study Skills</td><td>Research, essay writing, and daily-living skills; the College Navigation course introduces the U.S. higher-education system, school selection, and the application process.</td></tr>
+                    <tr><td class="col-label">Visual Arts</td><td>Drawing, sculpture, digital illustration, and graphic design, integrating traditional techniques with modern digital tools.</td></tr>
+                    <tr><td class="col-label">Physical Education</td><td>A two-year requirement plus electives, building athletic habits and basic nutritional knowledge.</td></tr>
+                </table>
+            </div>
+
+            <!-- High School Visual Arts -->
+            <div class="content-panel" id="visual-arts">
+                <table class="content-table">
+                    <tr><td colspan="2" class="col-title">High School Visual Arts Program</td></tr>
+                    <tr><td colspan="2" class="visual-arts-intro">
+                        <p>The VIA Visual Arts Department treats art education as a developmental process — an ordered progression from material fluency to conceptual independence. Its guiding belief is that the language of art cannot be taught directly; it emerges gradually through a student's sustained contact with media, context, and critique.</p>
+                        <p>Across a 144-week cycle, students move through three interwoven phases. The Studio Art phase lays the foundational practice: observational drawing, three-dimensional structure, and material exploration. The Digital Art phase extends that foundation into emerging territory — AI as a generative tool, web interaction as an artistic medium, and electronic components as expressive material. The Portfolio &amp; Thesis phase shifts the emphasis from making to meaning: students learn to select, sequence, and interpret their own work so that it forms a coherent artistic statement.</p>
+                        <p>What fundamentally distinguishes VIA from other pre-college art programs is its commitment to preparing students for a creative landscape in which art and technology are no longer cleanly separate. The artists and designers reshaping visual culture today — whether in interactive media, generative design, or experiential practice — need to be able to create in both domains at once. VIA's curriculum is designed to build exactly this dual fluency: not treating technology as an aid to art-making, but as a medium, a material, and a conceptual field in its own right.</p>
+                        <p>This structure reflects VIA's core teaching belief: the students who stand out in art and design school admissions are rarely those with the most work, but those who most clearly grasp the relationship between their work and their intent — and can express that relationship with clarity and conviction.</p>
+                    </td></tr>
+                    <tr><td class="col-label">Admission</td><td>Open only to students who complete Grade 8 at VIA with satisfactory grades, or who complete Grade 9 abroad and pass VIA's entrance exams. <strong>Transfer students are not accepted into the program.</strong> No prior art background is required, but applicants should show genuine passion for visual arts.</td></tr>
+                    <tr><td class="col-label">Traditional Art</td><td>Drawing　Painting　Sculpture　Printmaking　Photography</td></tr>
+                    <tr><td class="col-label">Digital Techniques</td><td>Digital Illustration　3D Modeling　Animation　Web Design　Game Development　Digital Photography　Video Production　Audio Production　Motion Graphics</td></tr>
+                    <tr><td class="col-label">Senior Year</td><td>Seniors are guided through portfolio development, the college application process, and career exploration.</td></tr>
+                    <tr><td colspan="2" class="visual-arts-intro letter-cell">
+                        <p>Every idea, every experiment, every imperfect attempt is part of the path toward great work. When you sit at your desk or in the studio, facing a design problem that seems to have no solution, or struggling to make a concept clearer, you may begin to doubt yourself: "What is the point of all this effort? Can I really stand out?" But remember that this struggle and searching is the very heart of visual art — because you are not just completing a task, you are shaping a truly distinctive self.</p>
+                        <p>The greatness of art and design is that they let you redefine the rules of the world. Through a painting, an installation, a product, or a space, you can help people see new possibilities. You are not making mere "pieces" — you are expressing who you are and what you want to say to the world. What admissions officers hope to see is not "perfect" work, but work that reveals your thinking, your curiosity, and your drive to explore the unknown.</p>
+                        <p>Sometimes you will wonder whether an idea is "good enough." But art and design are never about "right" and "wrong." Every failure is a chance to grow, and every risk may lead to a remarkable discovery. Do not be afraid to cross boundaries or to challenge the rules. Admissions officers want to see how you pose questions, solve them, and even redefine the questions themselves through your work. They long to see your distinctive perspective, your ideas, and your courage.</p>
+                        <p>Whether you find your voice through art or change the world through design, every piece you make now is a cornerstone of what you will achieve later. Every failed model, every drawing revised again and again, every experiment that kept you up at night — none of it is wasted. This effort will shape you into a stronger, more distinctive artist or designer.</p>
+                        <p>So keep going. Draw, build, design, experiment, and pour everything you love into your work. Whatever the outcome, these pieces will show who you are and why you love visual art. Trust your journey, and make work that only you could make. The future you will thank the you of today who dared to take the risk.</p>
+                        <p class="letter-signature">Chris Chenglin Xue<br>2025</p>
+                    </td></tr>
+                </table>
+                <table class="content-table stats-table">
+                    <colgroup>
+                        <col class="stats-col-name">
+                        <col class="stats-col-count">
+                    </colgroup>
+                    <tr><td colspan="2" class="col-title">Student Admissions Results (2013–2025)</td></tr>
+                    <tr><td class="col-label">Institution</td><td class="stats-count-header">Admits</td></tr>
+                    <tr><td class="col-label">Harvard University</td><td class="stats-count">1</td></tr>
+                    <tr><td class="col-label">Massachusetts Institute of Technology</td><td class="stats-count">1</td></tr>
+                    <tr><td class="col-label">Cornell University</td><td class="stats-count">13</td></tr>
+                    <tr><td class="col-label">Columbia University</td><td class="stats-count">7</td></tr>
+                    <tr><td class="col-label">Carnegie Mellon University</td><td class="stats-count">3</td></tr>
+                    <tr><td class="col-label">Duke University</td><td class="stats-count">2</td></tr>
+                    <tr><td class="col-label">University of Southern California</td><td class="stats-count">4</td></tr>
+                    <tr><td class="col-label">University of California, Berkeley</td><td class="stats-count">27</td></tr>
+                    <tr><td class="col-label">New York University</td><td class="stats-count">17</td></tr>
+                    <tr><td class="col-label">University of Michigan</td><td class="stats-count">23</td></tr>
+                    <tr><td class="col-label">Washington University in St. Louis</td><td class="stats-count">13</td></tr>
+                    <tr><td class="col-label">University of Texas at Austin</td><td class="stats-count">11</td></tr>
+                    <tr><td class="col-label">University of Illinois Urbana-Champaign</td><td class="stats-count">7</td></tr>
+                    <tr><td class="col-label">University of Wisconsin-Madison</td><td class="stats-count">12</td></tr>
+                    <tr><td class="col-label">Syracuse University</td><td class="stats-count">23</td></tr>
+                    <tr><td class="col-label">Arizona State University</td><td class="stats-count">15</td></tr>
+                    <tr><td class="col-label">Virginia Commonwealth University</td><td class="stats-count">18</td></tr>
+                    <tr><td class="col-label">Hunter College</td><td class="stats-count">8</td></tr>
+                    <tr><td class="col-label">Bard College</td><td class="stats-count">7</td></tr>
+                    <tr><td class="col-label">Rhode Island School of Design</td><td class="stats-count">17</td></tr>
+                    <tr><td class="col-label">Parsons School of Design</td><td class="stats-count">39</td></tr>
+                    <tr><td class="col-label">School of the Art Institute of Chicago</td><td class="stats-count">52</td></tr>
+                    <tr><td class="col-label">School of Visual Arts</td><td class="stats-count">43</td></tr>
+                    <tr><td class="col-label">California Institute of the Arts</td><td class="stats-count">48</td></tr>
+                    <tr><td class="col-label">Pratt Institute</td><td class="stats-count">44</td></tr>
+                    <tr><td class="col-label">ArtCenter College of Design</td><td class="stats-count">32</td></tr>
+                    <tr><td class="col-label">Maryland Institute College of Art</td><td class="stats-count">35</td></tr>
+                    <tr><td class="col-label">Cranbrook Academy of Art</td><td class="stats-count">17</td></tr>
+                    <tr><td class="col-label">Alfred University</td><td class="stats-count">28</td></tr>
+                    <tr><td class="col-label">California College of the Arts</td><td class="stats-count">26</td></tr>
+                    <tr><td class="col-label">Massachusetts College of Art and Design</td><td class="stats-count">37</td></tr>
+                    <tr><td class="col-label">Rochester Institute of Technology</td><td class="stats-count">28</td></tr>
+                    <tr><td class="col-label">New York School of Interior Design</td><td class="stats-count">13</td></tr>
+                </table>
+            </div>
+
+            <!-- Graduation Requirements -->
+            <div class="content-panel" id="graduation">
+                <table class="content-table">
+                    <tr><td colspan="2" class="col-title">High School Graduation Requirements</td></tr>
+                    <tr><td colspan="2">One full-year course = 1 credit. Students must study at VIA for at least 2 years and earn no fewer than <strong>24 credits</strong> (including transferred credits) to graduate.</td></tr>
+                    <tr><td class="col-label">Credits</td><td>Requirement</td></tr>
+                    <tr><td class="col-label">4</td><td>Four years of English (English 9, 10, 11, 12)</td></tr>
+                    <tr><td class="col-label">3</td><td>Three years of Mathematics (minimum Pre-Calculus level)</td></tr>
+                    <tr><td class="col-label">3</td><td>Three years of Science (at least one year each of Biology, Physics, Chemistry)</td></tr>
+                    <tr><td class="col-label">4</td><td>Four years of Social Studies (American History, World History, Economics or Personal Finance, and one elective)</td></tr>
+                    <tr><td class="col-label">2</td><td>Two years of Art (typically completed in Grades 9–10)</td></tr>
+                    <tr><td class="col-label">2</td><td>Two years of Physical Education (typically Grades 9–10; transfer students must complete two years of VIA PE)</td></tr>
+                    <tr><td class="col-label">6</td><td>Six electives (Calculus, Statistics, Intensive Reading &amp; Writing, Intensive Listening &amp; Speaking, Advanced Quantitative Skills, Creative Writing &amp; Critical Thinking, College Navigation, Art electives, Art Portfolio, and more)</td></tr>
+                </table>
+            </div>
+
+            <!-- Camp Programs -->
+            <div class="content-panel" id="camps">
+                <table class="content-table">
+                    <tr><td colspan="2" class="col-title">Camp Programs</td></tr>
+                    <tr><td class="col-label">Girls Volleyball Summer Camp</td><td>A two-week summer camp for girls ages 10–15, with training from well-known coaches and organized competition. Local students attend as day campers; out-of-town and international students may board, with evening English tutoring for international students.</td></tr>
+                    <tr><td class="col-label">Boys Basketball Summer Camp</td><td>A two-week summer camp for boys ages 9–18. One week of training at VIA and one week at Coach Wootten's Basketball Camp — founded by legendary coach Morgan Wootten in 1961 and known as the "world's #1 instructional basketball camp," attracting over 2,000 participants each year.</td></tr>
+                    <tr><td class="col-label">English &amp; Adventure Summer Camp</td><td>A two-week camp for Grades 5–8 focused on English learning and outdoor activities, including hiking, caving, rafting, swimming, horseback riding, and bowling.</td></tr>
+                    <tr><td class="col-label">Experience an American School Winter Camp</td><td>For Grades 5–8 international students planning to study in the U.S., usually late January to mid-February. Students attend real classes, live as American students, ski, tour Washington, D.C., and watch events such as NBA games.</td></tr>
+                    <tr><td class="col-label">Academic Camps</td><td>SAT Prep Camp　TOEFL Prep Camp　Math Competition Camp　Fun Math Camp</td></tr>
+                    <tr><td class="col-label">Fun Camps</td><td>Chinese Crafts Camp　Kite-Making Camp　Fishing Camp</td></tr>
+                    <tr><td class="col-label">Hosted Partner Camps</td><td>VIA can partner with travel agencies, parent associations, alumni groups, other schools, or companies to host themed winter or summer camps. Partners handle enrollment, visas, and specialized curriculum; VIA provides airport transfers, boarding, meals, daily management, activities, and English instruction.</td></tr>
+                </table>
+            </div>
+
+            <!-- School Partnerships -->
+            <div class="content-panel" id="partnerships">
+                <table class="content-table">
+                    <tr><td colspan="2" class="col-title">School Partnerships</td></tr>
+                    <tr><td class="col-label">Partnerships with Chinese Schools</td><td>VIA welcomes collaboration with Chinese educational institutions on curriculum design, program introduction, and teacher exchange and training.<ul><li><strong>Middle School 1+1</strong>: Grade 7 in China, Grade 8 at VIA</li><li><strong>High School 2+2</strong>: Grades 9–10 in China, Grades 11–12 at VIA</li></ul>Students who complete all required courses earn a high school diploma.</td></tr>
+                    <tr><td class="col-label">Partnerships with U.S. Private High Schools</td><td>A spring-semester orientation program for newly admitted Grade 9 international students, helping them adjust to American school life before enrolling. U.S. high schools may require it as a condition of admission, or students may apply voluntarily.</td></tr>
+                    <tr><td class="col-label">Short-Term Exchange Programs</td><td>VIA hosts short-term (under three months) exchange programs for Grades 5–9. For students needing tourist visas, VIA can provide invitation letters. Programs include English instruction, core subject teaching, boarding, daily-living courses, health insurance, and activities.</td></tr>
+                    <tr><td class="col-label">Inquiries</td><td>To discuss partnership arrangements, contact Helen Wu: <a href="mailto:helen.wu@usvia.org">helen.wu@usvia.org</a></td></tr>
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+
+    <script>
+        const items = document.querySelectorAll('.sidebar-item');
+        const panels = document.querySelectorAll('.content-panel');
+
+        items.forEach(item => {
+            item.addEventListener('click', () => {
+                items.forEach(i => i.classList.remove('active'));
+                panels.forEach(p => p.classList.remove('active'));
+                item.classList.add('active');
+                document.getElementById(item.dataset.target).classList.add('active');
+            });
+        });
+
+        async function loadComponent(placeholderId, path) {
+            try {
+                const res = await fetch(path, { cache: 'no-store' });
+                const html = await res.text();
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+                doc.querySelectorAll('style').forEach(el => {
+                    document.head.appendChild(el.cloneNode(true));
+                });
+                const placeholder = document.getElementById(placeholderId);
+                placeholder.innerHTML = doc.body.innerHTML;
+                placeholder.querySelectorAll('script').forEach(old => {
+                    const s = document.createElement('script');
+                    s.textContent = old.textContent;
+                    old.replaceWith(s);
+                });
+            } catch (e) {
+                console.warn('Failed to load component:', path, e);
+            }
+        }
+
+        loadComponent('header-placeholder', '../header%20%26%20footer/header-en.html');
+        loadComponent('footer-placeholder', '../header%20%26%20footer/footer.html');
+    </script>
+
+</body>
+</html>
