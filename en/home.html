@@ -887,10 +887,12 @@
                 doc.querySelectorAll('style').forEach(function(s) {
                     document.head.appendChild(s.cloneNode(true));
                 });
-                doc.querySelectorAll('script').forEach(function(s) {
+                // Rebuild scripts from the placeholder (moved scripts are inert and
+                // won't run; they must be recreated. Querying doc here missed them.)
+                placeholder.querySelectorAll('script').forEach(function(old) {
                     var script = document.createElement('script');
-                    script.textContent = s.textContent;
-                    document.body.appendChild(script);
+                    script.textContent = old.textContent;
+                    old.replaceWith(script);
                 });
             });
     }

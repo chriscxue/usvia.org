@@ -881,10 +881,12 @@
                 doc.querySelectorAll('style').forEach(function(s) {
                     document.head.appendChild(s.cloneNode(true));
                 });
-                doc.querySelectorAll('script').forEach(function(s) {
+                // 从 placeholder 里重建 script（搬进来的 script 是惰性的不会执行，
+                // 必须 createElement 重建才运行；原来查 doc 会漏——script 已被搬走）
+                placeholder.querySelectorAll('script').forEach(function(old) {
                     var script = document.createElement('script');
-                    script.textContent = s.textContent;
-                    document.body.appendChild(script);
+                    script.textContent = old.textContent;
+                    old.replaceWith(script);
                 });
             });
     }
