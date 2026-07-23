@@ -27,7 +27,9 @@
 
         .header-grid {
             display: grid;
-            grid-template-columns: 2fr 1fr;
+            /* minmax(0,…): fr tracks refuse to shrink below content min-content by default;
+               iOS Safari counts the logo SVG's intrinsic size, pushing the header past the viewport */
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
         }
 
         /* Left - Logo */
@@ -115,7 +117,7 @@
         /* Responsive */
         @media (max-width: 768px) {
             .header-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: minmax(0, 1fr);
             }
 
             .header-left {

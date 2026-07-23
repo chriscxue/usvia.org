@@ -27,7 +27,8 @@
 
         .header-grid {
             display: grid;
-            grid-template-columns: 2fr 1fr;
+            /* minmax(0,…)：fr 轨道默认不能小于内容固有宽度，iOS Safari 会把 logo SVG 的固有尺寸算进去，把 header 撑出屏幕 */
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
         }
 
         /* 左侧 - Logo */
@@ -115,7 +116,7 @@
         /* Responsive */
         @media (max-width: 768px) {
             .header-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: minmax(0, 1fr);
             }
 
             .header-left {
