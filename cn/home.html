@@ -289,6 +289,70 @@
             text-decoration: underline;
         }
 
+        /* ── 价值观与座右铭 ── */
+        .values {
+            border-bottom: 0.5px solid #000;
+            padding: 80px 48px;
+            text-align: center;
+        }
+
+        .values-heading {
+            font-size: 28px;
+            font-weight: 600;
+            line-height: 1.4;
+            letter-spacing: 0.04em;
+            margin-bottom: 56px;
+        }
+
+        .values-block {
+            margin-bottom: 44px;
+        }
+
+        .values-block:last-child {
+            margin-bottom: 0;
+        }
+
+        .values-label {
+            font-size: 14px;
+            font-weight: 200;
+            color: #999;
+            letter-spacing: 0.2em;
+            margin-bottom: 14px;
+        }
+
+        .values-motto {
+            font-size: 32px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+        }
+
+        .values-list {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .values-list li {
+            padding: 0 18px;
+            font-size: 18px;
+            font-weight: 200;
+            line-height: 1.2;
+            border-right: 0.5px solid #ccc;
+        }
+
+        .values-list li:last-child {
+            border-right: none;
+        }
+
+        .values-oath {
+            font-size: 18px;
+            font-weight: 200;
+            line-height: 1.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
         .two-col {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -502,6 +566,11 @@
             .program-row { grid-template-columns: 1fr; }
             .program-name { border-right: none; padding: 20px 16px 4px; }
             .program-desc { padding: 0 16px 20px; }
+            .values { padding: 48px 16px; }
+            .values-heading { font-size: 22px; margin-bottom: 40px; }
+            .values-motto { font-size: 26px; }
+            .values-list li { padding: 0 12px; font-size: 16px; }
+            .values-oath { font-size: 16px; }
             .two-col { grid-template-columns: 1fr; }
             .two-col-left {
                 padding: 24px 16px;
@@ -763,6 +832,29 @@
 
         </div>
     </div>
+    <section class="values">
+        <h2 class="values-heading">价值观与座右铭</h2>
+        <div class="values-block">
+            <p class="values-label">座右铭</p>
+            <p class="values-motto">学习与成长</p>
+        </div>
+        <div class="values-block">
+            <p class="values-label">价值观</p>
+            <ul class="values-list">
+                <li>感恩</li>
+                <li>自尊</li>
+                <li>热情</li>
+                <li>参与</li>
+                <li>独立</li>
+                <li>成熟</li>
+                <li>负责任</li>
+            </ul>
+        </div>
+        <div class="values-block">
+            <p class="values-label">荣誉誓言</p>
+            <p class="values-oath">我不撒谎，不作弊，不偷盗。我将为维护学校的荣誉誓言负责。</p>
+        </div>
+    </section>
 </main>
 
 <div id="footer-placeholder"></div>
