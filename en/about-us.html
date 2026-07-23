@@ -180,9 +180,14 @@
 
         @media (max-width: 768px) {
             .faculty-grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: 1fr;
                 max-width: 100%;
             }
+            .faculty-card { border-right: none; }
+            .faculty-card--empty { display: none; }
+            /* No hover on touch: keep the overlay + info always visible */
+            .faculty-overlay { background: rgba(0, 0, 0, 0.55); }
+            .faculty-info { opacity: 1; transform: none; }
         }
 
         .letter {

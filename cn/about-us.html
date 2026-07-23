@@ -173,9 +173,14 @@
 
         @media (max-width: 768px) {
             .faculty-grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: 1fr;
                 max-width: 100%;
             }
+            .faculty-card { border-right: none; }
+            .faculty-card--empty { display: none; }
+            /* 触屏无 hover：遮罩和信息常驻显示，否则手机上全是空灰块 */
+            .faculty-overlay { background: rgba(0, 0, 0, 0.55); }
+            .faculty-info { opacity: 1; transform: none; }
         }
 
         .letter {
