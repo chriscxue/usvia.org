@@ -228,6 +228,67 @@
             text-decoration: underline;
         }
 
+        /* ── 教育项目 ── */
+        .programs {
+            border-bottom: 0.5px solid #000;
+            padding: 80px 48px;
+        }
+
+        .programs-heading {
+            font-size: 28px;
+            font-weight: 600;
+            line-height: 1.4;
+            letter-spacing: 0.04em;
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .programs-list {
+            max-width: 1000px;
+            margin: 0 auto;
+            border: 0.5px solid #000;
+        }
+
+        .program-row {
+            display: grid;
+            grid-template-columns: 260px 1fr;
+        }
+
+        .program-row:not(:last-child) {
+            border-bottom: 0.5px solid #000;
+        }
+
+        .program-name {
+            padding: 24px 32px;
+            font-size: 16px;
+            font-weight: 600;
+            border-right: 0.5px solid #000;
+        }
+
+        .program-desc {
+            padding: 24px 32px;
+            font-size: 16px;
+            font-weight: 200;
+            line-height: 1.9;
+        }
+
+        .programs-more {
+            max-width: 1000px;
+            margin: 24px auto 0;
+            text-align: right;
+        }
+
+        .programs-more a {
+            font-size: 16px;
+            font-weight: 200;
+            color: #52B9DA;
+            text-decoration: none;
+        }
+
+        .programs-more a:hover {
+            text-decoration: underline;
+        }
+
         .two-col {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -436,6 +497,11 @@
             .why-card { padding: 28px 20px; border-right: none; }
             .why-card:nth-last-child(-n+2) { border-bottom: 0.5px solid #000; }
             .why-card:last-child { border-bottom: none; }
+            .programs { padding: 48px 16px; }
+            .programs-heading { font-size: 22px; margin-bottom: 32px; }
+            .program-row { grid-template-columns: 1fr; }
+            .program-name { border-right: none; padding: 20px 16px 4px; }
+            .program-desc { padding: 0 16px 20px; }
             .two-col { grid-template-columns: 1fr; }
             .two-col-left {
                 padding: 24px 16px;
@@ -520,6 +586,30 @@
                 <p class="why-card-text">VIA通过美国教育部指定的地区认证机构认证，是一所正规提供初中和高中学历教育的学校。</p>
                 <a class="why-card-link" href="/cn/about-us.html">查看VIA教育认证证书 →</a>
             </div>
+        </div>
+    </section>
+    <section class="programs">
+        <h2 class="programs-heading">教育项目</h2>
+        <div class="programs-list">
+            <div class="program-row">
+                <div class="program-name">初中部（7-8年级）</div>
+                <div class="program-desc">强化英语基础，衔接美国课程体系，为高中学习做好准备</div>
+            </div>
+            <div class="program-row">
+                <div class="program-name">高中部（9-12年级）</div>
+                <div class="program-desc">完整美国高中学历教育，含大学升学培训与指导</div>
+            </div>
+            <div class="program-row">
+                <div class="program-name">冬夏令营</div>
+                <div class="program-desc">短期体验美国校园学习与生活</div>
+            </div>
+            <div class="program-row">
+                <div class="program-name">校际合作</div>
+                <div class="program-desc">与美国本地学校及机构的合作项目</div>
+            </div>
+        </div>
+        <div class="programs-more">
+            <a href="/cn/educational-programs.html">查看课程详情 →</a>
         </div>
     </section>
     <div class="two-col">
