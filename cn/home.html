@@ -32,6 +32,10 @@
             height: 540px;
             border-bottom: 0.5px solid #000;
             overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 24px;
         }
 
         .hero-image {
@@ -40,6 +44,56 @@
             background-size: cover;
             background-position: center;
             z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 720px;
+            padding: 44px 52px;
+            background: rgba(255, 255, 255, 0.72);
+            border: 0.5px solid #000;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: 28px;
+            font-weight: 200;
+            line-height: 1.6;
+            letter-spacing: 0.06em;
+            margin-bottom: 20px;
+        }
+
+        .hero-subtitle {
+            font-size: 16px;
+            font-weight: 200;
+            line-height: 1.9;
+            margin-bottom: 28px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+        }
+
+        .hero-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 28px;
+            border: 0.5px solid #000;
+            text-decoration: none;
+            color: #000;
+            font-size: 16px;
+            font-weight: 200;
+            letter-spacing: 0.06em;
+            transition: background-color 0.25s ease, color 0.25s ease;
+        }
+
+        .hero-btn:hover {
+            background-color: #52B9DA;
+            color: #fff;
         }
 
         .main-content {
@@ -238,7 +292,12 @@
         }
 
         @media (max-width: 768px) {
-            .hero-banner { height: 240px; }
+            .hero-banner { height: auto; min-height: 320px; padding: 40px 16px; }
+            .hero-content { padding: 28px 22px; }
+            .hero-title { font-size: 20px; margin-bottom: 14px; }
+            .hero-subtitle { font-size: 15px; margin-bottom: 22px; }
+            .hero-buttons { flex-direction: column; gap: 12px; }
+            .hero-btn { width: 100%; }
             .two-col { grid-template-columns: 1fr; }
             .two-col-left {
                 padding: 24px 16px;
@@ -261,6 +320,14 @@
 
 <div class="hero-banner">
     <div class="hero-image" style="background-image: url('/assets/maurertown-landscape.png');"></div>
+    <div class="hero-content">
+        <h1 class="hero-title">全美最早专为低龄国际学生设计的寄宿初高中</h1>
+        <p class="hero-subtitle">在维吉尼亚，距华盛顿DC一小时，我们帮助7-12年级的孩子平稳走过留学最初的几年：学好英语、跟上学业、学会生活，走进理想的美国大学。</p>
+        <div class="hero-buttons">
+            <a href="/cn/about-us.html" class="hero-btn">预约参观校园</a>
+            <a href="/cn/admission.html" class="hero-btn">申请入学</a>
+        </div>
+    </div>
 </div>
 
 <main class="main-content">
