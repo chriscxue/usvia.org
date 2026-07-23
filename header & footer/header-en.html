@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Header</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier Prime', monospace;
+            line-height: 1.6;
+            color: #000;
+            background-color: #fff;
+        }
+
+        /* Header */
+        .header {
+            width: 100%;
+            border-bottom: 0.5px solid #000;
+        }
+
+        .header-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+        }
+
+        /* Left - Logo */
+        .header-left {
+            display: flex;
+            align-items: center;
+            padding: 40px;
+            border-right: 0.5px solid #000;
+            background: #52B9DA;
+        }
+
+        .logo {
+            display: block;
+            width: 200px;
+            height: 200px;
+            text-decoration: none;
+        }
+
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        /* Right - Nav */
+        .header-right {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 40px;
+            border-bottom: 0.5px solid #000;
+            text-decoration: none;
+            color: #000;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .nav-item:last-child {
+            border-bottom: none;
+            flex: 1;
+        }
+
+        .nav-item:hover {
+            background-color: #52B9DA;
+            color: #fff;
+        }
+
+        .nav-label {
+            font-size: 16px;
+            font-weight: 400;
+        }
+
+        .nav-item.lang .nav-label {
+            font-family: 'Courier Prime', 'Noto Sans SC', sans-serif;
+            color: #999;
+        }
+
+        .nav-item.lang:hover .nav-label {
+            color: #fff;
+        }
+
+        .nav-toggle-hint {
+            display: none;
+        }
+
+
+        .nav-arrow svg {
+            width: 16px;
+            height: 16px;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-item:hover .nav-arrow svg {
+            transform: translateX(4px);
+        }
+
+        .nav-item.active {
+            background-color: #52B9DA;
+            color: #fff;
+        }
+
+        .nav-item.active .nav-arrow svg {
+            transform: rotate(90deg);
+        }
+
+        .nav-item.active:hover .nav-arrow svg {
+            transform: rotate(90deg);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header-left {
+                border-right: none;
+                border-bottom: 0.5px solid #000;
+                padding: 24px 20px;
+                justify-content: center;
+                flex-direction: column;
+                gap: 10px;
+                cursor: pointer;
+            }
+
+            .logo {
+                width: 100px;
+                height: 100px;
+            }
+
+            .nav-toggle-hint {
+                display: block;
+                font-family: 'Courier Prime', monospace;
+                font-size: 18px;
+                font-weight: 400;
+                color: #000;
+                line-height: 1;
+                margin-top: 4px;
+            }
+
+            .header-right {
+                display: none;
+                border-bottom: 0.5px solid #000;
+            }
+
+            .header-right.open {
+                display: flex;
+            }
+
+            .nav-item {
+                padding: 16px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-grid">
+            <div class="header-left" id="nav-toggle">
+                <a href="/en/home.html" class="logo">
+                    <img src="/assets/logo-color.svg" alt="Virginia International Academy">
+                </a>
+                <span class="nav-toggle-hint">+</span>
+            </div>
+            <nav class="header-right">
+                <a href="/en/home.html" class="nav-item">
+                    <span class="nav-label">Home</span>
+                    <span class="nav-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                </a>
+                <a href="/en/educational-programs.html" class="nav-item">
+                    <span class="nav-label">Educational Programs</span>
+                    <span class="nav-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                </a>
+                <a href="/en/student-life.html" class="nav-item">
+                    <span class="nav-label">Student Life</span>
+                    <span class="nav-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                </a>
+                <a href="/en/news.html" class="nav-item">
+                    <span class="nav-label">Campus News</span>
+                    <span class="nav-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                </a>
+                <a href="/en/admission.html" class="nav-item">
+                    <span class="nav-label">Admission</span>
+                    <span class="nav-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                </a>
+                <a href="/en/about-us.html" class="nav-item">
+                    <span class="nav-label">About Us</span>
+                    <span class="nav-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                </a>
+                <a href="/cn/home.html" class="nav-item lang">
+                    <span class="nav-label">中文</span>
+                    <span class="nav-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                </a>
+            </nav>
+        </div>
+    </header>
+    <script>
+        (function() {
+            // Mobile nav toggle
+            var toggle = document.getElementById('nav-toggle');
+            var nav = document.querySelector('.header-right');
+            var hint = document.querySelector('.nav-toggle-hint');
+            if (toggle && nav) {
+                toggle.addEventListener('click', function(e) {
+                    // Only treat the logo area as a nav toggle on mobile; let the logo link work on desktop
+                    if (!window.matchMedia('(max-width: 768px)').matches) return;
+                    e.preventDefault();
+                    nav.classList.toggle('open');
+                    if (hint) hint.textContent = nav.classList.contains('open') ? '×' : '+';
+                });
+            }
+
+            // Mark current page as active
+            var path = window.location.pathname;
+            var items = document.querySelectorAll('.nav-item');
+            items.forEach(function(item) {
+                var href = item.getAttribute('href');
+                if (href && href === path) {
+                    item.classList.add('active');
+                }
+            });
+        })();
+    </script>
+</body>
+</html>

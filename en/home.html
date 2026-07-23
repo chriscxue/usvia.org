@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Home — Virginia International Academy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scrollbar-gutter: stable; }
+
+        body {
+            font-family: 'Courier Prime', monospace;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1.9;
+            color: #000;
+            background: #fff;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        #header-placeholder { }
+        #footer-placeholder { margin-top: auto; }
+
+        .hero-banner {
+            position: relative;
+            width: 100%;
+            height: 540px;
+            border-bottom: 0.5px solid #000;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 24px;
+        }
+
+        .hero-image {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            z-index: 0;
+        }
+
+        .hero-banner::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.45);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 860px;
+            text-align: center;
+            color: #fff;
+        }
+
+        .hero-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 40px;
+            font-weight: 600;
+            line-height: 1.25;
+            letter-spacing: -0.01em;
+            margin-bottom: 24px;
+        }
+
+        .hero-subtitle {
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1.9;
+            margin-bottom: 28px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+        }
+
+        .hero-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 28px;
+            border: 0.5px solid #fff;
+            text-decoration: none;
+            color: #fff;
+            font-size: 16px;
+            font-weight: 400;
+            letter-spacing: 0.04em;
+            transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+        }
+
+        .hero-btn:hover {
+            background-color: #52B9DA;
+            border-color: #52B9DA;
+            color: #fff;
+        }
+
+        .main-content {
+            flex: 1;
+        }
+
+        /* ── Stats band ── */
+        .stats-band {
+            border-bottom: 0.5px solid #000;
+            padding: 160px 48px;
+            background: #fafafa;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            border: 0.5px solid #000;
+            background: #fff;
+        }
+
+        .stat-item {
+            padding: 32px 20px;
+            text-align: center;
+            border-right: 0.5px solid #000;
+        }
+
+        .stat-item:last-child {
+            border-right: none;
+        }
+
+        .stat-num {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 52px;
+            font-weight: 500;
+            line-height: 1.2;
+            letter-spacing: -0.01em;
+            color: #52B9DA;
+            margin-bottom: 14px;
+        }
+
+        .stat-desc {
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 1.6;
+            color: #000;
+        }
+
+        .stats-schools {
+            max-width: 900px;
+            margin: 48px auto 0;
+            text-align: center;
+        }
+
+        .stats-schools-label {
+            font-size: 16px;
+            font-weight: 400;
+            letter-spacing: 0.08em;
+            margin-bottom: 12px;
+        }
+
+        .stats-schools-list {
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 1.7;
+            color: #333;
+        }
+
+        /* ── Why VIA ── */
+        .why-via {
+            border-bottom: 0.5px solid #000;
+            padding: 160px 48px;
+        }
+
+        .why-via-heading {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 36px;
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: -0.01em;
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            max-width: 1100px;
+            margin: 0 auto;
+            border: 0.5px solid #000;
+        }
+
+        .why-card {
+            padding: 40px 44px;
+            border-right: 0.5px solid #000;
+            border-bottom: 0.5px solid #000;
+        }
+
+        .why-card:nth-child(2n) {
+            border-right: none;
+        }
+
+        .why-card:nth-last-child(-n+2) {
+            border-bottom: none;
+        }
+
+        .why-card-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+            line-height: 1.4;
+            margin-bottom: 16px;
+        }
+
+        .why-card-text {
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1.9;
+            margin-bottom: 20px;
+        }
+
+        .why-card-link {
+            font-size: 16px;
+            font-weight: 400;
+            color: #52B9DA;
+            text-decoration: none;
+        }
+
+        .why-card-link:hover {
+            text-decoration: underline;
+        }
+
+        /* ── Educational programs ── */
+        .programs {
+            border-bottom: 0.5px solid #000;
+            padding: 160px 48px;
+            background: #fafafa;
+        }
+
+        .programs-heading {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 36px;
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: -0.01em;
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .programs-list {
+            max-width: 1000px;
+            margin: 0 auto;
+            border: 0.5px solid #000;
+            background: #fff;
+        }
+
+        .program-row {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+        }
+
+        .program-row:not(:last-child) {
+            border-bottom: 0.5px solid #000;
+        }
+
+        .program-name {
+            padding: 24px 32px;
+            font-size: 16px;
+            font-weight: 700;
+            border-right: 0.5px solid #000;
+        }
+
+        .program-desc {
+            padding: 24px 32px;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1.9;
+        }
+
+        .programs-more {
+            max-width: 1000px;
+            margin: 24px auto 0;
+            text-align: right;
+        }
+
+        .programs-more a {
+            font-size: 16px;
+            font-weight: 400;
+            color: #52B9DA;
+            text-decoration: none;
+        }
+
+        .programs-more a:hover {
+            text-decoration: underline;
+        }
+
+        /* ── Values & motto ── */
+        .values {
+            border-bottom: 0.5px solid #000;
+            padding: 160px 48px;
+            text-align: center;
+        }
+
+        .values-heading {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 36px;
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: -0.01em;
+            margin-bottom: 56px;
+        }
+
+        .values-block {
+            margin-bottom: 44px;
+        }
+
+        .values-block:last-child {
+            margin-bottom: 0;
+        }
+
+        .values-label {
+            font-size: 14px;
+            font-weight: 400;
+            color: #999;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+        }
+
+        .values-motto {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 36px;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+        }
+
+        .values-list {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .values-list li {
+            padding: 0 18px;
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 1.4;
+            border-right: 0.5px solid #ccc;
+        }
+
+        .values-list li:last-child {
+            border-right: none;
+        }
+
+        .values-oath {
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 1.9;
+            max-width: 640px;
+            margin: 0 auto;
+        }
+
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            border-bottom: 0.5px solid #000;
+        }
+
+        .two-col-left {
+            padding: 0;
+            border-right: 0.5px solid #000;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .map-wrapper {
+            position: relative;
+            flex: 1;
+            min-height: 480px;
+        }
+
+        .map-wrapper iframe {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+
+        .map-overlay {
+            position: absolute;
+            inset: 0;
+            z-index: 10;
+            cursor: pointer;
+            background: transparent;
+        }
+
+
+        .two-col-right {
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .right-inner {
+            flex: 1;
+            display: grid;
+        }
+
+        .right-text, .right-image {
+            grid-area: 1 / 1;
+            transition: opacity 0.8s ease;
+        }
+
+        .right-text {
+            padding: 60px 64px;
+        }
+
+        .right-image {
+            opacity: 0;
+            pointer-events: none;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .right-inner.show-cert .right-text {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .right-inner.show-cert .right-image {
+            opacity: 1;
+            cursor: pointer;
+        }
+
+        .cert-link {
+            display: inline;
+            color: #52B9DA;
+            cursor: pointer;
+            text-decoration: underline;
+            font-size: 18px;
+        }
+
+        .right-text p {
+            font-size: 18px;
+            margin-bottom: 1.2em;
+        }
+
+        .right-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ── Campus news preview ── */
+        .news-preview {
+            border-bottom: 0.5px solid #000;
+            padding: 160px 48px;
+            background: #fafafa;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .news-grid-card {
+            border: 0.5px solid #000;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            background: #fff;
+        }
+
+        .news-grid-card:hover { background-color: #f5f5f5; }
+
+        .news-grid-card .news-slider {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 16 / 9;
+            background: #d8d8d8;
+        }
+
+        .news-grid-card .slider-track {
+            display: flex;
+            height: 100%;
+            transition: transform 0.35s ease;
+        }
+
+        .news-grid-card .slide {
+            min-width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .news-grid-card .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-family: 'Courier Prime', monospace;
+            font-size: 28px;
+            line-height: 1;
+            padding: 4px 8px;
+            color: #fff;
+            transition: opacity 0.2s ease;
+            z-index: 2;
+        }
+
+        .news-grid-card .slider-btn:hover { opacity: 0.7; }
+        .news-grid-card .slider-btn.prev { left: 0; }
+        .news-grid-card .slider-btn.next { right: 0; }
+
+        .news-grid-card .slider-dots {
+            position: absolute;
+            bottom: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 6px;
+            z-index: 2;
+        }
+
+        .news-grid-card .dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.55);
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .news-grid-card .dot.active { background: #fff; }
+
+        .news-grid-body {
+            padding: 10px 14px;
+            border-top: 0.5px solid #000;
+        }
+
+        .news-grid-date {
+            font-size: 14px;
+            color: #999;
+            line-height: 1.6;
+        }
+
+        .news-grid-title {
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        @media (max-width: 768px) {
+            .hero-banner { height: auto; min-height: 320px; padding: 40px 16px; }
+            .hero-content { padding: 28px 22px; }
+            .hero-title { font-size: 26px; line-height: 1.3; margin-bottom: 14px; }
+            .hero-subtitle { font-size: 15px; margin-bottom: 22px; }
+            .hero-buttons { flex-direction: column; gap: 12px; }
+            .hero-btn { width: 100%; }
+            .stats-band { padding: 40px 16px; }
+            .stats-grid { grid-template-columns: 1fr; }
+            .stat-item { border-right: none; border-bottom: 0.5px solid #000; padding: 24px 16px; }
+            .stat-item:last-child { border-bottom: none; }
+            .stat-num { font-size: 40px; }
+            .why-via { padding: 40px 16px; }
+            .why-via-heading { font-size: 26px; margin-bottom: 32px; }
+            .why-grid { grid-template-columns: 1fr; }
+            .why-card { padding: 28px 20px; border-right: none; }
+            .why-card:nth-last-child(-n+2) { border-bottom: 0.5px solid #000; }
+            .why-card:last-child { border-bottom: none; }
+            .programs { padding: 40px 16px; }
+            .programs-heading { font-size: 26px; margin-bottom: 32px; }
+            .program-row { grid-template-columns: 1fr; }
+            .program-name { border-right: none; padding: 20px 16px 4px; }
+            .program-desc { padding: 0 16px 20px; }
+            .values { padding: 40px 16px; }
+            .values-heading { font-size: 26px; margin-bottom: 40px; }
+            .values-motto { font-size: 28px; }
+            .values-list li { padding: 0 12px; font-size: 16px; }
+            .values-oath { font-size: 16px; }
+            .two-col { grid-template-columns: 1fr; }
+            .two-col-left {
+                padding: 24px 16px;
+                border-right: none;
+                border-bottom: 0.5px solid #000;
+            }
+            .right-text { padding: 24px 16px; }
+            .news-preview { padding: 40px 16px; }
+            .news-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 480px) {
+            .news-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div id="header-placeholder"></div>
+
+<div class="hero-banner">
+    <div class="hero-image" style="background-image: url('/assets/maurertown-landscape.png');"></div>
+    <div class="hero-content">
+        <h1 class="hero-title">The first U.S. boarding middle & high school built for young international students</h1>
+        <p class="hero-subtitle">We guide students in Grades 7–12 through their first years abroad: mastering English, keeping pace academically, learning to live independently, and earning a place at the U.S. university that fits them.</p>
+        <div class="hero-buttons">
+            <a href="/en/about-us.html" class="hero-btn">Book a Campus Visit</a>
+            <a href="/en/admission.html" class="hero-btn">Apply</a>
+        </div>
+    </div>
+</div>
+
+<main class="main-content">
+    <section class="stats-band">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-num">2012</div>
+                <div class="stat-desc">Founded; fifteen years dedicated to young international education</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-num">250+</div>
+                <div class="stat-desc">Alumni enrolled to date</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-num">1 hour</div>
+                <div class="stat-desc">Drive from Washington, D.C.</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-num">100</div>
+                <div class="stat-desc">Maximum enrollment; a small campus with close attention</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-num">7–12</div>
+                <div class="stat-desc">Complete middle and high school education</div>
+            </div>
+        </div>
+        <div class="stats-schools">
+            <p class="stats-schools-label">Where our graduates go</p>
+            <p class="stats-schools-list">Harvard University · University of Pennsylvania · Columbia University · New York University · University of Virginia · University of Southern California · UCLA · UC Berkeley · Georgia Tech · Emory University, and more</p>
+        </div>
+    </section>
+    <section class="why-via">
+        <h2 class="why-via-heading">Why VIA</h2>
+        <div class="why-grid">
+            <div class="why-card">
+                <h3 class="why-card-title">A school designed for international students</h3>
+                <p class="why-card-text">VIA is the first international school in the U.S. built to help young students transition smoothly. Its curriculum combines American middle and high school academics, language and cultural transition courses, and U.S. college navigation and advising. Rather than fitting international students into a system built for American children, VIA was built for them from day one.</p>
+                <a class="why-card-link" href="/en/educational-programs.html">Explore our programs →</a>
+            </div>
+            <div class="why-card">
+                <h3 class="why-card-title">A mentor for every student</h3>
+                <p class="why-card-text">Every VIA student is assigned a mentor who meets with them every one to two weeks for an in-depth conversation. Academics, roommates, health, wellbeing, communication with parents: whatever a student faces in America, one steady adult is following up.</p>
+                <a class="why-card-link" href="/en/student-life.html">Explore student life →</a>
+            </div>
+            <div class="why-card">
+                <h3 class="why-card-title">A brand-new 2025 campus</h3>
+                <p class="why-card-text">Our new campus in Maurertown, Virginia was fully renovated in 2025: classrooms, dormitories, and dining hall all made new. Shenandoah County Park, just across the road, offers tennis, basketball, baseball, and disc golf. The dining hall serves a blend of Chinese and Western cuisine that alumni call the gold standard of American school cafeterias.</p>
+                <a class="why-card-link" href="/en/student-life.html">See the campus →</a>
+            </div>
+            <div class="why-card">
+                <h3 class="why-card-title">An accredited diploma education</h3>
+                <p class="why-card-text">VIA is accredited by a regional accreditation body designated by the U.S. Department of Education, offering genuine middle and high school diploma education.</p>
+                <a class="why-card-link" href="/en/about-us.html">View VIA's accreditation →</a>
+            </div>
+        </div>
+    </section>
+    <section class="programs">
+        <h2 class="programs-heading">Educational Programs</h2>
+        <div class="programs-list">
+            <div class="program-row">
+                <div class="program-name">Middle School (Grades 7–8)</div>
+                <div class="program-desc">Strengthen English foundations, bridge into the American curriculum, and prepare for high school</div>
+            </div>
+            <div class="program-row">
+                <div class="program-name">High School (Grades 9–12)</div>
+                <div class="program-desc">A complete American high school diploma education, including college navigation and advising</div>
+            </div>
+            <div class="program-row">
+                <div class="program-name">Summer & Winter Camps</div>
+                <div class="program-desc">Short-term experiences of American campus study and life</div>
+            </div>
+            <div class="program-row">
+                <div class="program-name">Inter-school Partnerships</div>
+                <div class="program-desc">Collaborative programs with U.S. schools and institutions</div>
+            </div>
+        </div>
+        <div class="programs-more">
+            <a href="/en/educational-programs.html">See the full curriculum →</a>
+        </div>
+    </section>
+    <div class="two-col">
+        <div class="two-col-left">
+            <div class="map-wrapper">
+                <iframe
+                    src="https://www.openstreetmap.org/export/embed.html?bbox=-78.60%2C38.82%2C-78.53%2C38.88&layer=mapnik&marker=38.8514%2C-78.5661"
+                    loading="lazy"
+                    title="Virginia International Academy map">
+                </iframe>
+                <div class="map-overlay" id="map-overlay"></div>
+            </div>
+        </div>
+        <div class="two-col-right">
+            <div class="right-inner">
+                <div class="right-text">
+                    <p>Virginia International Academy was founded in 2012 as an independent, secular international school dedicated to preparing international students for study at U.S. high schools and universities.</p>
+                    <p>In 2013 we began enrolling students from China at our campus in Front Royal, Virginia, starting with 15 students in Grades 7–9. Between 2013 and 2022, more than 250 students studied at VIA, going on to Harvard, the University of Pennsylvania, Columbia, NYU, the University of Virginia, USC, UCLA, UC Berkeley, Georgia Tech, Emory, and other leading U.S. universities.</p>
+                    <p>In 2022 we sold the Front Royal campus and expanded into high school education. In 2025 we acquired a new campus in Maurertown, Virginia, with capacity for 100 students, where we now educate both middle and high school students.</p>
+                    <p>VIA is accredited by a regional accreditation body designated by the U.S. Department of Education, offering genuine middle and high school diploma education.</p>
+                    <p><span class="cert-link" id="cert-trigger">View VIA's accreditation certificate</span></p>
+                </div>
+                <img class="right-image" src="/assets/certificate.gif" alt="Certificate of Accreditation">
+            </div>
+        </div>
+    </div>
+    <div class="news-preview">
+        <div class="news-grid">
+
+            <div class="news-grid-card" onclick="window.location='/en/news.html'">
+                <div class="news-slider">
+                    <div class="slider-track">
+                        <div class="slide" style="background-color: #c8d8e0;"></div>
+                        <div class="slide" style="background-color: #d0c8e0;"></div>
+                        <div class="slide" style="background-color: #e0d8c8;"></div>
+                    </div>
+                    <button class="slider-btn prev">&#8249;</button>
+                    <button class="slider-btn next">&#8250;</button>
+                    <div class="slider-dots">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                </div>
+                <div class="news-grid-body">
+                    <p class="news-grid-date">May 2026</p>
+                    <p class="news-grid-title">Class of 2026 Commencement</p>
+                </div>
+            </div>
+
+            <div class="news-grid-card" onclick="window.location='/en/news.html'">
+                <div class="news-slider">
+                    <div class="slider-track">
+                        <div class="slide" style="background-color: #d8e0c8;"></div>
+                        <div class="slide" style="background-color: #e0c8c8;"></div>
+                    </div>
+                    <button class="slider-btn prev">&#8249;</button>
+                    <button class="slider-btn next">&#8250;</button>
+                    <div class="slider-dots">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                    </div>
+                </div>
+                <div class="news-grid-body">
+                    <p class="news-grid-date">March 2026</p>
+                    <p class="news-grid-title">MATHCOUNTS Competition</p>
+                </div>
+            </div>
+
+            <div class="news-grid-card" onclick="window.location='/en/news.html'">
+                <div class="news-slider">
+                    <div class="slider-track">
+                        <div class="slide" style="background-color: #e8d8c0;"></div>
+                        <div class="slide" style="background-color: #c0d8e8;"></div>
+                        <div class="slide" style="background-color: #d8e8c0;"></div>
+                        <div class="slide" style="background-color: #e8c0d8;"></div>
+                    </div>
+                    <button class="slider-btn prev">&#8249;</button>
+                    <button class="slider-btn next">&#8250;</button>
+                    <div class="slider-dots">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                </div>
+                <div class="news-grid-body">
+                    <p class="news-grid-date">November 2025</p>
+                    <p class="news-grid-title">Thanksgiving Celebration</p>
+                </div>
+            </div>
+
+            <div class="news-grid-card" onclick="window.location='/en/news.html'">
+                <div class="news-slider">
+                    <div class="slider-track">
+                        <div class="slide" style="background-color: #c8c8d8;"></div>
+                        <div class="slide" style="background-color: #d8c8c8;"></div>
+                    </div>
+                    <button class="slider-btn prev">&#8249;</button>
+                    <button class="slider-btn next">&#8250;</button>
+                    <div class="slider-dots">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                    </div>
+                </div>
+                <div class="news-grid-body">
+                    <p class="news-grid-date">October 2025</p>
+                    <p class="news-grid-title">Washington, D.C. Museum Trip</p>
+                </div>
+            </div>
+
+            <div class="news-grid-card" onclick="window.location='/en/news.html'">
+                <div class="news-slider">
+                    <div class="slider-track">
+                        <div class="slide" style="background-color: #d0e0d0;"></div>
+                        <div class="slide" style="background-color: #e0d0d0;"></div>
+                        <div class="slide" style="background-color: #d0d0e0;"></div>
+                    </div>
+                    <button class="slider-btn prev">&#8249;</button>
+                    <button class="slider-btn next">&#8250;</button>
+                    <div class="slider-dots">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                </div>
+                <div class="news-grid-body">
+                    <p class="news-grid-date">October 2025</p>
+                    <p class="news-grid-title">Campus Basketball League</p>
+                </div>
+            </div>
+
+            <div class="news-grid-card" onclick="window.location='/en/news.html'">
+                <div class="news-slider">
+                    <div class="slider-track">
+                        <div class="slide" style="background-color: #dce8e0;"></div>
+                        <div class="slide" style="background-color: #e8dce0;"></div>
+                    </div>
+                    <button class="slider-btn prev">&#8249;</button>
+                    <button class="slider-btn next">&#8250;</button>
+                    <div class="slider-dots">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                    </div>
+                </div>
+                <div class="news-grid-body">
+                    <p class="news-grid-date">September 2025</p>
+                    <p class="news-grid-title">2025 New Student Orientation</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <section class="values">
+        <h2 class="values-heading">Values & Motto</h2>
+        <div class="values-block">
+            <p class="values-label">Motto</p>
+            <p class="values-motto">Learning and Growth</p>
+        </div>
+        <div class="values-block">
+            <p class="values-label">Core Values</p>
+            <ul class="values-list">
+                <li>Gratitude</li>
+                <li>Dignity</li>
+                <li>Enthusiasm</li>
+                <li>Engagement</li>
+                <li>Independence</li>
+                <li>Maturity</li>
+                <li>Responsibility</li>
+            </ul>
+        </div>
+        <div class="values-block">
+            <p class="values-label">Honor Code</p>
+            <p class="values-oath">I will not lie, cheat, or steal. I will be responsible for upholding the school's honor code.</p>
+        </div>
+    </section>
+</main>
+
+<div id="footer-placeholder"></div>
+
+<script>
+    function loadComponent(id, url) {
+        fetch(url, { cache: 'no-store' })
+            .then(function(r) { return r.text(); })
+            .then(function(html) {
+                var parser = new DOMParser();
+                var doc = parser.parseFromString(html, 'text/html');
+                var placeholder = document.getElementById(id);
+                var body = doc.body;
+                while (body.firstChild) {
+                    placeholder.appendChild(body.firstChild);
+                }
+                doc.querySelectorAll('style').forEach(function(s) {
+                    document.head.appendChild(s.cloneNode(true));
+                });
+                doc.querySelectorAll('script').forEach(function(s) {
+                    var script = document.createElement('script');
+                    script.textContent = s.textContent;
+                    document.body.appendChild(script);
+                });
+            });
+    }
+    loadComponent('header-placeholder', '/header & footer/header-en.html');
+    loadComponent('footer-placeholder', '/header & footer/footer.html');
+
+    // Map interaction lock
+    var mapOverlay = document.getElementById('map-overlay');
+    mapOverlay.addEventListener('click', function(e) {
+        e.stopPropagation();
+        mapOverlay.style.display = 'none';
+    });
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.map-wrapper')) {
+            mapOverlay.style.display = '';
+        }
+    });
+
+    // Campus news carousel
+    document.querySelectorAll('.news-grid-card').forEach(function(card) {
+        var slider = card.querySelector('.news-slider');
+        if (!slider) return;
+        var track = slider.querySelector('.slider-track');
+        var dots = slider.querySelectorAll('.dot');
+        var prevBtn = slider.querySelector('.prev');
+        var nextBtn = slider.querySelector('.next');
+        var total = slider.querySelectorAll('.slide').length;
+        var current = 0;
+
+        if (total <= 1) {
+            if (prevBtn) prevBtn.style.display = 'none';
+            if (nextBtn) nextBtn.style.display = 'none';
+            var dotsEl = slider.querySelector('.slider-dots');
+            if (dotsEl) dotsEl.style.display = 'none';
+            return;
+        }
+
+        function goTo(index) {
+            current = (index + total) % total;
+            track.style.transform = 'translateX(-' + (current * 100) + '%)';
+            dots.forEach(function(d, i) { d.classList.toggle('active', i === current); });
+        }
+
+        prevBtn.addEventListener('click', function(e) { e.stopPropagation(); goTo(current - 1); });
+        nextBtn.addEventListener('click', function(e) { e.stopPropagation(); goTo(current + 1); });
+        dots.forEach(function(dot, i) {
+            dot.addEventListener('click', function(e) { e.stopPropagation(); goTo(i); });
+        });
+
+        var touchStartX = 0;
+        slider.addEventListener('touchstart', function(e) { touchStartX = e.touches[0].clientX; }, { passive: true });
+        slider.addEventListener('touchend', function(e) {
+            var diff = touchStartX - e.changedTouches[0].clientX;
+            if (Math.abs(diff) > 40) goTo(diff > 0 ? current + 1 : current - 1);
+        });
+    });
+
+    var inner = document.querySelector('.right-inner');
+    document.getElementById('cert-trigger').addEventListener('click', function(e) {
+        e.stopPropagation();
+        inner.classList.add('show-cert');
+    });
+    document.addEventListener('click', function() {
+        inner.classList.remove('show-cert');
+    });
+
+</script>
+
+</body>
+</html>
