@@ -166,6 +166,68 @@
             color: #333;
         }
 
+        /* ── 为什么选择 VIA ── */
+        .why-via {
+            border-bottom: 0.5px solid #000;
+            padding: 80px 48px;
+        }
+
+        .why-via-heading {
+            font-size: 28px;
+            font-weight: 600;
+            line-height: 1.4;
+            letter-spacing: 0.04em;
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            max-width: 1100px;
+            margin: 0 auto;
+            border: 0.5px solid #000;
+        }
+
+        .why-card {
+            padding: 40px 44px;
+            border-right: 0.5px solid #000;
+            border-bottom: 0.5px solid #000;
+        }
+
+        .why-card:nth-child(2n) {
+            border-right: none;
+        }
+
+        .why-card:nth-last-child(-n+2) {
+            border-bottom: none;
+        }
+
+        .why-card-title {
+            font-size: 20px;
+            font-weight: 600;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .why-card-text {
+            font-size: 16px;
+            font-weight: 200;
+            line-height: 1.9;
+            margin-bottom: 20px;
+        }
+
+        .why-card-link {
+            font-size: 16px;
+            font-weight: 200;
+            color: #52B9DA;
+            text-decoration: none;
+        }
+
+        .why-card-link:hover {
+            text-decoration: underline;
+        }
+
         .two-col {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -368,6 +430,12 @@
             .stat-item { border-right: none; border-bottom: 0.5px solid #000; padding: 24px 16px; }
             .stat-item:last-child { border-bottom: none; }
             .stat-num { font-size: 34px; }
+            .why-via { padding: 48px 16px; }
+            .why-via-heading { font-size: 22px; margin-bottom: 32px; }
+            .why-grid { grid-template-columns: 1fr; }
+            .why-card { padding: 28px 20px; border-right: none; }
+            .why-card:nth-last-child(-n+2) { border-bottom: 0.5px solid #000; }
+            .why-card:last-child { border-bottom: none; }
             .two-col { grid-template-columns: 1fr; }
             .two-col-left {
                 padding: 24px 16px;
@@ -427,6 +495,31 @@
         <div class="stats-schools">
             <p class="stats-schools-label">毕业生入读院校</p>
             <p class="stats-schools-list">哈佛大学 · 宾夕法尼亚大学 · 哥伦比亚大学 · 纽约大学 · 维吉尼亚大学 · 南加州大学 · 加州大学洛杉矶分校 · 加州大学伯克利分校 · 乔治亚理工大学 · 埃默里大学 等</p>
+        </div>
+    </section>
+    <section class="why-via">
+        <h2 class="why-via-heading">为什么选择 VIA</h2>
+        <div class="why-grid">
+            <div class="why-card">
+                <h3 class="why-card-title">为国际学生而设计的学校</h3>
+                <p class="why-card-text">VIA是全美最早的一所旨在帮助国际学生在低龄留学阶段平稳过渡的国际学校。课程包括美国初高中文化课、国际学生语言与文化过渡课程，以及美国大学升学培训与指导：不是把国际学生塞进为美国孩子设计的体系，而是从第一天起就为他们而建。</p>
+                <a class="why-card-link" href="/cn/educational-programs.html">了解教育项目 →</a>
+            </div>
+            <div class="why-card">
+                <h3 class="why-card-title">每个孩子都有一位导师</h3>
+                <p class="why-card-text">VIA为每一位学生指定一位导师，每一到两周进行一次深入谈话。学业、室友关系、健康、心理、和家长之间的沟通：孩子在美国遇到的任何问题，都有一位固定的大人在跟进。</p>
+                <a class="why-card-link" href="/cn/student-life.html">了解校园生活 →</a>
+            </div>
+            <div class="why-card">
+                <h3 class="why-card-title">2025年全新校园</h3>
+                <p class="why-card-text">位于维吉尼亚州茂乐镇的新校园于2025年翻建一新：教室、宿舍区、食堂焕然一新，一路之隔的仙那度县公园提供网球场、篮球场、棒球场、飞盘高尔夫等运动设施。食堂提供中西结合的自助餐，往届学生称之为美国学校食堂的"天花板"。</p>
+                <a class="why-card-link" href="/cn/student-life.html">了解校园环境 →</a>
+            </div>
+            <div class="why-card">
+                <h3 class="why-card-title">正规认证的学历教育</h3>
+                <p class="why-card-text">VIA通过美国教育部指定的地区认证机构认证，是一所正规提供初中和高中学历教育的学校。</p>
+                <a class="why-card-link" href="/cn/about-us.html">查看VIA教育认证证书 →</a>
+            </div>
         </div>
     </section>
     <div class="two-col">
