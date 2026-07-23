@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Student Life — Virginia International Academy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scrollbar-gutter: stable; }
+
+        body {
+            font-family: 'Courier Prime', monospace;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1.9;
+            color: #000;
+            background: #fff;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .page-layout {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 360px 1fr;
+            border-bottom: 0.5px solid #000;
+        }
+
+        .sidebar {
+            border-right: 0.5px solid #000;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar-item {
+            padding: 16px 40px;
+            border-bottom: 0.5px solid #000;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 400;
+            color: #000;
+            transition: background-color 0.25s ease, color 0.25s ease;
+            user-select: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .sidebar-item:hover,
+        .sidebar-item.active {
+            background-color: #fc5b39;
+            color: #fff;
+        }
+
+        .content-area {
+            padding: 60px 64px;
+            display: grid;
+        }
+
+        .content-panel {
+            grid-area: 1 / 1;
+            visibility: hidden;
+        }
+
+        .content-panel.active {
+            visibility: visible;
+        }
+
+        .content-table {
+            width: 100%;
+            max-width: 1000px;
+            border-collapse: collapse;
+            border: 0.5px solid #000;
+        }
+
+        .content-table td {
+            border: 0.5px solid #000;
+            padding: 16px 24px;
+            vertical-align: top;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1.9;
+        }
+
+        .content-table td.col-label {
+            width: 220px;
+        }
+
+        .content-table td.col-title {
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .content-table tr:hover td {
+            background-color: #52B9DA;
+            color: #fff;
+        }
+
+        @media (max-width: 768px) {
+            .page-layout { grid-template-columns: 1fr; }
+            .sidebar { border-right: none; border-bottom: 0.5px solid #000; }
+            .content-area { padding: 24px 16px; }
+
+            .content-table { width: 100%; border: 0.5px solid #000; }
+            .content-table tr { display: block; }
+            .content-table tr:not(:last-child) { border-bottom: 0.5px solid #000; }
+            .content-table td { display: block; width: 100%; border: none; }
+
+            .content-table td.col-title { padding: 16px; }
+
+            .content-table td.col-label {
+                width: 100%;
+                color: #999;
+                padding: 16px 16px 4px;
+            }
+
+            .content-table td:not(.col-label):not(.col-title) {
+                padding: 4px 16px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="header-placeholder"></div>
+
+    <div class="page-layout">
+
+        <nav class="sidebar">
+            <div class="sidebar-item active" data-target="schedule">Daily Schedule</div>
+            <div class="sidebar-item" data-target="boarding">Boarding Life</div>
+            <div class="sidebar-item" data-target="weekend">Weekend Activities</div>
+            <div class="sidebar-item" data-target="devices">Electronic Devices</div>
+            <div class="sidebar-item" data-target="language">Language Policy</div>
+        </nav>
+
+        <div class="content-area">
+
+            <!-- Daily Schedule -->
+            <div class="content-panel active" id="schedule">
+                <table class="content-table">
+                    <tr><td colspan="2" class="col-title">Daily Schedule — Monday to Friday</td></tr>
+                    <tr><td class="col-label">6:00</td><td>Quiet hours end</td></tr>
+                    <tr><td class="col-label">7:15–8:00</td><td>Breakfast</td></tr>
+                    <tr><td class="col-label">7:45</td><td>Morning roll call</td></tr>
+                    <tr><td class="col-label">8:15–8:25</td><td>Morning assembly</td></tr>
+                    <tr><td class="col-label">8:30–3:30</td><td>Classes (Periods 1–8)</td></tr>
+                    <tr><td class="col-label">12:35–1:05</td><td>Lunch</td></tr>
+                    <tr><td class="col-label">3:30–5:30</td><td>Extracurricular activities / free time</td></tr>
+                    <tr><td class="col-label">5:30–6:00</td><td>Dinner</td></tr>
+                    <tr><td class="col-label">6:30–9:20</td><td>Study hall (except Fridays)</td></tr>
+                    <tr><td class="col-label">10:20</td><td>Lights out</td></tr>
+                    <tr><td class="col-label">10:30</td><td>Quiet hours begin</td></tr>
+                    <tr><td colspan="2" class="col-title">Daily Schedule — Saturday</td></tr>
+                    <tr><td class="col-label">7:30–8:00</td><td>Breakfast</td></tr>
+                    <tr><td class="col-label">8:00–12:00</td><td>Phone time</td></tr>
+                    <tr><td class="col-label">12:00–12:30</td><td>Lunch</td></tr>
+                    <tr><td class="col-label">12:30–17:30</td><td>Walmart shopping / public library</td></tr>
+                    <tr><td class="col-label">17:30–18:00</td><td>Dinner</td></tr>
+                    <tr><td class="col-label">18:30–21:20</td><td>Free time</td></tr>
+                    <tr><td class="col-label">22:20</td><td>Lights out</td></tr>
+                    <tr><td class="col-label">22:30</td><td>Quiet hours begin</td></tr>
+                    <tr><td colspan="2" class="col-title">Daily Schedule — Sunday</td></tr>
+                    <tr><td class="col-label">7:30–8:00</td><td>Breakfast</td></tr>
+                    <tr><td class="col-label">8:00–12:00</td><td>Free time</td></tr>
+                    <tr><td class="col-label">12:00–12:30</td><td>Lunch</td></tr>
+                    <tr><td class="col-label">12:30–17:30</td><td>Organized activities</td></tr>
+                    <tr><td class="col-label">17:30–18:00</td><td>Dinner</td></tr>
+                    <tr><td class="col-label">18:30–21:20</td><td>Evening study hall</td></tr>
+                    <tr><td class="col-label">22:20</td><td>Lights out</td></tr>
+                    <tr><td class="col-label">22:30</td><td>Quiet hours begin</td></tr>
+                </table>
+            </div>
+
+            <!-- Boarding Life -->
+            <div class="content-panel" id="boarding">
+                <table class="content-table">
+                    <tr><td colspan="2" class="col-title">Boarding Life</td></tr>
+                    <tr><td class="col-label">Mentor Program</td><td>Every student is assigned a mentor who meets with them every one to two weeks to understand how they are doing and help with academics, daily life, roommate relationships, health, and wellbeing. Students are encouraged to reach out to teachers, and mentors coordinate with the school, parents, and professionals when needed.</td></tr>
+                    <tr><td class="col-label">Dormitories</td><td>Fully renovated in spring 2025, with separate wings for boys and girls. Rooms are bright and comfortable, some with private bathrooms, housing 2–4 students each. Students keep their own rooms clean; shared bathrooms fully protect privacy, common areas are cleaned daily, and residential staff conduct daily checks.</td></tr>
+                    <tr><td class="col-label">Dining Hall</td><td>Buffet-style meals blending Chinese and Western cuisine, with staff and students dining together. Lunch and dinner each offer 3–5 main dishes plus rice, bread, soup, salad, drinks, and milk. Alumni consistently call the VIA dining hall the gold standard of American school cafeterias.</td></tr>
+                    <tr><td class="col-label">Laundry</td><td>Full-size washers and dryers are available for free in each dormitory wing; students buy their own detergent and dryer sheets. Learning to use the machines properly is treated as part of the school's education.</td></tr>
+                    <tr><td class="col-label">Activity Areas & Park</td><td>On-campus common areas offer board games, ping-pong tables, and reading areas. Shenandoah County Park next door provides baseball, tennis, and volleyball courts, basketball courts, disc golf, and walking trails, which students may use free of charge with a teacher.</td></tr>
+                </table>
+            </div>
+
+            <!-- Weekend Activities -->
+            <div class="content-panel" id="weekend">
+                <table class="content-table">
+                    <tr><td colspan="2" class="col-title">Weekend Activities</td></tr>
+                    <tr><td class="col-label">Friday Evening</td><td>The weekend begins after Friday dinner with no study hall. Teachers and students often watch sports or shows together, or play games.</td></tr>
+                    <tr><td class="col-label">Saturday Morning</td><td>Phone time runs 8:00 a.m. to 12:00 p.m. Students may use the school Wi-Fi to make video or voice calls home and ease the week's stress.</td></tr>
+                    <tr><td class="col-label">Saturday Afternoon</td><td>Staff drive students by school van to a nearby Walmart (students may use a weekly $20 allowance for personal items or snacks) and to the public library.</td></tr>
+                    <tr><td class="col-label">Sunday</td><td>A wide range of organized activities: watching games and competitions, visiting exhibitions, touring Washington, D.C. museums and landmarks, hiking, fishing, rafting, zip-lining, shopping, movies, and food exploration.</td></tr>
+                    <tr><td class="col-label">Sunday Evening</td><td>After dinner, students attend evening study hall to prepare for the week ahead.</td></tr>
+                </table>
+            </div>
+
+            <!-- Electronic Devices -->
+            <div class="content-panel" id="devices">
+                <table class="content-table">
+                    <tr><td colspan="2" class="col-title">Electronic Device Policy</td></tr>
+                    <tr><td class="col-label">Phones (Grades 7–9)</td><td>Each student may bring one phone, held by staff. It may be used only on Saturdays from 8:00 a.m. to 12:00 p.m., with school Wi-Fi. Teachers decide whether phones may be carried on weekend outings. Misuse may result in suspension of phone privileges; the school may inspect phone content.</td></tr>
+                    <tr><td class="col-label">Computers (Grades 7–9)</td><td>Laptops may not be brought to school.</td></tr>
+                    <tr><td class="col-label">Computers (Grades 10–12)</td><td>In addition to a phone, one laptop may be brought for academic use, held by staff and used only in designated locations under supervision.</td></tr>
+                    <tr><td class="col-label">Prohibited Devices</td><td>Internet-capable tablets (e.g., iPad), media players, smartwatches, and e-readers (e.g., Kindle) are not permitted. Music devices may not be used during class, meals, or study hall.</td></tr>
+                    <tr><td class="col-label">Violations</td><td>Using a phone or internet-capable device at a prohibited time or place is a serious violation. The device is confiscated without return, and further discipline — including expulsion — may follow.</td></tr>
+                </table>
+            </div>
+
+            <!-- Language Policy -->
+            <div class="content-panel" id="language">
+                <table class="content-table">
+                    <tr><td colspan="2" class="col-title">Language Policy</td></tr>
+                    <tr><td class="col-label">Background</td><td>VIA understands that international students are used to their native language, but relying on it hinders communication with American teachers and slows English development. Students are encouraged to join class discussions and interact often with teachers and American peers as active members of the community.</td></tr>
+                    <tr><td class="col-label">Dormitory Exception</td><td>Dormitory rooms are students' rest space and are exempt from the policy. Students who are sick or injured and cannot express themselves accurately in English may speak with staff in their native language.</td></tr>
+                    <tr><td class="col-label">Where It Applies</td><td>English is required in all public areas — the dining hall, classrooms, school van, gymnasium, and hallways.</td></tr>
+                    <tr><td class="col-label">Penalties</td><td>Each week from Sunday, students who do not use English as required may face penalties such as a verbal warning, push-ups, restricted activities, or reduced/cancelled weekend phone time.</td></tr>
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+
+    <script>
+        const items = document.querySelectorAll('.sidebar-item');
+        const panels = document.querySelectorAll('.content-panel');
+
+        items.forEach(item => {
+            item.addEventListener('click', () => {
+                items.forEach(i => i.classList.remove('active'));
+                panels.forEach(p => p.classList.remove('active'));
+                item.classList.add('active');
+                document.getElementById(item.dataset.target).classList.add('active');
+            });
+        });
+
+        async function loadComponent(placeholderId, path) {
+            try {
+                const res = await fetch(path, { cache: 'no-store' });
+                const html = await res.text();
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+                doc.querySelectorAll('style').forEach(el => {
+                    document.head.appendChild(el.cloneNode(true));
+                });
+                const placeholder = document.getElementById(placeholderId);
+                placeholder.innerHTML = doc.body.innerHTML;
+                placeholder.querySelectorAll('script').forEach(old => {
+                    const s = document.createElement('script');
+                    s.textContent = old.textContent;
+                    old.replaceWith(s);
+                });
+            } catch (e) {
+                console.warn('Failed to load component:', path, e);
+            }
+        }
+
+        loadComponent('header-placeholder', '../header%20%26%20footer/header-en.html');
+        loadComponent('footer-placeholder', '../header%20%26%20footer/footer.html');
+    </script>
+
+</body>
+</html>

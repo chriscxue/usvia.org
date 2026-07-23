@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Admission — Virginia International Academy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scrollbar-gutter: stable; }
+
+        body {
+            font-family: 'Courier Prime', monospace;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1.9;
+            color: #000;
+            background: #fff;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .page-layout {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 360px 1fr;
+            border-bottom: 0.5px solid #000;
+        }
+
+        .sidebar {
+            border-right: 0.5px solid #000;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar-item {
+            padding: 16px 40px;
+            border-bottom: 0.5px solid #000;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 400;
+            color: #000;
+            transition: background-color 0.25s ease, color 0.25s ease;
+            user-select: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .sidebar-item:hover,
+        .sidebar-item.active {
+            background-color: #fc5b39;
+            color: #fff;
+        }
+
+        .content-area {
+            padding: 60px 64px;
+            display: grid;
+        }
+
+        .content-panel {
+            grid-area: 1 / 1;
+            visibility: hidden;
+        }
+
+        .content-panel.active {
+            visibility: visible;
+        }
+
+        .content-table {
+            width: 100%;
+            max-width: 1000px;
+            border-collapse: collapse;
+            border: 0.5px solid #000;
+        }
+
+        .content-table td {
+            border: 0.5px solid #000;
+            padding: 16px 24px;
+            vertical-align: top;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1.9;
+        }
+
+        .content-table td.col-label {
+            width: 220px;
+        }
+
+        .content-table td.col-title {
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .content-table tr:hover td {
+            background-color: #52B9DA;
+            color: #fff;
+        }
+
+        .content-table a { color: inherit; }
+
+        .content-table ul {
+            margin-left: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .page-layout { grid-template-columns: 1fr; }
+            .sidebar { border-right: none; border-bottom: 0.5px solid #000; }
+            .content-area { padding: 24px 16px; }
+
+            .content-table { width: 100%; border: 0.5px solid #000; }
+            .content-table tr { display: block; }
+            .content-table tr:not(:last-child) { border-bottom: 0.5px solid #000; }
+            .content-table td { display: block; width: 100%; border: none; }
+
+            .content-table td.col-title { padding: 16px; }
+
+            .content-table td.col-label {
+                width: 100%;
+                color: #999;
+                padding: 16px 16px 4px;
+            }
+
+            .content-table td:not(.col-label):not(.col-title) {
+                padding: 4px 16px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="header-placeholder"></div>
+
+    <div class="page-layout">
+
+        <nav class="sidebar">
+            <div class="sidebar-item active" data-target="welcome">Welcome</div>
+            <div class="sidebar-item" data-target="process">Admission Process</div>
+            <div class="sidebar-item" data-target="tuition">Tuition</div>
+            <div class="sidebar-item" data-target="faq">FAQ</div>
+        </nav>
+
+        <div class="content-area">
+
+            <!-- Welcome -->
+            <div class="content-panel active" id="welcome">
+                <table class="content-table">
+                    <tr><td colspan="2" class="col-title">Welcome to VIA</td></tr>
+                    <tr><td class="col-label">Welcome</td><td>Congratulations on discovering VIA — a school truly suited to your child's journey through the early years of studying abroad. We are honored to share what sets us apart: the people, the environment, and the programs that make VIA the right American school for young international students.</td></tr>
+                    <tr><td class="col-label">Campus Visit</td><td>Once you have learned the basics online, we warmly invite you to bring your child for a campus visit. You can tour the campus, sit in on classes, and meet our teachers and students to understand what makes VIA different.</td></tr>
+                    <tr><td class="col-label">Start Your Application</td><td>Email <a href="mailto:apply@usvia.org">apply@usvia.org</a> to begin.</td></tr>
+                </table>
+            </div>
+
+            <!-- Admission Process -->
+            <div class="content-panel" id="process">
+                <table class="content-table">
+                    <tr><td colspan="2" class="col-title">Admission Process</td></tr>
+                    <tr><td class="col-label">Step 1</td><td>Parents email <a href="mailto:apply@usvia.org">apply@usvia.org</a> with the child's name, gender, age, current grade, and intended program. VIA sends an application form.</td></tr>
+                    <tr><td class="col-label">Step 2</td><td>Parents and student complete the form together, scan it as a PDF, and return it to apply@usvia.org (do not send photos of the pages).</td></tr>
+                    <tr><td class="col-label">Step 3</td><td>Pay the application fee.</td></tr>
+                    <tr><td class="col-label">Step 4</td><td>After receiving the form and fee, VIA contacts you to schedule the student's WeChat video interview and written examination.</td></tr>
+                    <tr><td class="col-label">Step 5</td><td>Interview and test results are reviewed by the admissions committee. If accepted, VIA sends an enrollment agreement to sign, scan, and return; the contract takes effect once the principal countersigns.</td></tr>
+                    <tr><td class="col-label">Step 6</td><td>Pay the non-refundable tuition deposit of $5,000.</td></tr>
+                    <tr><td class="col-label">Step 7</td><td>VIA issues the I-20 and acceptance letter and pays the SEVIS I-901 fee. The three documents are sent to you so the student can apply for a student visa.</td></tr>
+                    <tr><td class="col-label">Step 8</td><td>If you would like help with the visa interview, VIA can recommend a travel agency (paid directly). Parents may also apply on their own.</td></tr>
+                    <tr><td class="col-label">Step 9</td><td>Within 10 business days of the visa being approved, parents pay the remaining tuition and personal activity account funds.</td></tr>
+                    <tr><td class="col-label">Step 10</td><td>Parents purchase flights for the designated arrival date and notify VIA to arrange airport pickup.</td></tr>
+                </table>
+            </div>
+
+            <!-- Tuition -->
+            <div class="content-panel" id="tuition">
+                <table class="content-table">
+                    <tr><td colspan="2" class="col-title">Tuition (2025–26 Academic Year)</td></tr>
+                    <tr><td class="col-label">Boarding, Grades 7–9</td><td>$82,000 / year</td></tr>
+                    <tr><td class="col-label">Boarding, Grades 9–12</td><td>$75,000 / year</td></tr>
+                    <tr><td class="col-label">Domestic Day, Grades 7–9</td><td>$25,000 / year</td></tr>
+                    <tr><td class="col-label">Domestic Day, Grades 9–12</td><td>$22,000 / year</td></tr>
+                    <tr><td class="col-label">Boarding Tuition Includes</td><td><ul>
+                        <li>Tuition and international student registration fee</li>
+                        <li>On-campus dormitory and three daily meals</li>
+                        <li>Weekend activity organization and supervision</li>
+                        <li>Local transportation for off-campus activities</li>
+                        <li>Academic and residential supervision</li>
+                        <li>Translation of transcripts and performance reports</li>
+                        <li>Medical care and everyday support when sick or injured</li>
+                        <li>Medical expense processing</li>
+                        <li>College application training and planning</li>
+                        <li>Dulles (IAD) airport pickup and drop-off at the start and end of the year</li>
+                    </ul></td></tr>
+                    <tr><td class="col-label">Personal Escrow Account</td><td>A minimum of $6,000 must be deposited before the school year begins. VIA manages the account and provides statements. It covers personal expenses such as health insurance (approx. $1,800/year), uniform (approx. $500), textbooks (approx. $300–400), weekly allowance ($20/week), TOEFL/SAT exam fees, Thanksgiving boarding fee ($500), and other personal costs.</td></tr>
+                    <tr><td class="col-label">Prepared Separately</td><td>Airfare; if VIA assists with the visa process, agency application and service fees are paid to the travel agency directly.</td></tr>
+                </table>
+            </div>
+
+            <!-- FAQ -->
+            <div class="content-panel" id="faq">
+                <table class="content-table">
+                    <tr><td colspan="2" class="col-title">Frequently Asked Questions</td></tr>
+                    <tr><td class="col-label">Is VIA a school or a training center?</td><td>VIA is a U.S. school accredited by a regional accreditation body designated by the U.S. Department of Education, offering middle and high school diploma education. It is not a language school, training center, or agency.</td></tr>
+                    <tr><td class="col-label">When should my child study abroad?</td><td>From our years of experience, if the family's finances allow and the student is willing and reasonably self-disciplined, a child can study abroad after completing Grade 6. The younger the student, the more easily they learn and adapt — and exposure to a new culture while their worldview is forming is a lasting benefit.</td></tr>
+                    <tr><td class="col-label">Can my child attend on a tourist visa?</td><td>No. Except for U.S. citizens or green card holders, students must obtain an F-1 student visa; a tourist visa cannot be used to attend VIA.</td></tr>
+                    <tr><td class="col-label">What are the school breaks?</td><td>The year typically runs from late August/early September to late May/early June, with three main breaks: Thanksgiving (three days), Christmas & New Year (about two weeks; students must leave campus), and Spring Break (about one week; students must leave campus).</td></tr>
+                    <tr><td class="col-label">What should we prepare before arrival?</td><td>Ensure the passport is valid; bring home-country vaccination records; treat any cavities or vision issues in advance (U.S. insurance does not cover dental or vision). Optionally, practice English typing and build reading and vocabulary before departure.</td></tr>
+                    <tr><td class="col-label">What if a student gets sick or injured?</td><td>VIA arranges health insurance for every student, effective from their first day in the U.S. A nurse visits weekly, and residential staff are trained in CPR and epinephrine administration. For anything more serious, the school arranges medical care and helps obtain medication.</td></tr>
+                    <tr><td class="col-label">How large are classes?</td><td>Students are grouped by ability. Class sizes never exceed 17 students, and some courses may have just one student depending on enrollment.</td></tr>
+                    <tr><td class="col-label">How does college counseling work?</td><td>VIA treats the U.S. college application as a full course, guiding students through the process: understanding the application, self-analysis, researching schools through official websites, and identifying colleges that fit them — building skills they can reuse for graduate school and beyond.</td></tr>
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+
+    <script>
+        const items = document.querySelectorAll('.sidebar-item');
+        const panels = document.querySelectorAll('.content-panel');
+
+        items.forEach(item => {
+            item.addEventListener('click', () => {
+                items.forEach(i => i.classList.remove('active'));
+                panels.forEach(p => p.classList.remove('active'));
+                item.classList.add('active');
+                document.getElementById(item.dataset.target).classList.add('active');
+            });
+        });
+
+        async function loadComponent(placeholderId, path) {
+            try {
+                const res = await fetch(path, { cache: 'no-store' });
+                const html = await res.text();
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+                doc.querySelectorAll('style').forEach(el => {
+                    document.head.appendChild(el.cloneNode(true));
+                });
+                const placeholder = document.getElementById(placeholderId);
+                placeholder.innerHTML = doc.body.innerHTML;
+                placeholder.querySelectorAll('script').forEach(old => {
+                    const s = document.createElement('script');
+                    s.textContent = old.textContent;
+                    old.replaceWith(s);
+                });
+            } catch (e) {
+                console.warn('Failed to load component:', path, e);
+            }
+        }
+
+        loadComponent('header-placeholder', '../header%20%26%20footer/header-en.html');
+        loadComponent('footer-placeholder', '../header%20%26%20footer/footer.html');
+    </script>
+
+</body>
+</html>
