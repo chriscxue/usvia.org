@@ -294,46 +294,107 @@
     <div id="footer-placeholder"></div>
 
     <script>
-        // 初始化所有轮播
-        document.querySelectorAll('.news-slider').forEach(function(slider) {
-            var track = slider.querySelector('.slider-track');
-            var dots = slider.querySelectorAll('.dot');
-            var prevBtn = slider.querySelector('.prev');
-            var nextBtn = slider.querySelector('.next');
-            var total = slider.querySelectorAll('.slide').length;
-            var current = 0;
+        // 初始化轮播（可对新插入的卡片重复调用）
+        function initSliders(root) {
+            root.querySelectorAll('.news-slider').forEach(function(slider) {
+                if (slider.dataset.sliderInit) return;
+                slider.dataset.sliderInit = '1';
 
-            if (total <= 1) {
-                if (prevBtn) prevBtn.style.display = 'none';
-                if (nextBtn) nextBtn.style.display = 'none';
-                slider.querySelector('.slider-dots').style.display = 'none';
-                return;
-            }
+                var track = slider.querySelector('.slider-track');
+                var dots = slider.querySelectorAll('.dot');
+                var prevBtn = slider.querySelector('.prev');
+                var nextBtn = slider.querySelector('.next');
+                var total = slider.querySelectorAll('.slide').length;
+                var current = 0;
 
-            function goTo(index) {
-                current = (index + total) % total;
-                track.style.transform = 'translateX(-' + (current * 100) + '%)';
-                dots.forEach(function(d, i) {
-                    d.classList.toggle('active', i === current);
+                if (total <= 1) {
+                    if (prevBtn) prevBtn.style.display = 'none';
+                    if (nextBtn) nextBtn.style.display = 'none';
+                    slider.querySelector('.slider-dots').style.display = 'none';
+                    return;
+                }
+
+                function goTo(index) {
+                    current = (index + total) % total;
+                    track.style.transform = 'translateX(-' + (current * 100) + '%)';
+                    dots.forEach(function(d, i) {
+                        d.classList.toggle('active', i === current);
+                    });
+                }
+
+                prevBtn.addEventListener('click', function() { goTo(current - 1); });
+                nextBtn.addEventListener('click', function() { goTo(current + 1); });
+                dots.forEach(function(dot, i) {
+                    dot.addEventListener('click', function() { goTo(i); });
                 });
+
+                // 触摸滑动
+                var touchStartX = 0;
+                slider.addEventListener('touchstart', function(e) {
+                    touchStartX = e.touches[0].clientX;
+                }, { passive: true });
+                slider.addEventListener('touchend', function(e) {
+                    var diff = touchStartX - e.changedTouches[0].clientX;
+                    if (Math.abs(diff) > 40) goTo(diff > 0 ? current + 1 : current - 1);
+                });
+            });
+        }
+
+        initSliders(document);
+
+        // 校园动态 API：有真实数据就替换占位卡片，没有/请求失败就保留占位内容
+        var NEWS_API = 'https://api.usvia.org/news';
+
+        function escapeHtml(str) {
+            var div = document.createElement('div');
+            div.textContent = str || '';
+            return div.innerHTML;
+        }
+
+        function buildNewsCard(entry) {
+            var images = entry.images && entry.images.length ? entry.images : [null];
+            var slides = images.map(function(url) {
+                var style = url
+                    ? 'background-image: url(\'' + url + '\');'
+                    : 'background-color: #d8d8d8;';
+                return '<div class="slide" style="' + style + '"></div>';
+            }).join('');
+            var dots = images.map(function(_, i) {
+                return '<span class="dot' + (i === 0 ? ' active' : '') + '"></span>';
+            }).join('');
+
+            return '' +
+                '<div class="news-card">' +
+                    '<div class="news-slider">' +
+                        '<div class="slider-track">' + slides + '</div>' +
+                        '<button class="slider-btn prev">&#8249;</button>' +
+                        '<button class="slider-btn next">&#8250;</button>' +
+                        '<div class="slider-dots">' + dots + '</div>' +
+                    '</div>' +
+                    '<div class="news-body">' +
+                        '<p class="news-date">' + escapeHtml(entry.date) + '</p>' +
+                        '<p class="news-title">' + escapeHtml(entry.title) + '</p>' +
+                        '<p class="news-excerpt">' + escapeHtml(entry.body) + '</p>' +
+                    '</div>' +
+                '</div>';
+        }
+
+        async function loadNews() {
+            try {
+                const res = await fetch(NEWS_API, { cache: 'no-store' });
+                if (!res.ok) return;
+                const news = await res.json();
+                if (!Array.isArray(news) || news.length === 0) return;
+
+                const masonry = document.querySelector('.news-masonry');
+                masonry.innerHTML = news.map(buildNewsCard).join('');
+                initSliders(masonry);
+            } catch (e) {
+                console.warn('无法加载校园动态:', e);
             }
+        }
 
-            prevBtn.addEventListener('click', function() { goTo(current - 1); });
-            nextBtn.addEventListener('click', function() { goTo(current + 1); });
-            dots.forEach(function(dot, i) {
-                dot.addEventListener('click', function() { goTo(i); });
-            });
-
-            // 触摸滑动
-            var touchStartX = 0;
-            slider.addEventListener('touchstart', function(e) {
-                touchStartX = e.touches[0].clientX;
-            }, { passive: true });
-            slider.addEventListener('touchend', function(e) {
-                var diff = touchStartX - e.changedTouches[0].clientX;
-                if (Math.abs(diff) > 40) goTo(diff > 0 ? current + 1 : current - 1);
-            });
-        });
+        loadNews();
 
         // 加载 header / footer
         async function loadComponent(placeholderId, path) {
