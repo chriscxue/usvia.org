@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <url>
+    <loc>https://usvia.org/index.html</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://usvia.org/cn/home.html"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://usvia.org/en/home.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://usvia.org/index.html"/>
+  </url>
+
+  <url>
+    <loc>https://usvia.org/cn/home.html</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://usvia.org/cn/home.html"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://usvia.org/en/home.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://usvia.org/index.html"/>
+  </url>
+  <url>
+    <loc>https://usvia.org/cn/educational-programs.html</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://usvia.org/cn/educational-programs.html"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://usvia.org/en/educational-programs.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://usvia.org/index.html"/>
+  </url>
+  <url>
+    <loc>https://usvia.org/cn/about-us.html</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://usvia.org/cn/about-us.html"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://usvia.org/en/about-us.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://usvia.org/index.html"/>
+  </url>
+  <url>
+    <loc>https://usvia.org/cn/admission.html</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://usvia.org/cn/admission.html"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://usvia.org/en/admission.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://usvia.org/index.html"/>
+  </url>
+  <url>
+    <loc>https://usvia.org/cn/student-life.html</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://usvia.org/cn/student-life.html"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://usvia.org/en/student-life.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://usvia.org/index.html"/>
+  </url>
+  <url>
+    <loc>https://usvia.org/cn/news.html</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://usvia.org/cn/news.html"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://usvia.org/en/news.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://usvia.org/index.html"/>
+  </url>
+
+  <url>
+    <loc>https://usvia.org/en/home.html</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://usvia.org/cn/home.html"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://usvia.org/en/home.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://usvia.org/index.html"/>
+  </url>
+  <url>
+    <loc>https://usvia.org/en/educational-programs.html</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://usvia.org/cn/educational-programs.html"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://usvia.org/en/educational-programs.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://usvia.org/index.html"/>
+  </url>
+  <url>
+    <loc>https://usvia.org/en/about-us.html</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://usvia.org/cn/about-us.html"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://usvia.org/en/about-us.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://usvia.org/index.html"/>
+  </url>
+  <url>
+    <loc>https://usvia.org/en/admission.html</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://usvia.org/cn/admission.html"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://usvia.org/en/admission.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://usvia.org/index.html"/>
+  </url>
+  <url>
+    <loc>https://usvia.org/en/student-life.html</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://usvia.org/cn/student-life.html"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://usvia.org/en/student-life.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://usvia.org/index.html"/>
+  </url>
+  <url>
+    <loc>https://usvia.org/en/news.html</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://usvia.org/cn/news.html"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://usvia.org/en/news.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://usvia.org/index.html"/>
+  </url>
+
+</urlset>
