@@ -938,44 +938,104 @@
         }
     });
 
-    // 首页校园动态轮播
-    document.querySelectorAll('.news-grid-card').forEach(function(card) {
-        var slider = card.querySelector('.news-slider');
-        if (!slider) return;
-        var track = slider.querySelector('.slider-track');
-        var dots = slider.querySelectorAll('.dot');
-        var prevBtn = slider.querySelector('.prev');
-        var nextBtn = slider.querySelector('.next');
-        var total = slider.querySelectorAll('.slide').length;
-        var current = 0;
+    // 首页校园动态轮播（可对新插入的卡片重复调用）
+    function initNewsGridSliders(root) {
+        root.querySelectorAll('.news-grid-card').forEach(function(card) {
+            var slider = card.querySelector('.news-slider');
+            if (!slider || slider.dataset.sliderInit) return;
+            slider.dataset.sliderInit = '1';
 
-        if (total <= 1) {
-            if (prevBtn) prevBtn.style.display = 'none';
-            if (nextBtn) nextBtn.style.display = 'none';
-            var dotsEl = slider.querySelector('.slider-dots');
-            if (dotsEl) dotsEl.style.display = 'none';
-            return;
-        }
+            var track = slider.querySelector('.slider-track');
+            var dots = slider.querySelectorAll('.dot');
+            var prevBtn = slider.querySelector('.prev');
+            var nextBtn = slider.querySelector('.next');
+            var total = slider.querySelectorAll('.slide').length;
+            var current = 0;
 
-        function goTo(index) {
-            current = (index + total) % total;
-            track.style.transform = 'translateX(-' + (current * 100) + '%)';
-            dots.forEach(function(d, i) { d.classList.toggle('active', i === current); });
-        }
+            if (total <= 1) {
+                if (prevBtn) prevBtn.style.display = 'none';
+                if (nextBtn) nextBtn.style.display = 'none';
+                var dotsEl = slider.querySelector('.slider-dots');
+                if (dotsEl) dotsEl.style.display = 'none';
+                return;
+            }
 
-        prevBtn.addEventListener('click', function(e) { e.stopPropagation(); goTo(current - 1); });
-        nextBtn.addEventListener('click', function(e) { e.stopPropagation(); goTo(current + 1); });
-        dots.forEach(function(dot, i) {
-            dot.addEventListener('click', function(e) { e.stopPropagation(); goTo(i); });
+            function goTo(index) {
+                current = (index + total) % total;
+                track.style.transform = 'translateX(-' + (current * 100) + '%)';
+                dots.forEach(function(d, i) { d.classList.toggle('active', i === current); });
+            }
+
+            prevBtn.addEventListener('click', function(e) { e.stopPropagation(); goTo(current - 1); });
+            nextBtn.addEventListener('click', function(e) { e.stopPropagation(); goTo(current + 1); });
+            dots.forEach(function(dot, i) {
+                dot.addEventListener('click', function(e) { e.stopPropagation(); goTo(i); });
+            });
+
+            var touchStartX = 0;
+            slider.addEventListener('touchstart', function(e) { touchStartX = e.touches[0].clientX; }, { passive: true });
+            slider.addEventListener('touchend', function(e) {
+                var diff = touchStartX - e.changedTouches[0].clientX;
+                if (Math.abs(diff) > 40) goTo(diff > 0 ? current + 1 : current - 1);
+            });
         });
+    }
+    initNewsGridSliders(document);
 
-        var touchStartX = 0;
-        slider.addEventListener('touchstart', function(e) { touchStartX = e.touches[0].clientX; }, { passive: true });
-        slider.addEventListener('touchend', function(e) {
-            var diff = touchStartX - e.changedTouches[0].clientX;
-            if (Math.abs(diff) > 40) goTo(diff > 0 ? current + 1 : current - 1);
-        });
-    });
+    // 首页校园动态：跟 news.html 用同一个 API，有真实数据就替换占位卡片
+    function formatDateCN(iso) {
+        var parts = (iso || '').split('-');
+        if (parts.length < 2) return iso || '';
+        return parts[0] + '年' + parseInt(parts[1], 10) + '月';
+    }
+
+    function escapeHtmlHome(str) {
+        var div = document.createElement('div');
+        div.textContent = str || '';
+        return div.innerHTML;
+    }
+
+    function buildNewsGridCard(entry) {
+        var images = entry.images && entry.images.length ? entry.images : [null];
+        var slides = images.map(function(url) {
+            var style = url ? 'background-image: url(\'' + url + '\');' : 'background-color: #d8d8d8;';
+            return '<div class="slide" style="' + style + '"></div>';
+        }).join('');
+        var dots = images.map(function(_, i) {
+            return '<span class="dot' + (i === 0 ? ' active' : '') + '"></span>';
+        }).join('');
+
+        return '' +
+            '<div class="news-grid-card" onclick="window.location=\'/cn/news.html\'">' +
+                '<div class="news-slider">' +
+                    '<div class="slider-track">' + slides + '</div>' +
+                    '<button class="slider-btn prev">&#8249;</button>' +
+                    '<button class="slider-btn next">&#8250;</button>' +
+                    '<div class="slider-dots">' + dots + '</div>' +
+                '</div>' +
+                '<div class="news-grid-body">' +
+                    '<p class="news-grid-date">' + escapeHtmlHome(formatDateCN(entry.date)) + '</p>' +
+                    '<p class="news-grid-title">' + escapeHtmlHome(entry.title) + '</p>' +
+                '</div>' +
+            '</div>';
+    }
+
+    async function loadHomeNews() {
+        try {
+            var res = await fetch('https://api.usvia.org/news', { cache: 'no-store' });
+            if (!res.ok) return;
+            var news = await res.json();
+            if (!Array.isArray(news) || news.length === 0) return;
+
+            var grid = document.querySelector('.news-grid');
+            grid.innerHTML = news.slice(0, 6).map(buildNewsGridCard).join('');
+            initNewsGridSliders(grid);
+        } catch (e) {
+            console.warn('无法加载校园动态:', e);
+        }
+    }
+
+    loadHomeNews();
 
     var inner = document.querySelector('.right-inner');
     document.getElementById('cert-trigger').addEventListener('click', function(e) {
